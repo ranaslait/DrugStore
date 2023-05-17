@@ -53,3 +53,9 @@ app.get('/skincare.ejs', (req, res) => {
 app.get('/vit.ejs', (req, res) => {
    res.render('pages/vit')
 });
+app.get('/checkout.ejs', (req, res) => {
+   res.render('pages/checkout')
+});
+app.get('/index.ejs', (req, res) => {
+   res.render('pages/index')
+});
