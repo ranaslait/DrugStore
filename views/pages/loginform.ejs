@@ -1,46 +1,95 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-wdith",initial-scale=1.0>
-        <title>signup/signin</title>
 
-        <link rel="stylesheet" href="../CSS/webpr.css">
+<head>
+    <meta name="viewport" content="width=device-wdith" ,initial-scale=1.0>
+    <title>signup/signin</title>
 
-        <script src="https://kit.fontawesome.com/c4254e23a8.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="webpr.css">
-    </head>
-    <body>
-<div class="containerTlogin">
-    <div class="form-boxT">
-        <h1 id="titleT">Sign up</h1>
-    <form >
-        <div class="input-groupT">
+    <link rel="stylesheet" href="../CSS/webpr.css">
 
-        <div class="input-fieldT" id="nameField" required>
-            <i class="fa-solid fa-user"></i>
-             <input type="text" placeholder="Name" required>
+    <script src="https://kit.fontawesome.com/c4254e23a8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="webpr.css">
+</head>
+
+<body>
+    <div class="containerTlogin">
+        <div class="form-boxT">
+            <h1 id="titleT">Sign up</h1>
+            <form>
+                <div class="input-groupT">
+
+                    <div class="input-fieldT" id="nameField" required>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Name" required>
+                    </div>
+
+                    <div class="input-fieldT">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="input-fieldT">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <p>Forget password <a href="#">Click Here!</a></p>
+                </div>
+                <div class="btn-fieldT">
+                    <button type="button" id="signupBtn">Sign up</button>
+                    <button type="button" id="signinBtn" class="disable">Sign in</button>
+                    <button type="submit" id="submitT">Submit</button>
+                </div>
+            </form>
         </div>
-
-        <div class="input-fieldT">
-            <i class="fa-solid fa-envelope"></i>
-             <input type="email" placeholder="Email" required>
-        </div>
-
-        <div class="input-fieldT">
-            <i class="fa-solid fa-lock"></i>
-             <input type="password" placeholder="Password" required>
-             </div>
-             <p>Forget password <a href="#">Click Here!</a></p>
-         </div>
-         <div class="btn-fieldT">
-            <button type="button" id="signupBtn">Sign up</button>
-            <button type="button" id="signinBtn" class="disable">Sign in</button>
-            <button type="submit" id="submitT">Submit</button>
-         </div>
-      </form>    
-     </div>
     </div>
-    
-    <script src ="../pages/JS.js"></script>
-    </body>
+    <script>
+
+   
+    let signupBtn=document.getElementById("signupBtn");
+    let signinBtn=document.getElementById("signinBtn");
+    let nameField=document.getElementById("nameField");
+    let title=document.getElementById("title");
+    signinBtn.onclick=function(){
+    nameField.style.maxHeight="0";
+    title.innerHTML="Sign in";
+    signupBtn.classList.add("disable")
+    signinBtn.classList.remove("disable")
+    }
+
+    signupBtn.onclick=function(){
+    nameField.style.maxHeight="60px";
+    title.innerHTML="Sign up";
+    signupBtn.classList.remove("disable")
+    signinBtn.classList.add("disable")
+    }
+
+
+    window.onscroll = function() {myFunction()};
+
+
+    var navbar = document.getElementById("navbar");
+
+
+    var sticky = navbar.offsetTop;
+
+
+    function myFunction() {
+    if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+    } else {
+    navbar.classList.remove("sticky");
+    }
+    }
+
+    var counter=1;
+    setInterval(function(){
+    document.getElementById('radio'+counter).checked=true;
+    counter++;
+    if(counter>3){
+    counter=1;
+    }
+    },5000);
+ </script>
+</body>
+
 </html>
