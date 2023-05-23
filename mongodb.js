@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
-    const uri = process.env.MONGO_URI || "mongodb://localhost:27017/LoginSignupDOSE";
+    const uri = process.env.MONGO_URI || "mongodb+srv://ranaslait:4setDtjtBFb549Nx@cluster0.a3ua0nj.mongodb.net/";
     await mongoose
       .connect(uri, {
         useNewUrlParser: true,

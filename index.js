@@ -8,29 +8,24 @@ const app = express();
 //const bcrypt =require("bcrypt"); //import the bcrypt for passwords"privacy"
 // 
 app.use(express.json());
-const dbURI = "mongodb+srv://rana2100893:<Rana@03ahmedshawky>@cluster0.dgxo64h.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(dbURI)
+const uri = "mongodb+srv://ranaslait:4setDtjtBFb549Nx@cluster0.a3ua0nj.mongodb.net/";
+mongoose.connect(uri)
   .then(result => app.listen(8081))
   .catch(err => console.log(err));
 
-app.use(express.urlencoded({ extended: true }));
-//  
 const collection=require("./mongodb");
 const logincollection = require('./mongodb');
 app.use(express.static('public'));
-app.use(session({ secret: 'yarabwebykhls'}));
 app.set('view engine', 'ejs');
-
-app.use(express.urlencoded({extended:false}))
+// app.listen(8081);
+app.use(express.urlencoded({extended:true}))
 app.get('/login', (req, res) => {
    res.render('login', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
 
-app.get('/registr',(req,res)=>{
-   res.render('pages/registr')
-});
 
-app.post("/registr",async(rec,res)=>{
+
+app.post("/registr.ejs",async(rec,res)=>{
    // const data=new logincollection({
    //    name:req.body.name,
    //    email:req.body.email,
@@ -75,6 +70,7 @@ app.post("/login",async(rec,res)=>{
 })
 // app.listen(8081);//port that we listen on
 //routes
+
 app.get('/', function (req, res) {
    res.render('pages/index');
 });
@@ -96,6 +92,12 @@ app.get('/hair.ejs', (req, res) => {
 });
 app.get('/loginform.ejs', (req, res) => {
    res.render('pages/loginform')
+});
+app.get('/login.ejs', (req, res) => {
+   res.render('pages/login')
+});
+app.get('/registr.ejs', (req, res) => {
+   res.render('pages/registr')
 });
 app.get('/makeup.ejs', (req, res) => {
    res.render('pages/makeup')
