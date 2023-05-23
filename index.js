@@ -1,23 +1,30 @@
 //importing libs that we installed using npm
-var express = require('express')
-var ejs = require('ejs')
-// var bodyParser=require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
+const path = require('path');
+var ejs = require('ejs');
 const app = express();
+// var bodyParser=require('body-parser');
 //const bcrypt =require("bcrypt"); //import the bcrypt for passwords"privacy"
+// 
+app.use(express.json());
+const dbURI = "mongodb+srv://rana2100893:<Rana@03ahmedshawky>@cluster0.dgxo64h.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(dbURI)
+  .then(result => app.listen(8081))
+  .catch(err => console.log(err));
 
-app.use(express.json())
-
+app.use(express.urlencoded({ extended: true }));
+//  
 const collection=require("./mongodb");
 const logincollection = require('./mongodb');
-
 app.use(express.static('public'));
-
+app.use(session({ secret: 'yarabwebykhls'}));
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({extended:false}))
-app.get('/login',(req,res)=>{
-   res.render('pages/login')
-});
+app.get('/login', (req, res) => {
+   res.render('login', { user: (req.session.user === undefined ? "" : req.session.user) });
+ });
 
 app.get('/registr',(req,res)=>{
    res.render('pages/registr')
@@ -52,9 +59,6 @@ app.post("/registr",async(rec,res)=>{
    })
    
 })
-
-
-
 app.post("/login",async(rec,res)=>{
    try{
       const check=await logincollection.findOne({email:req.body.email})
@@ -69,15 +73,7 @@ app.post("/login",async(rec,res)=>{
       res.send("wrong details")
    }
 })
-
-
-
-
-
-
-app.listen(8081);//port that we listen on
-
-
+// app.listen(8081);//port that we listen on
 //routes
 app.get('/', function (req, res) {
    res.render('pages/index');
