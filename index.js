@@ -1,13 +1,88 @@
+//importing libs that we installed using npm
 var express = require('express')
 var ejs = require('ejs')
 // var bodyParser=require('body-parser');
-var app = express();
+const app = express();
+//const bcrypt =require("bcrypt"); //import the bcrypt for passwords"privacy"
+
+app.use(express.json())
+
+const collection=require("./mongodb");
+const logincollection = require('./mongodb');
+
 app.use(express.static('public'));
+
 app.set('view engine', 'ejs');
-app.listen(8081);
+
+app.use(express.urlencoded({extended:false}))
+app.get('/login',(req,res)=>{
+   res.render('pages/login')
+});
+
+app.get('/registr',(req,res)=>{
+   res.render('pages/registr')
+});
+
+app.post("/registr",async(rec,res)=>{
+   // const data=new logincollection({
+   //    name:req.body.name,
+   //    email:req.body.email,
+   //    password:req.body.password,
+   //    phone:req.body.phone
+   // })
+   //await collection.insertMany([data])
+   const data={
+      email: req.body.email,
+      password: req.body.password
+   }
+   const checking =await logincollection.findOne({email:req.body.email})
+   try{
+      if(checking.email ===req.body.email && checking.password ===req.body.password){
+
+      }
+      else{
+         await logincollection.insertMany([data])
+      }
+   }
+   catch{
+      res.send("wrong inputs")
+   }
+   res.status(201).render('pages/index',{
+      naming:req.body.name
+   })
+   
+})
+
+
+
+app.post("/login",async(rec,res)=>{
+   try{
+      const check=await logincollection.findOne({email:req.body.email})
+      if(check.password === req.body.password){
+         res.status(201).render('pages/index',{naming:`${req.body.password}+${req.body.email}`})
+      }
+      else{
+         res.send("incorrect password")
+      }
+   }
+   catch(e){
+      res.send("wrong details")
+   }
+})
+
+
+
+
+
+
+app.listen(8081);//port that we listen on
+
+
+//routes
 app.get('/', function (req, res) {
    res.render('pages/index');
 });
+
 app.get('/about.ejs', (req, res) => {
    res.render('pages/about')
 });
@@ -59,3 +134,4 @@ app.get('/checkout.ejs', (req, res) => {
 app.get('/index.ejs', (req, res) => {
    res.render('pages/index')
 });
+//end routes
