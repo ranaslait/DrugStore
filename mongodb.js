@@ -1,19 +1,34 @@
-const mongoose = require("mongoose");
-const connectDB = async () => {
-  try {
-    const uri = process.env.MONGO_URI || "mongodb+srv://ranaslait:4setDtjtBFb549Nx@cluster0.a3ua0nj.mongodb.net/";
-    await mongoose
-      .connect(uri, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-      })
-      .catch((error) => console.log(error));
-    const connection = mongoose.connection;
-    console.log("MONGODB CONNECTED SUCCESSFULLY!");
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-};
-module.exports = connectDB;
+const { string } = require("i/lib/util");
+const mongoose=require("mongoose");
+mongoose.connect("mongodb+srv://ranaslait:4setDtjtBFb549Nx@cluster0.a3ua0nj.mongodb.net/")
+.then(()=>{
+    console.log("mongodb connected");
+})
+.catch((e)=>{
+    console.log("fail to connect")
+})
+
+
+const loginschema= new mongoose.Schema({
+   name:{
+    type:String,
+    required:true
+   },
+    email:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    phone:{
+      type:String,
+      required:false
+    }
+    
+})
+
+const logincollection=new mongoose.model("logincollection",loginschema)
+
+module.exports=logincollection

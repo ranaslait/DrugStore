@@ -19,13 +19,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 // app.listen(8081);
 app.use(express.urlencoded({extended:true}))
-app.get('/login', (req, res) => {
-   res.render('login', { user: (req.session.user === undefined ? "" : req.session.user) });
- });
-
-
-
-app.post("/registr.ejs",async(rec,res)=>{
+app.post('/registr.ejs',async(rec,res)=>{
    // const data=new logincollection({
    //    name:req.body.name,
    //    email:req.body.email,
@@ -34,8 +28,10 @@ app.post("/registr.ejs",async(rec,res)=>{
    // })
    //await collection.insertMany([data])
    const data={
+      name:req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      phone:req.body.phone
    }
    const checking =await logincollection.findOne({email:req.body.email})
    try{
@@ -54,11 +50,11 @@ app.post("/registr.ejs",async(rec,res)=>{
    })
    
 })
-app.post("/login",async(rec,res)=>{
+app.post('/login.ejs',async(rec,res)=>{
    try{
       const check=await logincollection.findOne({email:req.body.email})
       if(check.password === req.body.password){
-         res.status(201).render('pages/index',{naming:`${req.body.password}+${req.body.email}`})
+         res.status(201).render('pages/index',{naming:`${req.body.email}+${req.body.password}`})
       }
       else{
          res.send("incorrect password")
