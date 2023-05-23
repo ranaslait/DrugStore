@@ -8,15 +8,12 @@ let signupBtn=document.getElementById("signupBtn");
     signupBtn.classList.add("disable")
     signinBtn.classList.remove("disable")
     }
-
     signupBtn.onclick=function(){
     nameField.style.maxHeight="60px";
     title.innerHTML="Sign up";
     signupBtn.classList.remove("disable")
     signinBtn.classList.add("disable")
     }
-
-
     window.onscroll = function() {myFunction()};
 
 

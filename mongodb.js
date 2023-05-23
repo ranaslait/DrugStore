@@ -1,26 +1,19 @@
-const mongoose=require("mongoose");
-mongoose.connect("mongodb://localhost:27017/LoginSignupDOSE")
-.then(()=>{
-    console.log("mongodb connected");
-})
-.catch((e)=>{
-    console.log("fail to connect")
-})
-
-
-const loginschema= new mongoose.Schema({
-   
-    email:{
-        type:String,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    }
-    
-})
-
-const logincollection=new mongoose.model("logincollection",loginschema)
-
-module.exports=logincollection
+const mongoose = require("mongoose");
+const connectDB = async () => {
+  try {
+    const uri = process.env.MONGO_URI || "mongodb://localhost:27017/LoginSignupDOSE";
+    await mongoose
+      .connect(uri, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+      })
+      .catch((error) => console.log(error));
+    const connection = mongoose.connection;
+    console.log("MONGODB CONNECTED SUCCESSFULLY!");
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+module.exports = connectDB;
