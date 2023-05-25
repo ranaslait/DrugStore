@@ -1,15 +1,8 @@
 const { string } = require("i/lib/util");
-const mongoose=require("mongoose");
-mongoose.connect("mongodb+srv://ranaslait:4setDtjtBFb549Nx@cluster0.a3ua0nj.mongodb.net/")
-.then(()=>{
-    console.log("mongodb connected");
-})
-.catch((e)=>{
-    console.log("fail to connect")
-})
+const mongoose = require('mongoose');
 
 
-const loginschema= new mongoose.Schema({
+const userschema= new mongoose.Schema({
    name:{
     type:String,
     required:true
@@ -29,6 +22,6 @@ const loginschema= new mongoose.Schema({
     
 })
 
-const logincollection=new mongoose.model("logincollection",loginschema)
+const usercollection=new mongoose.model("usercollection",userschema)
 
-module.exports=logincollection
+module.exports=usercollection

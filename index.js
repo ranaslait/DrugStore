@@ -8,18 +8,25 @@ const app = express();
 //const bcrypt =require("bcrypt"); //import the bcrypt for passwords"privacy"
 // 
 app.use(express.json());
-const uri = "mongodb+srv://ranaslait:4setDtjtBFb549Nx@cluster0.a3ua0nj.mongodb.net/";
-mongoose.connect(uri)
-  .then(result => app.listen(8081))
-  .catch(err => console.log(err));
+// const uri = "mongodb+srv://ranaslait:4setDtjtBFb549Nx@cluster0.a3ua0nj.mongodb.net/";
+// mongoose.connect(uri)
+//   .then(result => app.listen(8081))
+//   .catch(err => console.log(err));
+
+mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/project?retryWrites=true&w=majority")
+.then(result => app.listen(8081))
+.catch((e)=>{
+    console.log(e)
+})
+
 
 const collection=require("./mongodb");
-const logincollection = require('./mongodb');
+const usercollection = require('./mongodb');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 // app.listen(8081);
-app.use(express.urlencoded({extended:true}))
-app.post('/registr.ejs',async(rec,res)=>{
+app.use(express.urlencoded({extended:true}));
+app.post('/registr',async(req,res)=>{
    // const data=new logincollection({
    //    name:req.body.name,
    //    email:req.body.email,
@@ -27,32 +34,40 @@ app.post('/registr.ejs',async(rec,res)=>{
    //    phone:req.body.phone
    // })
    //await collection.insertMany([data])
-   const data={
+   console.log(req.body)
+   const data=new usercollection({
       name:req.body.name,
       email: req.body.email,
       password: req.body.password,
       phone:req.body.phone
-   }
-   const checking =await logincollection.findOne({email:req.body.email})
-   try{
-      if(checking.email ===req.body.email && checking.password ===req.body.password){
-
-      }
-      else{
-         await logincollection.insertMany([data])
-      }
-   }
-   catch{
-      res.send("wrong inputs")
-   }
-   res.status(201).render('pages/index',{
-      naming:req.body.name
    })
+   data.save()
+   .then(result=>{
+      res.redirect('/');//awdeh 3la el index
+   })
+   .catch(err=>{
+      console.log(err);
+   })
+   // const checking =await usercollection.findOne({email:req.body.email})
+   // try{
+   //    if(checking.email ===req.session.body.email && checking.password ===req.body.password){
+
+   //    }
+   //    else{
+   //       await usercollection.insertMany([data])
+   //    }
+   // }
+   // catch{
+   //    res.send("wrong inputs")
+   // }
+   // res.status(201).render('pages/index',{
+   //    naming:req.body.name
+   // })
    
 })
 app.post('/login.ejs',async(rec,res)=>{
    try{
-      const check=await logincollection.findOne({email:req.body.email})
+      const check=await usercollection.findOne({email:req.body.email})
       if(check.password === req.body.password){
          res.status(201).render('pages/index',{naming:`${req.body.email}+${req.body.password}`})
       }
