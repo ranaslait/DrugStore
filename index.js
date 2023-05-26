@@ -26,6 +26,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 // app.listen(8081);
 app.use(express.urlencoded({extended:true}));
+//sign up and save data in DB
 app.post('/registr',async(req,res)=>{
    // const data=new logincollection({
    //    name:req.body.name,
@@ -69,8 +70,10 @@ app.get('/login',async(rec,res)=>{
    try{
       const check=await usercollection.findOne({email:req.body.email})
       if(check.password === req.body.password){
-         res.render('pages/index')
+         res.status(201).render('pages/index',{naming:`${req.body.email}+${req.body.password}`})
+        
       }
+      //awdeh 3la el index }
       else{
          res.send("incorrect password")
       }
@@ -100,9 +103,6 @@ app.get('/cleaning.ejs', (req, res) => {
 });
 app.get('/hair.ejs', (req, res) => {
    res.render('pages/hair')
-});
-app.get('/loginform.ejs', (req, res) => {
-   res.render('pages/loginform')
 });
 app.get('/login.ejs', (req, res) => {
    res.render('pages/login')
