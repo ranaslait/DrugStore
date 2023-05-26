@@ -14,19 +14,19 @@ app.use(express.json());
 //   .catch(err => console.log(err));
 
 mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/project?retryWrites=true&w=majority")
-.then(result => app.listen(8081))
-.catch((e)=>{
-    console.log(e)
-})
+   .then(result => app.listen(8081))
+   .catch((e) => {
+      console.log(e)
+   })
 
 
-const collection=require("./mongodb");
+const collection = require("./mongodb");
 const usercollection = require('./mongodb');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 // app.listen(8081);
-app.use(express.urlencoded({extended:true}));
-app.post('/registr',async(req,res)=>{
+app.use(express.urlencoded({ extended: true }));
+app.post('/registr', async (req, res) => {
    // const data=new logincollection({
    //    name:req.body.name,
    //    email:req.body.email,
@@ -35,19 +35,19 @@ app.post('/registr',async(req,res)=>{
    // })
    //await collection.insertMany([data])
    console.log(req.body)
-   const data=new usercollection({
-      name:req.body.name,
+   const data = new usercollection({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      phone:req.body.phone
+      phone: req.body.phone
    })
    data.save()
-   .then(result=>{
-      res.redirect('/');//awdeh 3la el index
-   })
-   .catch(err=>{
-      console.log(err);
-   })
+      .then(result => {
+         res.redirect('/');//awdeh 3la el index
+      })
+      .catch(err => {
+         console.log(err);
+      })
    // const checking =await usercollection.findOne({email:req.body.email})
    // try{
    //    if(checking.email ===req.session.body.email && checking.password ===req.body.password){
@@ -64,24 +64,43 @@ app.post('/registr',async(req,res)=>{
    //    naming:req.body.name
    // })
 
-   
+
 })
-app.post('/login.ejs',async(rec,res)=>{
-   try{
-      const check=await usercollection.findOne({email:req.body.email})
-      if(check.password === req.body.password){
-         res.status(201).render('pages/index',{naming:`${req.body.email}+${req.body.password}`})
-      }
-      else{
-         res.send("incorrect password")
-      }
-   }
-   catch(e){
-      res.send("wrong details")
-   }
-})
+// app.post('/login.ejs',async(rec,res)=>{
+//    try{
+//       const check=await usercollection.findOne({email:req.body.email})
+//       if(check.password === req.body.password){
+//          res.status(201).render('pages/index',{naming:`${req.body.email}+${req.body.password}`})
+//       }
+//       else{
+//          res.send("incorrect password")
+//       }
+//    }
+//    catch(e){
+//       res.send("wrong details")
+//    }
+// })
 // app.listen(8081);//port that we listen on
 //routes
+app.post("/login", async function (req, res) {
+   try {
+      // check if the user exists
+      const user = await user.findOne({ username: req.body.username });
+      if (user) {
+         //check if password matches
+         const result = req.body.password === user.password;
+         if (result) {
+            res.status(201).render('pages/index', { naming: `${req.body.email}+${req.body.password}` })
+         } else {
+            res.status(400).json({ error: "password doesn't match" });
+         }
+      } else {
+         res.status(400).json({ error: "User doesn't exist" });
+      }
+   } catch (error) {
+      res.status(400).json({ error });
+   }
+});
 
 app.get('/', function (req, res) {
    res.render('pages/index');
