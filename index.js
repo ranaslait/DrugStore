@@ -63,6 +63,7 @@ app.post('/registr',async(req,res)=>{
    // res.status(201).render('pages/index',{
    //    naming:req.body.name
    // })
+
    
 })
 app.post('/login.ejs',async(rec,res)=>{
