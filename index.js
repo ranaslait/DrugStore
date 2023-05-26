@@ -66,11 +66,12 @@ app.post('/registr',async(req,res)=>{
    // })
    
 })
-app.get('/login',async(rec,res)=>{
+app.get('/login',async(req,res)=>{
    try{
+      console.log(req.body)
       const check=await usercollection.findOne({email:req.body.email})
       if(check.password === req.body.password){
-         res.status(201).render('pages/index',{naming:`${req.body.email}+${req.body.password}`})
+         res.render('/',{naming:`${req.body.email}+${req.body.password}`})
         
       }
       //awdeh 3la el index }
