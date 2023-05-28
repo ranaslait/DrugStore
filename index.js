@@ -115,6 +115,9 @@ app.get('/login', (req, res) => {
 app.get('/registr', (req, res) => {
    res.render('pages/registr')
 });
+app.get('/admin', (req, res) => {
+   res.render('pages/admin')
+});
 app.get('/makeup', (req, res) => {
    res.render('pages/makeup')
 });
