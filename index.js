@@ -14,7 +14,8 @@ app.use(express.json());
 //   .catch(err => console.log(err));
 
 mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/project?retryWrites=true&w=majority")
-.then(result => app.listen(8081))
+.then((result) => {app.listen(8081);
+   console.log("connected to db");})
 .catch((e)=>{
     console.log(e)
 })
@@ -66,14 +67,16 @@ app.post('/registr',async(req,res)=>{
    // })
    
 })
-app.get('/login',async(req,res)=>{
+app.post('/login',async(req,res)=>{
    try{
       console.log(req.body)
       const check=await usercollection.findOne({email:req.body.email})
-      if(check.password === req.body.password){
-         res.redirect('/',{naming:`${req.body.email}+${req.body.password}`})
-        
-      }
+      
+         if(check.password === req.body.password){
+            res.redirect('/');//awdeh 3la el index
+           
+         }
+      
       //awdeh 3la el index }
       else{
          res.send("incorrect password")
@@ -83,6 +86,7 @@ app.get('/login',async(req,res)=>{
       res.send("wrong details")
    }
 })
+
 // app.listen(8081);//port that we listen on
 //routes
 
@@ -105,7 +109,7 @@ app.get('/cleaning.ejs', (req, res) => {
 app.get('/hair.ejs', (req, res) => {
    res.render('pages/hair')
 });
-app.get('/login.ejs', (req, res) => {
+app.get('/login', (req, res) => {
    res.render('pages/login')
 });
 app.get('/registr.ejs', (req, res) => {
