@@ -76,7 +76,7 @@ app.post('/login',async(req,res)=>{
             res.redirect('/');//awdeh 3la el index
            
          }
-      
+   
       //awdeh 3la el index }
       else{
          res.send("incorrect password")
@@ -94,58 +94,58 @@ app.get('/', function (req, res) {
    res.render('pages/index');
 });
 
-app.get('/about.ejs', (req, res) => {
+app.get('/about', (req, res) => {
    res.render('pages/about')
 });
-app.get('/articles.ejs', (req, res) => {
+app.get('/articles', (req, res) => {
    res.render('pages/articles')
 });
-app.get('/blog.ejs', (req, res) => {
+app.get('/blog', (req, res) => {
    res.render('pages/blog')
 });
-app.get('/cleaning.ejs', (req, res) => {
+app.get('/cleaning', (req, res) => {
    res.render('pages/cleaning')
 });
-app.get('/hair.ejs', (req, res) => {
+app.get('/hair', (req, res) => {
    res.render('pages/hair')
 });
 app.get('/login', (req, res) => {
    res.render('pages/login')
 });
-app.get('/registr.ejs', (req, res) => {
+app.get('/registr', (req, res) => {
    res.render('pages/registr')
 });
-app.get('/makeup.ejs', (req, res) => {
+app.get('/makeup', (req, res) => {
    res.render('pages/makeup')
 });
-app.get('/medical.ejs', (req, res) => {
+app.get('/medical', (req, res) => {
    res.render('pages/medical')
 });
-app.get('/medications.ejs', (req, res) => {
+app.get('/medications', (req, res) => {
    res.render('pages/medications')
 });
-app.get('/motherbaby.ejs', (req, res) => {
+app.get('/motherbaby', (req, res) => {
    res.render('pages/motherbaby')
 });
-app.get('/perfume.ejs', (req, res) => {
+app.get('/perfume', (req, res) => {
    res.render('pages/perfume')
 });
-app.get('/personalcare.ejs', (req, res) => {
+app.get('/personalcare', (req, res) => {
    res.render('pages/personalcare')
 });
-app.get('/productDetails.ejs', (req, res) => {
+app.get('/productDetails', (req, res) => {
    res.render('pages/productDetails')
 });
-app.get('/skincare.ejs', (req, res) => {
+app.get('/skincare', (req, res) => {
    res.render('pages/skincare')
 });
-app.get('/vit.ejs', (req, res) => {
+app.get('/vit', (req, res) => {
    res.render('pages/vit')
 });
-app.get('/checkout.ejs', (req, res) => {
+app.get('/checkout', (req, res) => {
    res.render('pages/checkout')
 });
-app.get('/index.ejs', (req, res) => {
+app.get('/index', (req, res) => {
    res.render('pages/index')
 });
 //end routes
