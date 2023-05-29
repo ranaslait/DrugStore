@@ -118,6 +118,9 @@ app.get('/registr', (req, res) => {
 app.get('/admin', (req, res) => {
    res.render('pages/admin')
 });
+app.get('/admin', (req, res) => {
+   res.render('pages/footer')
+});
 app.get('/makeup', (req, res) => {
    res.render('pages/makeup')
 });
