@@ -60,7 +60,7 @@ app.post('/login', async (req, res) => {
       res.send("wrong details")
    }
 })
-app.post('/reset', async (req, res) => {
+app.post('/new_pass', async (req, res) => {
    try{
        //find a document with such email address
        const user = await User.findOne({email : req.body.email})
@@ -88,7 +88,7 @@ app.post('/reset', async (req, res) => {
        })
    }
 })
-app.get('/reset', async (req, res) => {
+app.post('/reset', async (req, res) => {
    try {
        //check for email and hash in query parameter
        if (req.query && req.query.email && req.query.hash) {
@@ -101,7 +101,7 @@ app.get('/reset', async (req, res) => {
                    //save email to session
                    req.session.email = req.query.email;
                    //issue a password reset form
-                   return res.render(__dirname + '/views/pages/new_pass.ejs')
+                   return res.render(__dirname + '/views/pages/new_pass')
                } else {
                    return res.status(400).json({
                        message: "You have provided an invalid reset link"
@@ -114,7 +114,7 @@ app.get('/reset', async (req, res) => {
            }
        } else {
            //if there are no query parameters, serve the normal request form
-           return res.render(__dirname + '/views/pages/reset.ejs')
+           return res.render(__dirname + '/views/pages/reset')
        }
    } catch (err) {
        console.log(err)
@@ -148,11 +148,17 @@ app.get('/login', (req, res) => {
 app.get('/registr', (req, res) => {
    res.render('pages/registr')
 });
+app.get('/reset', (req, res) => {
+   res.render('pages/reset')
+});
 app.get('/admin', (req, res) => {
    res.render('pages/admin')
 });
-app.get('/admin', (req, res) => {
+app.get('/footer', (req, res) => {
    res.render('pages/footer')
+});
+app.get('/new_pass', (req, res) => {
+   res.render('pages/new_pass')
 });
 app.get('/makeup', (req, res) => {
    res.render('pages/makeup')
