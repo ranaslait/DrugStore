@@ -1,125 +1,426 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<html>
 <head>
-    <title>Checkout</title>
-    <link rel="stylesheet" href="../CSS/co.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dose Pharmcy</title>
+    <link rel="stylesheet" href="../CSS/webpr.css">
+    <link rel="stylesheet" href="../CSS/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+        #navbar {
+            background-color: #00b18f;
+            padding: 10px;
+          }
+          
+          nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          
+          .logo {
+            margin-bottom: 50px;
+            margin-right: 10px;
+          }
+          
+          .logo a {
+            text-decoration: none;
+          }
+
+          .logo img{
+            position: fixed;
+            height: 80px;
+            width:100px;
+            margin: -10px 0px 0px 40px;
+          }
+          
+          .navigation-links,
+          .right-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+          }
+          
+          .navigation-links li,
+          .right-links li {
+            margin-right: 10px;
+          }
+          
+          .navigation-links li a,
+          .right-links li a {
+            text-decoration: none;
+            
+            padding: 10px;
+            transition: color 0.3s ease;
+          }
+          
+          .navigation-links li a:hover,
+          .right-links li a:hover {
+            color: #ff6600;
+          }
+          
+          .mega-box-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: none;
+            z-index: 2;
+          }
+          
+          .lnks:hover .mega-box-content {
+            display: block;
+          }
+          
+          .mega-box-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+          
+          .mega-box-content ul li {
+            margin-bottom: 5px;
+          }
+          
+          .mega-box-content ul li a {
+            text-decoration: none;
+            color: #333333;
+          }
+          
+          .split a {
+            display: flex;
+            align-items: center;
+          }
+          
+          .split i {
+            margin-right: 5px;
+          }
+          
+          
+          </style>
+
 
 </head>
-<html>
-<div class='container'>
-    <div class='window'>
-      <div class='order-info'>
-        <div class='order-info-content'>
-          <h2>Order Summary</h2>
-                  <div class='line'></div>
-          <table class='order-table'>
-            <tbody>
-              <tr>
-                <td><img src="../IMAGES/panadol.jpg" alt="Panadol" class='full-width'>
 
-                </td>
-                <td>
-                  <br> <span class='thin'>Panadol</span>
-                  <br> Medicine<br> <span class='thin small'> <br><br></span>
-                </td>
-  
-              </tr>
-              <tr>
-                <td>
-                  <div class='price'>$99.95</div>
-                </td>
-              </tr>
-            </tbody>
-  
-          </table>
-          <div class='line'></div>
-          <table class='order-table'>
-            <tbody>
-              <tr>
-                <td><img src="../IMAGES/garnier.jpg" alt="Panadol" class='full-width'>
-
-                </td>
-                <td>
-                  <br> <span class='thin'>Garnier</span>
-                  <br>skincare<br> <span class='thin small'> </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class='price'>$235.95</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class='line'></div>
-          <table class='order-table'>
-            <tbody>
-              <tr>
-                <td><img src="../IMAGES/omega3.jpg" alt="Panadol" class='full-width'>
-
-                </td>
-                <td>
-                  <br> <span class='thin'>Omega 3</span>
-                  <br>Vitamins<br> <span class='thin small'> </span>
-                </td>
-  
-              </tr>
-              <tr>
-                <td>
-                  <div class='price'>$25.95</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class='line'></div>
-          <div class='total'>
-            <span style='float:left;'>
-              <div class='thin dense'>VAT 19%</div>
-              <div class='thin dense'>Delivery</div>
-              TOTAL
-            </span>
-            <span style='float:right; text-align:right;'>
-              <div class='thin dense'>$68.75</div>
-              <div class='thin dense'>$4.95</div>
-              $435.55
-            </span>
-          </div>
-  </div>
-  </div>
-          <div class='credit-info'>
-            <div class='credit-info-content'>
-              <table class='half-input-table'>
-                <tr><td>Please select your card: </td><td><div class='dropdown' id='card-dropdown'><div class='dropdown-btn' id='current-card'>Visa</div>
-                  <div class='dropdown-select'>
-                  <ul>
-                    <li>Master Card</li>
-                    <li>American Express</li>
-                    </ul></div>
-                  </div>
-                 </td></tr>
-              </table>
-              <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
-              Card Number
-              <input class='input-field'> </input>
-              Card Holder
-              <input class='input-field'></input>
-              <table class='half-input-table'>
-                <tr>
-                  <td> Expires
-                    <input class='input-field'></input>
-                  </td>
-                  <td>CVC
-                    <input class='input-field'></input>
-                  </td>
-                </tr>
-              </table>
-              <button class='pay-btn'>Checkout</button>
-  
+<body>
+    <header id="navbar">
+        <nav>
+            <div class="logo">
+                <a href="#"><img src="../IMAGES/logo.png"></a>
             </div>
-  
+            <ul class="navigation-links">
+                <li class="lnks">
+                    <a href="#">Shop</a>
+                    <div class="mega-box-content">
+                        <ul>
+                            <li><a href="#">Category 1</a></li>
+                            <li><a href="#">Category 2</a></li>
+                            <li><a href="#">Category 3</a></li>
+                            <!-- Add more items as needed -->
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Order a Prescription</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#"><input type="text" placeholder="Search Products"></a></li>
+            </ul>
+            <ul class="right-links">
+                <li class="split"><a href="#"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
+                <li class="split"><a href="loginform.html"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="bg-light py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-8 mb-4">
+              <div class="card mb-4 border shadow-0">
+                <div class="p-4 d-flex justify-content-between">
+                  <div class="">
+                    <h5>Have an account?</h5>
+                    <p class="mb-0 text-wrap ">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center flex-column flex-md-row">
+                    <a href="#" class="btn btn-outline-primary me-0 me-md-2 mb-2 mb-md-0 w-100">Register</a>
+                    <a href="#" class="btn btn-primary shadow-0 text-nowrap w-100">Sign in</a>
+                  </div>
+                </div>
+              </div>
+      
+              <!-- Checkout -->
+              <div class="card shadow-0 border">
+                <div class="p-4">
+                  <h5 class="card-title mb-3">Guest checkout</h5>
+                  <div class="row">
+                    <div class="col-6 mb-3">
+                      <p class="mb-0">First name</p>
+                      <div class="form-outline">
+                        <input type="text" id="typeText" placeholder="Type here" class="form-control" />
+                      </div>
+                    </div>
+      
+                    <div class="col-6">
+                      <p class="mb-0">Last name</p>
+                      <div class="form-outline">
+                        <input type="text" id="typeText" placeholder="Type here" class="form-control" />
+                      </div>
+                    </div>
+      
+                    <div class="col-6 mb-3">
+                      <p class="mb-0">Phone</p>
+                      <div class="form-outline">
+                        <input type="tel" id="typePhone" value="+48 " class="form-control" />
+                      </div>
+                    </div>
+      
+                    <div class="col-6 mb-3">
+                      <p class="mb-0">Email</p>
+                      <div class="form-outline">
+                        <input type="email" id="typeEmail" placeholder="example@gmail.com" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">Keep me up to date on news</label>
+                  </div>
+      
+                  <hr class="my-4" />
+      
+                  <h5 class="card-title mb-3">Shipping info</h5>
+      
+                  <div class="row mb-3">
+                    <div class="col-lg-4 mb-3">
+                      <!-- Default checked radio -->
+                      <div class="form-check h-100 border rounded-3">
+                        <div class="p-3">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked />
+                          <label class="form-check-label" for="flexRadioDefault1">
+                            Express delivery <br />
+                            <small class="text-muted">3-4 days via Fedex </small>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 mb-3">
+                      <!-- Default radio -->
+                      <div class="form-check h-100 border rounded-3">
+                        <div class="p-3">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                          <label class="form-check-label" for="flexRadioDefault2">
+                            Post office <br />
+                            <small class="text-muted">20-30 days via post </small>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 mb-3">
+                      <!-- Default radio -->
+                      <div class="form-check h-100 border rounded-3">
+                        <div class="p-3">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                          <label class="form-check-label" for="flexRadioDefault3">
+                            Self pick-up <br />
+                            <small class="text-muted">Come to our shop </small>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="row">
+                    <div class="col-sm-8 mb-3">
+                      <p class="mb-0">Address</p>
+                      <div class="form-outline">
+                        <input type="text" id="typeText" placeholder="Type here" class="form-control" />
+                      </div>
+                    </div>
+      
+                    <div class="col-sm-4 mb-3">
+                      <p class="mb-0">City</p>
+                      <select class="form-select">
+                        <option value="1">New York</option>
+                        <option value="2">Moscow</option>
+                        <option value="3">Samarqand</option>
+                      </select>
+                    </div>
+      
+                    <div class="col-sm-4 mb-3">
+                      <p class="mb-0">House</p>
+                      <div class="form-outline">
+                        <input type="text" id="typeText" placeholder="Type here" class="form-control" />
+                      </div>
+                    </div>
+      
+                    <div class="col-sm-4 col-6 mb-3">
+                      <p class="mb-0">Postal code</p>
+                      <div class="form-outline">
+                        <input type="text" id="typeText" class="form-control" />
+                      </div>
+                    </div>
+      
+                    <div class="col-sm-4 col-6 mb-3">
+                      <p class="mb-0">Zip</p>
+                      <div class="form-outline">
+                        <input type="text" id="typeText" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" />
+                    <label class="form-check-label" for="flexCheckDefault1">Save this address</label>
+                  </div>
+      
+                  <div class="mb-3">
+                    <p class="mb-0">Message to seller</p>
+                    <div class="form-outline">
+                      <textarea class="form-control" id="textAreaExample1" rows="2"></textarea>
+                    </div>
+                  </div>
+      
+                  <div class="float-end">
+                    <button class="btn btn-light border">Cancel</button>
+                    <button class="btn btn-success shadow-0 border">Continue</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Checkout -->
+            </div>
+            <div class="col-xl-4 col-lg-4 d-flex justify-content-center justify-content-lg-end">
+              <div class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px;">
+                <h6 class="mb-3">Summary</h6>
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Total price:</p>
+                  <p class="mb-2">$195.90</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Discount:</p>
+                  <p class="mb-2 text-danger">- $60.00</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Shipping cost:</p>
+                  <p class="mb-2">+ $14.00</p>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Total price:</p>
+                  <p class="mb-2 fw-bold">$149.90</p>
+                </div>
+      
+                <div class="input-group mt-3 mb-4">
+                  <input type="text" class="form-control border" name="" placeholder="Promo code" />
+                  <button class="btn btn-light text-primary border">Apply</button>
+                </div>
+      
+                <hr />
+                <h6 class="text-dark my-4">Items in cart</h6>
+      
+                <div class="d-flex align-items-center mb-4">
+                  <div class="me-3 position-relative">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
+                      1
+                    </span>
+                    <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/7.webp" style="height: 96px; width: 96x;" class="img-sm rounded border" />
+                  </div>
+                  <div class="">
+                    <a href="#" class="nav-link">
+                      Gaming Headset with Mic <br />
+                      Darkblue color
+                    </a>
+                    <div class="price text-muted">Total: $295.99</div>
+                  </div>
+                </div>
+      
+                <div class="d-flex align-items-center mb-4">
+                  <div class="me-3 position-relative">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
+                      1
+                    </span>
+                    <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/5.webp" style="height: 96px; width: 96x;" class="img-sm rounded border" />
+                  </div>
+                  <div class="">
+                    <a href="#" class="nav-link">
+                      Apple Watch Series 4 Space <br />
+                      Large size
+                    </a>
+                    <div class="price text-muted">Total: $217.99</div>
+                  </div>
+                </div>
+      
+                <div class="d-flex align-items-center mb-4">
+                  <div class="me-3 position-relative">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
+                      3
+                    </span>
+                    <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/1.webp" style="height: 96px; width: 96x;" class="img-sm rounded border" />
+                  </div>
+                  <div class="">
+                    <a href="#" class="nav-link">GoPro HERO6 4K Action Camera - Black</a>
+                    <div class="price text-muted">Total: $910.00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-  </div>
-  <script src ="../co.js"></script>
-  </html>
+      </section>
+      
+
+
+
+    <footer id="ft">
+        <div class="container__footer">
+            <div class="box__footer">
+                <div class="logo2">
+                    <img src="../IMAGES/logo.png" alt="">
+                </div>
+            </div>
+            <div class="box__footer">
+                <h2>Contacts</h2>
+                <a href="https://www.google.com">Dose@gmail.com</a>
+                <a href="#">Hotline | 1234</a>
+                <a href="#">Phone:- +201057324491</a>
+                <a href="#">Branches</a>
+            </div>
+            <div class="box__footer">
+                <h2>Orders</h2>
+                <a href="#">Shipping & Delivery</a>
+                <a href="#">Return & Exchange</a>
+                <a href="#">Payment</a>
+                <a href="#">Previous Orders</a>
+            </div>
+            <div class="box__footer">
+                <h2>Find Us</h2>
+                <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
+                <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
+                <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
+                <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
+            </div>
+        </div>
+        <div class="box__copyright">
+           <hr>
+            <p> © 2023 <b>Dose Pharmcy</b></p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <script src="JS.js"></script> 
+</body>
+
+</html>
