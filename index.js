@@ -150,5 +150,8 @@ app.get('/checkout', (req, res) => {
 });
 app.get('/index', (req, res) => {
    res.render('pages/index')
+}); 
+app.get('/header',(req,res)=>{
+   res.render('pages/header');
 });
 //end routes
