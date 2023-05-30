@@ -136,6 +136,9 @@ app.get('/articles', (req, res) => {
 app.get('/blog', (req, res) => {
    res.render('pages/blog')
 });
+app.get('/cart', (req, res) => {
+   res.render('pages/cart')
+});
 app.get('/cleaning', (req, res) => {
    res.render('pages/cleaning')
 });

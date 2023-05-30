@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dose Pharmacy</title>
+    <title>Dose Pharmcy</title>
     <!-- add icon link -->
     <link rel = "icon" href = "../IMAGES/logo.png" type = "image/x-icon">
     <link rel="stylesheet" href="../CSS/webpr.css">
@@ -14,26 +15,132 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        #navbar {
+            background-color: #00b18f;
+            padding: 10px;
+        }
 
-    </head>
-    <body>    <header id="navbar">
-        <div class="logo">
-            <a href="./index"><a href="./index"><img src="../IMAGES/logo.png"></a></a>
-        </div>
-        <nav >
-            <ul>
-                <li class="lnks"><a href="#">Shop</a></li>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            margin-bottom: 50px;
+            margin-right: 10px;
+        }
+
+        .logo a {
+            text-decoration: none;
+        }
+
+        .logo img {
+            position: fixed;
+            height: 80px;
+            width: 100px;
+            margin: -10px 0px 0px 40px;
+        }
+
+        .navigation-links,
+        .right-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation-links li,
+        .right-links li {
+            margin-right: 10px;
+        }
+
+        .navigation-links li a,
+        .right-links li a {
+            text-decoration: none;
+
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .navigation-links li a:hover,
+        .right-links li a:hover {
+            color: #ff6600;
+        }
+
+        .mega-box-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: none;
+            z-index: 2;
+        }
+
+        .lnks:hover .mega-box-content {
+            display: block;
+        }
+
+        .mega-box-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-box-content ul li {
+            margin-bottom: 5px;
+        }
+
+        .mega-box-content ul li a {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .split a {
+            display: flex;
+            align-items: center;
+        }
+
+        .split i {
+            margin-right: 5px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header id="navbar">
+        <nav>
+            <div class="logo">
+                <a href="#"><img src="../IMAGES/logo.png"></a>
+            </div>
+            <ul class="navigation-links">
+                <li class="lnks">
+                    <a href="#">Shop</a>
+                    <div class="mega-box-content">
+                        <ul>
+                            <li><a href="#">Category 1</a></li>
+                            <li><a href="#">Category 2</a></li>
+                            <li><a href="#">Category 3</a></li>
+                            <!-- Add more items as needed -->
+                        </ul>
+                    </div>
+                </li>
                 <li><a href="#">Order a Prescription</a></li>
                 <li><a href="./blog">Blog</a></li>
                 <li><a href="./about">About Us</a></li>
                 <li><a href="#"><input type="text" placeholder="Search Products"></a></li>
-
-                <li class="split"><a href="./checkout"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
-                <li class="split"><a href="./registr"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
-                        </div>
-                    </a></li>
+            </ul>
+            <ul class="right-links">
+                <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
+                <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
             </ul>
         </nav>
-        
     </header>
