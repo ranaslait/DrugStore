@@ -21,6 +21,15 @@ mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/proje
    })
 app.use(cookieParser());
 
+
+
+
+
+
+
+
+
+
 app.use(express.static('public'));
 app.use(session({ secret: 'Your_Secret_Key' }))
 const collection = require("./mongodb");
@@ -130,6 +139,7 @@ app.post('/reset', async (req, res) => {
       })
    }
 })
+
 app.get('/', function (req, res) {
    res.render('pages/index');
 });
@@ -162,8 +172,14 @@ app.get('/registr', (req, res) => {
 app.get('/reset', (req, res) => {
    res.render('pages/reset')
 });
+app.get('/adminsidebar', (req, res) => {
+   res.render('pages/adminsidebar');
+});
 app.get('/admin', (req, res) => {
    res.render('pages/admin')
+});
+app.get('/addproduct', (req, res) => {
+   res.render('pages/addproduct')
 });
 app.get('/404', (req, res) => {
    res.render('pages/404')
