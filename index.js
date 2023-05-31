@@ -21,6 +21,15 @@ mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/proje
    })
 app.use(cookieParser());
 
+
+
+
+
+
+
+
+
+
 app.use(express.static('public'));
 app.use(session({ secret: 'Your_Secret_Key' }))
 const collection = require("./mongodb");
@@ -29,7 +38,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.post('/registr', async (req, res) => {
-   var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+   const hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
    console.log(req.body)
    const data = new usercollection({
       name: req.body.name,
@@ -47,9 +56,12 @@ app.post('/registr', async (req, res) => {
 });
 app.post('/login', async (req, res) => {
    var query = { email: req.body.email,password:req.body.password };
+   const yes= await bcrypt.compareSync(req.body.password, bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)));
    User.findOne(query)
       .then(result => {
          if (!result) {
+            res.redirect({ err: 'Invalid Data', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
+         }else if(!yes) { 
             res.redirect({ err: 'Invalid Data', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
          }
          else {
@@ -130,6 +142,7 @@ app.post('/reset', async (req, res) => {
       })
    }
 })
+
 app.get('/', function (req, res) {
    res.render('pages/index');
 });
@@ -162,8 +175,14 @@ app.get('/registr', (req, res) => {
 app.get('/reset', (req, res) => {
    res.render('pages/reset')
 });
+app.get('/adminsidebar', (req, res) => {
+   res.render('pages/adminsidebar');
+});
 app.get('/admin', (req, res) => {
    res.render('pages/admin')
+});
+app.get('/addproduct', (req, res) => {
+   res.render('pages/addproduct')
 });
 app.get('/404', (req, res) => {
    res.render('pages/404')

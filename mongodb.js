@@ -23,5 +23,6 @@ const userschema= new Schema({
     }
     
 });
+
 const usercollection=new mongoose.model("user",userschema);
 module.exports=usercollection
