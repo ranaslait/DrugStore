@@ -1,5 +1,8 @@
 //importing libs that we installed using npm
 const express = require('express');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 const User = require("../DrugStore/mongodb");
 const mongoose = require('mongoose');
 const path = require('path');
@@ -16,111 +19,115 @@ mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/proje
    .catch((e) => {
       console.log(e)
    })
+app.use(cookieParser());
 
-
+app.use(express.static('public'));
+app.use(session({ secret: 'Your_Secret_Key' }))
 const collection = require("./mongodb");
 const usercollection = require('./mongodb');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
-//sign up and save data in DB
 app.post('/registr', async (req, res) => {
+   var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
    console.log(req.body)
    const data = new usercollection({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: hash,
       phone: req.body.phone
    })
    data.save()
       .then(result => {
-         res.redirect('/');//awdeh 3la el index
+         res.redirect('/login');
       })
       .catch(err => {
-         console.log(err);
+         res.redirect('/404');
       })
-
-})
+});
 app.post('/login', async (req, res) => {
-   try {
-      console.log(req.body)
-      const check = await usercollection.findOne({ email: req.body.email })
+   var query = { email: req.body.email,password:req.body.password };
+   User.findOne(query)
+      .then(result => {
+         if (!result) {
+            res.redirect({ err: 'Invalid Data', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
+         }
+         else {
+            req.session.user = result;
+            res.redirect('/');
+            //  res.redirect('/profile');
+         }
+      })
+      .catch(err => {
+         res.redirect('/404');
+      });
+});
+// app.get('/logout', function(req,res){
+// 	// req.session.reset();
+// 	res.redirect('/');
+// });
 
-      if (check.password === req.body.password) {
-         res.redirect('/');//awdeh 3la el index
-
-      }
-
-      //awdeh 3la el index }
-      else {
-         res.send("incorrect password")
-      }
-   }
-   catch (e) {
-      res.send("wrong details")
-   }
-})
 app.post('/new_pass', async (req, res) => {
-   try{
-       //find a document with such email address
-       const user = await User.findOne({email : req.body.email})
-       //check if user object is not empty
-       if(user){
-           //generate hash
-           const hash = new User(user).generatePasswordResetHash()
-           //generate a password reset link
-           const resetLink = `http://localhost:8081/reset?email=${user.email}?&hash=${hash}`
-           //return reset link
-           return res.status(200).json({
-               resetLink
-           })
-           //remember to send a mail to the user
-       }else{
-           //respond with an invalid email
-           return res.status(400).json({
-               message : "Email Address is invalid"
-           })
-       } 
-   }catch(err){
-       console.log(err)
-       return res.status(500).json({
-           message : "Internal server error"
-       })
+   try {
+      //find a document with such email address
+      const user = await User.findOne({ email: req.body.email })
+      //check if user object is not empty
+      if (user) {
+         //generate hash
+         const hash = new User(user).generatePasswordResetHash()
+         //generate a password reset link
+         const resetLink = `http://localhost:8081/reset?email=${user.email}?&hash=${hash}`
+         //return reset link
+         return res.status(200).json({
+            resetLink
+         })
+         //remember to send a mail to the user
+      } else {
+         //respond with an invalid email
+         return res.status(400).json({
+            message: "Email Address is invalid"
+         })
+      }
+   } catch (err) {
+      console.log(err)
+      return res.status(500).json({
+         message: "Internal server error"
+      })
    }
 })
 app.post('/reset', async (req, res) => {
    try {
-       //check for email and hash in query parameter
-       if (req.query && req.query.email && req.query.hash) {
-           //find user with suh email address
-           const user = await User.findOne({ email: req.query.email })
-           //check if user object is not empty
-           if (user) {
-               //now check if hash is valid
-               if (new User(user).verifyPasswordResetHash(req.query.hash)) {
-                   //save email to session
-                   req.session.email = req.query.email;
-                   //issue a password reset form
-                   return res.render(__dirname + '/views/pages/new_pass')
-               } else {
-                   return res.status(400).json({
-                       message: "You have provided an invalid reset link"
-                   })
-               }
-           } else {
+      //check for email and hash in query parameter
+      if (req.query && req.query.email && req.query.hash) {
+         //find user with suh email address
+         const user = await User.findOne({ email: req.query.email })
+         //check if user object is not empty
+         if (user) {
+            //now check if hash is valid
+            if (new User(user).verifyPasswordResetHash(req.query.hash)) {
+               //save email to session
+               req.session.email = req.query.email;
+               //issue a password reset form
+               return res.render(__dirname + '/views/pages/new_pass')
+            } else {
                return res.status(400).json({
-                   message: "You have provided an invalid reset link"
+                  message: "You have provided an invalid reset link"
                })
-           }
-       } else {
-           //if there are no query parameters, serve the normal request form
-           return res.render(__dirname + '/views/pages/reset')
-       }
+            }
+         } else {
+            return res.status(400).json({
+               message: "You have provided an invalid reset link"
+            })
+         }
+      } else {
+         //if there are no query parameters, serve the normal request form
+         return res.render(__dirname + '/views/pages/reset')
+      }
    } catch (err) {
-       console.log(err)
-       return res.status(500).json({
-           message: "Internal server error"
-       })
+      console.log(err)
+      return res.status(500).json({
+         message: "Internal server error"
+      })
    }
 })
 app.get('/', function (req, res) {
@@ -146,16 +153,20 @@ app.get('/hair', (req, res) => {
    res.render('pages/hair')
 });
 app.get('/login', (req, res) => {
-   res.render('pages/login')
+   res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
+
 app.get('/registr', (req, res) => {
-   res.render('pages/registr')
+   res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 app.get('/reset', (req, res) => {
    res.render('pages/reset')
 });
 app.get('/admin', (req, res) => {
    res.render('pages/admin')
+});
+app.get('/404', (req, res) => {
+   res.render('pages/404')
 });
 app.get('/footer', (req, res) => {
    res.render('pages/footer')
@@ -200,3 +211,4 @@ app.get('/header', (req, res) => {
    res.render('pages/header');
 });
 //end routes
+
