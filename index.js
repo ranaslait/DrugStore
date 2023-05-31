@@ -24,23 +24,45 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 //sign up and save data in DB
-app.post('/registr', async (req, res) => {
-   console.log(req.body)
-   const data = new usercollection({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      phone: req.body.phone
-   })
-   data.save()
-      .then(result => {
-         res.redirect('/');//awdeh 3la el index
-      })
-      .catch(err => {
-         console.log(err);
-      })
+// app.post('/registr', async (req, res) => {
+//    console.log(req.body)
+//    const data = new usercollection({
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: req.body.password,
+//       phone: req.body.phone
+//    })
+//    data.save()
+//       .then(result => {
+//          res.redirect('/');//awdeh 3la el index
+//       })
+//       .catch(err => {
+//          console.log(err);
+//       })
 
-})
+// })
+
+
+
+app.post('/registr', async (req, res) => {
+      var hash= bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+      console.log(req.body)
+      const data = new usercollection({
+         name: req.body.name,
+         email: req.body.email,
+         password: hash,
+         phone: req.body.phone
+      })
+      data.save()
+         .then(result => {
+            res.redirect('/');//awdeh 3la el index
+         })
+         .catch(err => {
+            console.log(err);
+         })
+   
+      });
+
 app.post('/login', async (req, res) => {
    try {
       console.log(req.body)
