@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-wdith" ,initial-scale=1.0>
     <title>Sign up</title>
 
     <link rel="stylesheet" href="../CSS/webpr.css">
 
-    <script src="https://kit.fontawesome.com/c4254e23a8.js" crossorigin="anonymous"></script>
+    <script>
+        function validate() {
+            if (document.getElementById('result').innerHTML.includes('taken'))
+                return false;
+            else
+                return true;
+        }
+    </script>
     <link rel="stylesheet" href="../CSS/webpr.css">
 </head>
-
 <body>
     <div class="containerTlogin">
         <div class="form-boxT">
             <h1 id="titleT">Sign up</h1>
-            <form action="./registr" method="post">
+            <form action="./registr"  method="post">
                 <div class="input-groupT">
                     <div class="input-fieldT" id="nameField" required>
                         <i class="fa-solid fa-user"></i>
@@ -48,9 +53,7 @@
             </form>
         </div>
     </div>
-    <script>
-
-    </script>
+ 
 </body>
 
 </html>
