@@ -4,6 +4,7 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%- include ("./adminheader.ejs") %>
 </head>
 <body>
   <%- include ("./adminsidebar.ejs") %>
@@ -26,6 +27,11 @@
                                 <label for="product_price">Product Price: </label>
                                 <input type="text" id="product_price" class="form-control" name="product_price">
                             </div>
+                            <label>add image</label>
+                            <input type="file" id="myFile" name="addproductimage">
+                            
+
+                            <div
                             <button type="submit" class="btn btn-success">Success</button>
                         </div>
                     </div>

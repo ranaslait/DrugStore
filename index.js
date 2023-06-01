@@ -184,6 +184,9 @@ app.get('/admin', (req, res) => {
 app.get('/addproduct', (req, res) => {
    res.render('pages/addproduct')
 });
+app.get('/adminheader', (req, res) => {
+   res.render('pages/adminheader')
+});
 app.get('/404', (req, res) => {
    res.render('pages/404')
 });
