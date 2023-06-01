@@ -54,6 +54,31 @@ app.post('/registr', async (req, res) => {
          res.redirect('/404');
       })
 });
+//addproducts to db
+// app.post('/addproduct', async (req, res) => {
+//    console.log(req.body)
+//    const productdata = new productcollection({
+//       category_name:req.body.category_name,
+//       side_effect:req.body.side_effect,
+//       product_name:req.body.product_name,
+//       product_price:req.body.product_price,
+//       product_newprice:req.body.product_newprice,
+//       addproductimage:req.body.addproductimage
+
+//    })
+//    productdata.save()
+//       .then(result => {
+//          res.redirect('/admin');
+//       })
+//       .catch(err => {
+//          res.redirect('/404');
+//       })
+// });
+
+
+
+
+
 app.post('/login', async (req, res) => {
    var query = { email: req.body.email,password:req.body.password };
    const yes= await bcrypt.compareSync(req.body.password, bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)));

@@ -3,10 +3,14 @@
 <html lang="en">
 <head>
     <title></title>
+    <!-- add icon link -->
+    <link rel = "icon" href = "../IMAGES/logo.png" type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%- include ("./adminheader.ejs") %>
+
 </head>
 <body>
+  
   <%- include ("./adminsidebar.ejs") %>
     <div class="container">
         <div class="row">
@@ -20,6 +24,10 @@
                                 <input type="text" id="category_name" class="form-control" name="category_name">
                             </div>
                             <div class="form-group">
+                              <label>add side effect:</label>
+                              <input type="text" id="side_effect" class="form-control" name="side_effect">
+                              </div>
+                            <div class="form-group">
                                 <label for="product_name">Product Name: </label>
                                 <input type="text" id="product_name" class="form-control" name="product_name">
                             </div>
@@ -27,11 +35,19 @@
                                 <label for="product_price">Product Price: </label>
                                 <input type="text" id="product_price" class="form-control" name="product_price">
                             </div>
-                            <label>add image</label>
-                            <input type="file" id="myFile" name="addproductimage">
+                             <div class="form-group">
+                                <label for="product_newprice">Product new Price: </label>
+                                <input type="text" id="product_newprice" class="form-control" name="product_newprice">
+                            </div>
+                            <div class="form-group">
+                            <label>add image:</label>
+                            <input type="file" id="myFile" class="form-control" name="addproductimage">
+                            </div>
+
                             
 
-                            <div
+
+                            
                             <button type="submit" class="btn btn-success">Success</button>
                         </div>
                     </div>
