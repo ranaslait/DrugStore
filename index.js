@@ -111,8 +111,8 @@ app.post('/login', async (req, res) => {
 //          res.redirect('/404');
 //          console.log(err);
 //       });
+// try{
 try{
-
 const body = req.body;
     const user = await User.findOne({ email: body.email });
     if (user) {
@@ -127,7 +127,7 @@ const body = req.body;
    res.redirect({ err: 'user not found', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
 }
 }  
-catch(error){
+         catch(error){
          res.redirect('/404');
          console.log(error);
 }
