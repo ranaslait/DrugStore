@@ -4,10 +4,10 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const User = require("./database/mongodb");
-
+const salt=10;
 const mongoose = require('mongoose');
 const path = require('path');
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 const crypto = require("crypto");
 var ejs = require('ejs');
 const app = express();
@@ -37,22 +37,36 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.post('/registr', async (req, res) => {
-   const hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-   console.log(req.body)
-   const data = new usercollection({
-      name: req.body.name,
-      email: req.body.email,
-      password: hash,
-      phone: req.body.phone,
-      type: req.body.type
-   })
-   data.save()
-      .then(result => {
-         res.redirect('/login');
-      })
-      .catch(err => {
-         res.redirect('/404');
-      })
+   // var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+   // console.log(req.body)
+   // const data = new usercollection({
+   //    name: req.body.name,
+   //    email: req.body.email,
+   //    password: hash,
+   //    phone: req.body.phone,
+   //    type: req.body.type
+   // })
+   // data.save()
+   //    .then(result => {
+   //       res.redirect('/login');
+   //    })
+   //    .catch(err => {
+   //       res.redirect('/404');
+   //    })
+
+   const body = req.body;
+
+    if (!( body.name && body.email && body.password&&body.phone&&body.type)) {
+      return res.redirect('/');
+    }
+
+    // creating a new mongoose doc from user data
+    const user = new User(body);
+    // generate salt to hash password
+    const salt = await bcrypt.genSalt(10);
+    // now we set the user password to hashed password
+    user.password = await bcrypt.hash(user.password, salt);
+    user.save().then((doc) => res.redirect('/login'));
 });
 
 //addproducts to db
@@ -77,26 +91,49 @@ app.post('/addproduct', async (req, res) => {
 
 
 app.post('/login', async (req, res) => {
-   var query = { email: req.body.email,password:req.body.password };
-   const yes= await bcrypt.compareSync(req.body.password, bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)));
-   User.findOne(query)
-      .then(result => {
-         if (!result) {
-            res.redirect({ err: 'Invalid Data', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
-         }else if(!yes) { 
-            res.redirect({ err: 'Invalid Data', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
-         }
-         else {
-            req.session.user = result;
-            res.redirect('/');
-            //  res.redirect('/profile');
-         }
-      })
-      .catch(err => {
+//    var query = { email: req.body.email,password:req.body.password };
+//    var yes= bcrypt.compare(query.password, bcrypt.hash(this.password, salt ));
+//    User.findOne(query)
+//       .then(result => {
+//          if (!result) {
+//             res.redirect({ err: 'Invalid Data', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
+//          }else {
+//             if(!yes) { 
+//             res.redirect({ err: 'Wrong Password', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
+//             }else{
+//             req.session.user = result;
+//             res.redirect('/');
+//             //  res.redirect('/profile');
+//          }
+//          }
+//       })
+//       .catch(err => {
+//          res.redirect('/404');
+//          console.log(err);
+//       });
+// try{
+try{
+const body = req.body;
+    const user = await User.findOne({ email: body.email });
+    if (user) {
+      // check the user password with the hashed password stored in the database
+      const validPassword = await bcrypt.compare(body.password, user.password);
+      if (validPassword) {
+        res.redirect('/');
+      } else {
+      res.redirect({ err: 'Wrong Password', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
+}
+    } else {
+   res.redirect({ err: 'Wrong Password', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
+}
+   }
+   catch (err => {
          res.redirect('/404');
          console.log(err);
-      });
+   });
 });
+   
+   
 // app.get('/logout', function(req,res){
 // 	// req.session.reset();
 // 	res.redirect('/');
