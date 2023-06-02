@@ -342,13 +342,11 @@ body{
   
   .wrapper {
     overflow-x: hidden;
+    margin: 10% 0;
   }
   
   .container2 {
-    max-width: 1170px;
-    padding: 1rem;
-    margin: 7rem auto;
-  
+    display: flex;
   }
   
   .title::after {
@@ -365,7 +363,10 @@ body{
   }
   
   .product1 {
-    margin: 3rem 0;
+    max-width: 1170px;
+    padding: 1rem;
+    /* margin: 7rem auto; */
+    margin: 70%;
   }
   
   .product-container1{
@@ -383,6 +384,7 @@ body{
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    margin: 3rem 0;
   }
   
   .product-item {
@@ -688,7 +690,7 @@ body{
   .brands{
     position: relative;
     margin: 0px 10px;
-    line-height: 1.8;
+    line-height: 1;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s;
@@ -725,6 +727,14 @@ body{
   
   input[type="checkbox"]:checked + label::before{
     background-color: #3AAFA9;
+  }
+  
+  .left-sidebar{
+    display: flex;
+    flex-direction: column;
+    width:20%;
+    margin: 30px 20px;
+    align-items: center;
   }
   
   .main h1{
