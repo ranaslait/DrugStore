@@ -182,14 +182,21 @@
                 <li><a href="./about">About Us</a></li>
                 <li><a href="#"><input type="text" placeholder="Search Products"></a></li>
             </ul>
+
             <ul class="right-links">
-                
-        <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
-        <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
-        <li class="split"><a href="./logout"><i class="fa fa-fw fa-user"></i>Logout</a></li>
-
-
+                <!-- Check if the user variable exists -->
+                <% if (typeof user !== 'undefined' && user === '') { %>
+                    <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+                <% } else { %>
+                    <% if (typeof user !== 'undefined' && user.type === 'admin') { %>
+                        <li class="split"><a href="./admin"><i class="fa fa-fw fa-user"></i>Admin</a></li>
+                    <% } %>
+                    <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
+                    <li class="split"><a href="./logout"><i class="fa fa-fw fa-user"></i>Logout</a></li>
+                   
+                <% } %>
             </ul>
+            
         </nav>
     </header>
 
