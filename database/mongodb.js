@@ -26,7 +26,7 @@ const userSchema= new Schema({
         type: String,
         required: true
       },
-    
+
 });
 
 const usercollection=new mongoose.model("user",userSchema);
