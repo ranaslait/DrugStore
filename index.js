@@ -43,7 +43,8 @@ app.post('/registr', async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: hash,
-      phone: req.body.phone
+      phone: req.body.phone,
+      type: req.body.type
    })
    data.save()
       .then(result => {
@@ -93,6 +94,7 @@ app.post('/login', async (req, res) => {
       })
       .catch(err => {
          res.redirect('/404');
+         console.log(err);
       });
 });
 // app.get('/logout', function(req,res){

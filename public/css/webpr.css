@@ -74,10 +74,10 @@ body{
     text-align: center;
   }
   
-  nav a:hover{
+  /* nav a:hover{
     transition: 0.5s;
     text-transform: uppercase;
-  }
+  } */
   nav li.split {
     float: right;
   }
