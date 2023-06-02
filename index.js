@@ -84,28 +84,56 @@ app.post('/addproduct', async (req, res) => {
 });
 
 
+// app.post('/login', async (req, res) => {
+//    try {
+//       const body = req.body;
+//       const user = await User.findOne({ email: body.email });
+//       if (user) {
+//          // check the user password with the hashed password stored in the database
+//          const validPassword = await bcrypt.compare(body.password, user.password);
+//          if (validPassword) {
+//             res.redirect('/');
+//             console.log("logged in");
+//          } else {
+//             res.redirect({ err: 'Wrong Password', user: (req.session.user === undefined ? "" : req.session.user) }, '/404')
+//          }
+//       } else {
+//          res.redirect({ err: 'user not found', user: (req.session.user === undefined ? "" : req.session.user) }, '/404')
+//       }
+//    }
+//    catch (err) {
+//       res.redirect('/404');
+//       console.log(err);
+//    }
+
+// });
+
 app.post('/login', async (req, res) => {
    try {
       const body = req.body;
       const user = await User.findOne({ email: body.email });
       if (user) {
-         // check the user password with the hashed password stored in the database
+         // Check the user password with the hashed password stored in the database
          const validPassword = await bcrypt.compare(body.password, user.password);
          if (validPassword) {
+            console.log("logged in");
             res.redirect('/');
          } else {
-            res.redirect({ err: 'Wrong Password', user: (req.session.user === undefined ? "" : req.session.user) }, '/404')
+            req.session.error = 'Wrong Password';
+            req.session.user = req.session.user || "";
+            res.redirect('/404');
          }
       } else {
-         res.redirect({ err: 'user not found', user: (req.session.user === undefined ? "" : req.session.user) }, '/404')
+         req.session.error = 'User not found';
+         req.session.user = req.session.user || "";
+         res.redirect('/404');
       }
-   }
-   catch (err) {
-      res.redirect('/404');
+   } catch (err) {
       console.log(err);
+      res.redirect('/404');
    }
-
 });
+
 
 
 // app.get('/logout', function(req,res){
@@ -116,9 +144,11 @@ app.post('/login', async (req, res) => {
 app.get('/logout', (req, res) => {
    req.session.destroy((err) => {
      if (err) {
+      res.redirect('/404');
        console.log(err);
      } else {
        res.redirect('/');
+       console.log("logged out");
      }
    });
  });
