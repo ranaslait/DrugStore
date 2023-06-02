@@ -136,22 +136,22 @@ app.post('/login', async (req, res) => {
 
 
 
-// app.get('/logout', function(req,res){
-// 	// req.session.reset();
-// 	res.redirect('/');
-// });
+app.get('/logout', function(req,res){
+	req.session.destroy();
+	res.redirect('/');
+});
 
-app.get('/logout', (req, res) => {
-   req.session.destroy((err) => {
-     if (err) {
-      res.redirect('/404');
-       console.log(err);
-     } else {
-       res.redirect('/');
-       console.log("logged out");
-     }
-   });
- });
+// app.get('/logout', (req, res) => {
+//    req.session.destroy((err) => {
+//      if (err) {
+//       res.redirect('/404');
+//        console.log(err);
+//      } else {
+//        res.redirect('/');
+//        console.log("logged out");
+//      }
+//    });
+//  });
  
 //  exports.forgot_pass = async function (req, res) {
 //    try {
