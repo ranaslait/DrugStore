@@ -22,14 +22,6 @@ mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/proje
 app.use(cookieParser());
 
 
-
-
-
-
-
-
-
-
 app.use(express.static('public'));
 app.use(session({ secret: 'Your_Secret_Key' }))
 const collection = require("./mongodb");
