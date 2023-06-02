@@ -125,6 +125,17 @@
         .split i {
             margin-right: 5px;
         }
+        .lan-main a { text-align: center;
+            background-color: #33bfa4;
+            width: 80px;
+            height: 40px;
+            border-radius: 25px;
+            border: none;
+            color: #fff;
+            font-size: 12px;
+            margin-right: 10px;
+            cursor: pointer;
+            line-height: 40px; }
     </style>
 
     <p>Looking to chat with us, click <a class="drift-open-chat" href="#">here</a> and say hello!</p>
@@ -183,7 +194,18 @@
                 <li><a href="#"><input type="text" placeholder="Search Products"></a></li>
             </ul>
             <ul class="right-links">
-                
+                       
+    <li class="lan-main">
+        <div id="google_translate_element"></div>
+
+        <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+        </script>
+        
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </li> 
         <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
         <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
         <li class="split"><a href="./logout"><i class="fa fa-fw fa-user"></i>Logout</a></li>
