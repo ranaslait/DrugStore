@@ -111,8 +111,8 @@ app.post('/login', async (req, res) => {
 //          res.redirect('/404');
 //          console.log(err);
 //       });
-// try{
 try{
+
 const body = req.body;
     const user = await User.findOne({ email: body.email });
     if (user) {
@@ -124,13 +124,14 @@ const body = req.body;
       res.redirect({ err: 'Wrong Password', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
 }
     } else {
-   res.redirect({ err: 'Wrong Password', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
+   res.redirect({ err: 'user not found', user: (req.session.user === undefined ? "" : req.session.user) },'/404' )
 }
-   }
-   catch (err => {
+}  
+catch(error){
          res.redirect('/404');
-         console.log(err);
-   });
+         console.log(error);
+}
+
 });
    
    
