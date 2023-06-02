@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-
+<style>#text {display:none;color:red}
+</style>
 <head>
     <meta name="viewport" content="width=device-wdith" ,initial-scale=1.0>
     <title>Sign in</title>
@@ -24,8 +25,11 @@
 
                     <div class="input-fieldT">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" required>
+                        <input id="myInput" type="password" name="password" placeholder="Password" required>
+                        
+
                     </div>
+                    <p id="text">WARNING! Caps lock is ON.</p>
                     <p>Forget password <a href="./reset">Click Here!</a></p>
                     <p>if you dont have an account click here <a href="./registr">registeration</a></p>
                 </div>
@@ -40,8 +44,17 @@
         </div>
     </div>
     <script>
-
- </script>
+        var input = document.getElementById("myInput");
+        var text = document.getElementById("text");
+        input.addEventListener("keyup", function(event) {
+        
+        if (event.getModifierState("CapsLock")) {
+            text.style.display = "block";
+          } else {
+            text.style.display = "none"
+          }
+        });
+        </script>
 </body>
 
 </html>
