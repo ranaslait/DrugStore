@@ -101,6 +101,17 @@ app.post('/login', async (req, res) => {
 // 	res.redirect('/');
 // });
 
+app.get('/logout', (req, res) => {
+   req.session.destroy((err) => {
+     if (err) {
+       console.log(err);
+     } else {
+       res.redirect('/');
+     }
+   });
+ });
+ 
+
 app.post('/new_pass', async (req, res) => {
    try {
       //find a document with such email address

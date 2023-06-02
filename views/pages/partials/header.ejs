@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dose Pharmcy</title>
@@ -182,8 +183,29 @@
                 <li><a href="#"><input type="text" placeholder="Search Products"></a></li>
             </ul>
             <ul class="right-links">
-                <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
-                <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+                <a href=""
+               <% if(user==="" ) {%>
+        <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
+        <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+       
+      <% }
+      else { 
+        if(User.Type==="admin" ) { %>
+          <a href='/admin'>Admin</a>
+        <% } %>
+        <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
+        <li class="split"><a href="./logout"><i class="fa fa-fw fa-user"></i>Logout</a></li>
+        <div class="usernm">
+          Welcome <%= User.name %>
+        </div>
+      <% } %>
+
             </ul>
         </nav>
     </header>
+
+    
+      
+      <!-- <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
+                <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+                <li class="split"><a href="./logout"><i class="fa fa-fw fa-user"></i>Logout</a></li> -->
