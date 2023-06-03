@@ -345,9 +345,9 @@ body{
     margin: 10% 0;
   }
   
-  .container2 {
+  /* .container2 {
     display: flex;
-  }
+  } */
   
   .title::after {
     content: "";
@@ -362,12 +362,12 @@ body{
     background-color: #000;
   }
   
-  .product1 {
+  /* .product1 {
     max-width: 1170px;
     padding: 1rem;
-    /* margin: 7rem auto; */
+    margin: 7rem auto;
     margin: 70%;
-  }
+  } */
   
   .product-container1{
     display: -webkit-box;
@@ -655,7 +655,7 @@ body{
   }
   
   .filter-items{
-    width: 20%;
+    /* width: 20%; */
     width: 250px;
     padding: 10px;
     margin: 10px;
@@ -690,7 +690,7 @@ body{
   .brands{
     position: relative;
     margin: 0px 10px;
-    line-height: 1;
+    line-height: 2;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s;
@@ -727,6 +727,10 @@ body{
   
   input[type="checkbox"]:checked + label::before{
     background-color: #3AAFA9;
+  }
+
+  .prod-container{
+    display: flex;
   }
   
   .left-sidebar{
