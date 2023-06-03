@@ -1,9 +1,10 @@
 //importing libs that we installed using npm
 const express = require('express');
 var session = require('express-session');
+const fileUpload=require('express-fileupload');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-const User = require("./database/mongodb");
+const User = require("./models/users");
 const salt = 10;
 const mongoose = require('mongoose');
 const path = require('path');
@@ -32,6 +33,7 @@ mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/proje
    .catch((e) => {
       console.log(e)
    })
+   app.use(fileUpload());
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(session({ secret: 'Your_Secret_Key' }))
@@ -45,43 +47,59 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
+const indexRoutes=require("./routes/index");
+const userRoutes=require("./routes/user");
+const adminRoutes=require("./routes/admin");
 
-app.post('/registr', async (req, res) => {
+app.use("/",indexRoutes);
+app.use("/user",userRoutes);
+app.use("/admin",adminRoutes);
 
-   const body = req.body;
 
-   if (!(body.name && body.email && body.password && body.phone && body.type)) {
-      return res.redirect('/');
-   }
+app.use((req, res) => {
+   res.status(404).render('pages/404', { user: (req.session.user === undefined ? "" : req.session.user) });
+   console.log(error);
+ });
 
-   // creating a new mongoose doc from user data
-   const user = new User(body);
-   // generate salt to hash password
-   const salt = await bcrypt.genSalt(10);
-   // now we set the user password to hashed password
-   user.password = await bcrypt.hash(user.password, salt);
-   user.save().then((doc) => res.redirect('/login'));
-});
+
+
+
+// app.post('/registr', async (req, res) => {
+
+//    const body = req.body;
+
+//    if (!(body.name && body.email && body.password && body.phone && body.type)) {
+//       return res.redirect('/');
+//    }
+
+//    // creating a new mongoose doc from user data
+//    const user = new User(body);
+//    // generate salt to hash password
+//    const salt = await bcrypt.genSalt(10);
+//    // now we set the user password to hashed password
+//    user.password = await bcrypt.hash(user.password, salt);
+//    user.save().then((doc) => res.redirect('/login'));
+// });
 
 //addproducts to db
 
-app.post('/addproduct', async (req, res) => {
-   console.log(req.body)
-   const data = new productcollection({
-      category_name: req.body.category_name,
-      side_effect: req.body.side_effect,
-      product_name: req.body.product_name,
-      product_price: req.body.product_price,
-      product_newprice: req.body.product_newprice,
-   })
-   data.save()
-      .then(result => {
-         res.redirect('/addproduct');
-      })
-      .catch(err => {
-         res.redirect('/404');
-      })
-});
+// app.post('/addproduct', async (req, res) => {
+//    console.log(req.body)
+//    const data = new productcollection({
+//       category_name: req.body.category_name,
+//       side_effect: req.body.side_effect,
+//       product_name: req.body.product_name,
+//       product_price: req.body.product_price,
+//       product_newprice: req.body.product_newprice,
+//    })
+//    data.save()
+//       .then(result => {
+//          res.redirect('/addproduct');
+//       })
+//       .catch(err => {
+//          res.redirect('/404');
+//       })
+// });
 
 
 // app.post('/login', async (req, res) => {
@@ -108,38 +126,38 @@ app.post('/addproduct', async (req, res) => {
 
 // });
 
-app.post('/login', async (req, res) => {
-   try {
-      const body = req.body;
-      const user = await User.findOne({ email: body.email });
-      if (user) {
-         // Check the user password with the hashed password stored in the database
-         const validPassword = await bcrypt.compare(body.password, user.password);
-         if (validPassword) {
-            console.log("logged in");
-            res.redirect('/');
-         } else {
-            req.session.error = 'Wrong Password';
-            req.session.user = req.session.user || "";
-            res.redirect('/404');
-         }
-      } else {
-         req.session.error = 'User not found';
-         req.session.user = req.session.user || "";
-         res.redirect('/404');
-      }
-   } catch (err) {
-      console.log(err);
-      res.redirect('/404');
-   }
-});
+// app.post('/login', async (req, res) => {
+//    try {
+//       const body = req.body;
+//       const user = await User.findOne({ email: body.email });
+//       if (user) {
+//          // Check the user password with the hashed password stored in the database
+//          const validPassword = await bcrypt.compare(body.password, user.password);
+//          if (validPassword) {
+//             console.log("logged in");
+//             res.redirect('/');
+//          } else {
+//             req.session.error = 'Wrong Password';
+//             req.session.user = req.session.user || "";
+//             res.redirect('/404');
+//          }
+//       } else {
+//          req.session.error = 'User not found';
+//          req.session.user = req.session.user || "";
+//          res.redirect('/404');
+//       }
+//    } catch (err) {
+//       console.log(err);
+//       res.redirect('/404');
+//    }
+// });
 
 
 
-app.get('/logout', function(req,res){
-	req.session.destroy();
-	res.redirect('/');
-});
+// app.get('/logout', function(req,res){
+// 	req.session.destroy();
+// 	res.redirect('/');
+// });
 
 // app.get('/logout', (req, res) => {
 //    req.session.destroy((err) => {
@@ -253,95 +271,95 @@ app.get('/logout', function(req,res){
 //    }
 // })
 
-app.get('/', function (req, res) {
-   res.render('pages/index');
-});
+// app.get('/', function (req, res) {
+//    res.render('pages/index');
+// });
 
-app.get('/about', (req, res) => {
-   res.render('pages/about')
-});
-app.get('/articles', (req, res) => {
-   res.render('pages/articles')
-});
-app.get('/blog', (req, res) => {
-   res.render('pages/blog')
-});
-app.get('/cart', (req, res) => {
-   res.render('pages/cart')
-});
-app.get('/cleaning', (req, res) => {
-   res.render('pages/cleaning')
-});
-app.get('/hair', (req, res) => {
-   res.render('pages/hair')
-});
-app.get('/login', (req, res) => {
-   res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
-});
+// app.get('/about', (req, res) => {
+//    res.render('pages/about')
+// });
+// app.get('/articles', (req, res) => {
+//    res.render('pages/articles')
+// });
+// app.get('/blog', (req, res) => {
+//    res.render('pages/blog')
+// });
+// app.get('/cart', (req, res) => {
+//    res.render('pages/cart')
+// });
+// app.get('/cleaning', (req, res) => {
+//    res.render('pages/cleaning')
+// });
+// app.get('/hair', (req, res) => {
+//    res.render('pages/hair')
+// });
+// app.get('/login', (req, res) => {
+//    res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
+// });
 
-app.get('/registr', (req, res) => {
-   res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
-});
-app.get('/reset', (req, res) => {
-   res.render('pages/reset')
-});
-app.get('/adminsidebar', (req, res) => {
-   res.render('pages/adminsidebar');
-});
-app.get('/admin', (req, res) => {
-   res.render('pages/admin')
-});
-app.get('/addproduct', (req, res) => {
-   res.render('pages/addproduct')
-});
-app.get('/adminheader', (req, res) => {
-   res.render('pages/adminheader')
-});
-app.get('/404', (req, res) => {
-   res.render('pages/404')
-});
-app.get('/footer', (req, res) => {
-   res.render('pages/footer')
-});
-app.get('/new_pass', (req, res) => {
-   res.render('pages/new_pass')
-});
-app.get('/makeup', (req, res) => {
-   res.render('pages/makeup')
-});
-app.get('/medical', (req, res) => {
-   res.render('pages/medical')
-});
-app.get('/medications', (req, res) => {
-   res.render('pages/medications')
-});
-app.get('/motherbaby', (req, res) => {
-   res.render('pages/motherbaby')
-});
-app.get('/perfume', (req, res) => {
-   res.render('pages/perfume')
-});
-app.get('/personalcare', (req, res) => {
-   res.render('pages/personalcare')
-});
-app.get('/productDetails', (req, res) => {
-   res.render('pages/productDetails')
-});
-app.get('/skincare', (req, res) => {
-   res.render('pages/skincare')
-});
-app.get('/vit', (req, res) => {
-   res.render('pages/vit')
-});
-app.get('/checkout', (req, res) => {
-   res.render('pages/checkout')
-});
-app.get('/index', (req, res) => {
-   res.render('pages/index')
-});
-app.get('/header', (req, res) => {
-   res.render('pages/header');
-});
+// app.get('/registr', (req, res) => {
+//    res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
+// });
+// app.get('/reset', (req, res) => {
+//    res.render('pages/reset')
+// });
+// app.get('/adminsidebar', (req, res) => {
+//    res.render('pages/adminsidebar');
+// });
+// app.get('/admin', (req, res) => {
+//    res.render('pages/admin')
+// });
+// app.get('/addproduct', (req, res) => {
+//    res.render('pages/addproduct')
+// });
+// app.get('/adminheader', (req, res) => {
+//    res.render('pages/adminheader')
+// });
+// app.get('/404', (req, res) => {
+//    res.render('pages/404')
+// });
+// app.get('/footer', (req, res) => {
+//    res.render('pages/footer')
+// });
+// app.get('/new_pass', (req, res) => {
+//    res.render('pages/new_pass')
+// });
+// app.get('/makeup', (req, res) => {
+//    res.render('pages/makeup')
+// });
+// app.get('/medical', (req, res) => {
+//    res.render('pages/medical')
+// });
+// app.get('/medications', (req, res) => {
+//    res.render('pages/medications')
+// });
+// app.get('/motherbaby', (req, res) => {
+//    res.render('pages/motherbaby')
+// });
+// app.get('/perfume', (req, res) => {
+//    res.render('pages/perfume')
+// });
+// app.get('/personalcare', (req, res) => {
+//    res.render('pages/personalcare')
+// });
+// app.get('/productDetails', (req, res) => {
+//    res.render('pages/productDetails')
+// });
+// app.get('/skincare', (req, res) => {
+//    res.render('pages/skincare')
+// });
+// app.get('/vit', (req, res) => {
+//    res.render('pages/vit')
+// });
+// app.get('/checkout', (req, res) => {
+//    res.render('pages/checkout')
+// });
+// app.get('/index', (req, res) => {
+//    res.render('pages/index')
+// });
+// app.get('/header', (req, res) => {
+//    res.render('pages/header');
+// });
 //end routes
 
 // var smtpTransport = nodemailer.createTransport({

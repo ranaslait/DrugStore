@@ -97,11 +97,12 @@
             background-color: #f9f9f9;
             padding: 10px;
             display: none;
-            z-index: 2;
+            z-index: 5;
         }
 
         .lnks:hover .mega-box-content {
             display: block;
+            z-index: 10;
         }
 
         .mega-box-content ul {
@@ -174,7 +175,7 @@
 
 <body>
     <header id="navbar">
-        <nav>
+        <nav style="overflow: auto;">
             <div class="logo">
                 <a href="./index"><img src="../IMAGES/logo.png"></a>
             </div>
@@ -210,15 +211,14 @@
         </li> 
 
           <!-- Check if the user variable exists -->
-                <% if (typeof user !== 'undefined' && user === '') { %>
-                    <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+                <% if ( user === '') { %>
+                    <li class="split"><a href="/user/login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
                 <% } else { %>
-                    <% if (typeof user !== 'undefined' && user.type === 'admin') { %>
+                    <% if ( user.type === 'admin') { %>
                         <li class="split"><a href="./admin"><i class="fa fa-fw fa-user"></i>Admin</a></li>
                     <% } %>
                     <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
-                    <li class="split"><a href="./logout"><i class="fa fa-fw fa-user"></i>Logout</a></li>
-                    <li class="split"><a href="./login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+                    <li class="split"><a href="/user/logout"><i class="fa fa-fw fa-user"></i>Logout</a></li>
                    
                 <% } %>
             </ul>
