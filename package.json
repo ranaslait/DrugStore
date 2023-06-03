@@ -21,6 +21,7 @@
     "express-async-errors": "^3.1.1",
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
     "faker": "^5.5.3",
     "global": "^4.4.0",
     "handlebars": "^4.7.7",

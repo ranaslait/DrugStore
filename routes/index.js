@@ -1,6 +1,38 @@
 const express=require("express");
 const router=express.Router();
 
+
+/**
+ * @param {string | object | Buffer} payload
+ */
+function createVerificationToken(payload) {
+   return jwt.sign( payload);
+ }
+
+/**
+*
+* @param {string} email
+* @param {string} token
+*/
+async function sendPasswordResetLink(email, token) {
+ const transporter = createTransport({
+   service: "Gmail",
+   auth: {
+     user: 'ddose0725@gmail.com' ,
+     pass: 'dose123456789',
+   },
+ });
+ const url = `http://localhost:8081/api/password/${token}`;
+
+ await transporter.sendMail({
+   to: email,
+   subject: "Reset your password",
+   html: `<p>Click <a href='${url}'>here</a> to reset your password.</p>
+   <p> If you did not request this please ignore this message`,
+ });
+}
+
+module.exports = {sendPasswordResetLink, createVerificationToken};
 router.get("/",function(req,res){
 res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
 
