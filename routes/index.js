@@ -33,7 +33,13 @@ async function sendPasswordResetLink(email, token) {
 }
 
 module.exports = {sendPasswordResetLink, createVerificationToken};
+
 router.get("/",function(req,res){
+   res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
+   
+   });
+
+router.get("/index",function(req,res){
 res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
 
 });
