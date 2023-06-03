@@ -6,11 +6,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 var ejs = require('ejs');
-
-
-
-
-
 const app = express();
 app.use(express.json());
 mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/project?retryWrites=true&w=majority")
@@ -25,20 +20,17 @@ mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/proje
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(session({ secret: 'Your_Secret_Key' }))
-
-
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
-
 const indexRoutes=require("./routes/index");
 const userRoutes=require("./routes/user");
 const adminRoutes=require("./routes/admin");
-
+const forgotPasswordRoutes = require("./routes/forgotpassword");
 app.use("/",indexRoutes);
 app.use("/user",userRoutes);
 app.use("/admin",adminRoutes);
-
+app.use("/forgotpassword", forgotPasswordRoutes);
 
 app.use((req, res) => {
    res.status(404).render('pages/404', { user: (req.session.user === undefined ? "" : req.session.user) });
