@@ -6,7 +6,7 @@ res.render('pages/index',{user: (req.session.user === undefined ? "" : req.sessi
 
 });
 
- 
+
  router.get('/about', (req, res) => {
     res.render('pages/about',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -86,5 +86,11 @@ router.get('/makeup', (req, res) => {
  router.get('/checkout', (req, res) => {
     res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
+
+//  router.get('/getFruits',(req,res)=>{
+//    let payload = req.body.payload.trim();
+//    console.log(payload);
+//     });
+   
  
  module.exports=router
