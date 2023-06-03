@@ -17,6 +17,7 @@ const reg= async (req, res) => {
    // now we set the user password to hashed password
    user.password = await bcrypt.hash(user.password, salt);
    user.save().then((doc) => res.redirect('/login'));
+   
 };
 
 const checkUN = (req, res) => {
