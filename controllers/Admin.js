@@ -21,6 +21,7 @@ const toAdmin = (req, res) => {
        product_name: req.body.product_name,
        product_price: req.body.product_price,
        product_newprice: req.body.product_newprice,
+       img:req.body.img,
     })
     data.save()
        .then(result => {
