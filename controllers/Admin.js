@@ -2,7 +2,6 @@ const User=require('../models/users');
 const Prod=require("../models/products");
 const path= require('path');
 const fs=require('fs');
-
 const toAdmin = (req, res) => {
     User.findByIdAndUpdate(req.params.id, { type: 'admin' })
         .then(result => {
@@ -12,7 +11,6 @@ const toAdmin = (req, res) => {
             console.log(err);
         });
   };
-
   const Addpro= async (req, res) => {
     console.log(req.body);
     const pdata = new Prod({
@@ -33,7 +31,6 @@ const toAdmin = (req, res) => {
           console.log('ana fashlt fe add el product ll db');
        })
  };
-
   module.exports = {
     toAdmin,
     Addpro

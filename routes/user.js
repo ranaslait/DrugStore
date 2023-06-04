@@ -1,7 +1,4 @@
 const express = require('express');
-
-// var session = require('express-session');
-
 var bodyParser = require('body-parser');
 const router=express.Router();
 router.use(bodyParser.json());
@@ -12,6 +9,9 @@ const User = require("../controllers/User");
 router.get('/login', (req, res) => {
     res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
+router.get('/forgotPassword', (req, res) => {
+    res.render('pages/forgotPassword');
+});
 
 router.get('/registr', (req, res) => {
     res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -20,6 +20,11 @@ router.get('/registr', (req, res) => {
 
  router.post('/registr',User.reg);
  router.post('/checkUN',User.checkUN);
+//  router.post('/forgotPassword',User.sendEmail);
+
+ router.post('/updatePassword', User.changePassword);
+ router.post('/forgotPassword',User.forgotPassword);
+ router.post('/resetPassword', User.resetPassword);
 //check if logged in
  router.use((req,res, next)=>{
 if(req.session.user!== undefined){
@@ -34,5 +39,4 @@ else{
     req.session.destroy();
     res.redirect('/');
 });
-
  module.exports=router
