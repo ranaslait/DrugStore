@@ -92,6 +92,9 @@ router.get('/makeup', (req, res) => {
  router.get('/checkout', (req, res) => {
     res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
+ router.get('/load', (req, res) => {
+   res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
+});
 //  router.get('/getFruits',(req,res)=>{
 //    let payload = req.body.payload.trim();
 //    console.log(payload);

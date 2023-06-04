@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/project?retryWrites=true&w=majority")
    .then((result) => {
+      
       app.listen(8081);
       console.log("connected to db");
    })
@@ -34,6 +35,10 @@ app.use((req, res) => {
    res.status(404).render('pages/404', { user: (req.session.user === undefined ? "" : req.session.user) });
    
  });
+ app.use('/api/users', userRoutes);
+
+// Server Start
+
 //  app.post('/getFruits',(req,res)=>{
 // let payload = req.body.payload.trim();
 // console.log(payload);

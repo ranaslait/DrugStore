@@ -12,7 +12,12 @@ router.get('/login', (req, res) => {
 router.get('/forgotPassword', (req, res) => {
     res.render('pages/forgotPassword');
 });
-
+router.get('/load', (req, res) => {
+    res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
+ });
+router.get('/api/users/resetPassword', (req, res) => {
+    res.render('pages/resetPassword');
+});
 router.get('/registr', (req, res) => {
     res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
