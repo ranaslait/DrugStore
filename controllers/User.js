@@ -2,6 +2,10 @@ const User = require("../models/users");
 const path = require('path');
 const bcrypt = require('bcrypt');
 const salt = 10;
+const jwt =require('jsonwebtoken') ;
+const sgMail =require('@sendgrid/mail');
+const SENDGRID_API_KEY='SG.AIzaSyBu6aLo-f3STHEMfxSFJ3Q9jc-PwBJuHP4';
+const randomStr = () => require('crypto').randomBytes(32).toString('hex');
 const reg= async (req, res) => {
 
    const body = req.body;
@@ -63,237 +67,122 @@ const LogIn= async (req, res) => {
     }
  };
 
+
+ const changePassword = async (req, res) => {
+   try {
+       const { currentPassword, newPassword } = req.body;
+       const { authorization } = req.headers;
+       if (!authorization) throw new Error('Enter Auth Token');
+       if (!currentPassword) throw new Error('Enter Current Password');
+       if (!newPassword) throw new Error('Enter New Password');
+       if (currentPassword === newPassword) {
+           throw new Error("new password can't be your old password");
+       }
+
+       const authToken =
+           authorization && authorization.startsWith('Bearer ')
+               ? authorization.slice(7, authorization.length)
+               : null;
+       const mySecretKey = 'mysecretkey';
+       const verifyToken = jwt.verify(authToken, mySecretKey);
+       if (!verifyToken) {
+           throw new Error('Can not find Token');
+       }
+
+       const verifyUser = await User.findOne({
+           name: verifyToken.name,
+       });
+       const checkPassword = await bcrypt.compare(
+           currentPassword,
+           verifyUser.password
+       );
+
+       if (!checkPassword) {
+           res.send('Current Password is wrong');
+       } else {
+           const saltRounds = 10;
+           const generatePassword = bcrypt.hashSync(newPassword, saltRounds);
+           const updateUser = await User.updateOne(
+               { name: verifyToken.name },
+               { $set: { password: generatePassword } }
+           );
+           updateUser && res.send('password changed');
+       }
+   } catch (err) {
+       res.status(500).send(err.message);
+   }
+};
+
+
+
+
+const forgotPassword = async (req, res) => {
+   try {
+      const email=req.body.email;
+
+       const token = randomStr({
+           length: 20,
+           type: 'url-safe',
+       });
+
+       const date = new Date();
+       const expTime = date.getTime() + 60000;
+
+       const updateToken = await User.findOneAndUpdate(
+           { email: email },
+           { $set: { token, expTime } }
+       );
+       if (!updateToken) {throw new Error('Can not find user');}
+       else {
+           sgMail.setApiKey(SENDGRID_API_KEY);
+           const sendMail = {
+               to: updateToken.email,
+               from:'ddose0725@gmail.com',
+               subject: 'reset password',
+               html: `click here to reset password : http://localhost:8081/api/users/resetPassword?token=${token} Link will expire in 10 min`,
+           };
+           sgMail.send(sendMail);
+           res.send('check your mailid for link');
+       }
+   } catch (err) {
+       res.send(err.message);
+   }
+};
+
+const resetPassword = async (req, res) => {
+   try {
+       const { token } = req.query;
+       const { newPassword } = req.body;
+
+       if (!token) throw new Error('Add Token');
+       if (!newPassword) throw new Error('Add New Password');
+
+       const saltRounds = 10;
+       const hashed = bcrypt.hashSync(newPassword, saltRounds);
+
+       const checkToken = await User.findOneAndUpdate(
+           { token },
+           { $set: { password: hashed } },
+           { _id: 1, email: 1, password: 1, name: 1, token: 1, expTime: 1 }
+       );
+       if (!checkToken) throw new Error('Can not find user or Link Expired');
+
+       if (checkToken) {
+           res.send('Password Updated Successfully');
+       }
+   } catch (err) {
+       res.send(err.message);
+   }
+};
+
+
  module.exports={
     reg,
     checkUN,
-    LogIn
+    LogIn,
+    changePassword,
+    forgotPassword,
+    resetPassword
  };
 
 
-//jwt = require('jsonwebtoken');
-// _ = require('lodash'),
-// async = require('async'),
-// hbs = require('nodemailer-express-handlebars');
-// var email2 ='ddose0725@gmail.com' ;
-// var pass2 = 'dose123456789';
-// nodemailer = require('nodemailer');
-
-//  exports.forgot_pass = async function (req, res) {
-//    try {
-//      const { email } = req.body;
-//      const user = await User.findOne({ email });
-//      if (!user) {
-//        return res.status(400).send({ message: 'Sorry Email does not Exist!' });
-//      }
-//      const transporter = nodemailer.createTransport({
-//        service: 'gmail',
-//        host: 'smtp.gmail.com',
-//        port: '587',
-//        auth: {
-//          user: '**************@gmail.com',
-//          pass: '***********',
-//        },
-//        secureConnection: 'false',
-//        tls: {
-//          ciphers: 'SSLv3',
-//          rejectUnauthorized: false,
-//        },
-//      });
-//      const mailOptions = {
-//        from: 'ranaasslait@gmail.com',
-//        to: email,
-//        subject: 'Please Reset your Password',
-//        html: '<h3>Dear <%user.name%></h3><p>You have requested to Reset your password. To Reset your password Successfully, Follow the Link bellow to Reset it</p><p>Click <a href="https://**********/user/resetPassword.jsp">https://onepercentsoft.oxygen.com/user/resetPassword.jsp</a></p><p>This Email is subject to mandatory instruction.</p><p>Regards,</p><p>Online Service</p>',
-//      };
- 
-//      transporter.sendMail(mailOptions, function (error, info) {
-//        if (error) throw error;
-//        return res.send({ error: false, data: info, message: 'OK' });
-//      });
-//    } catch (err) {
-//      res.status(500).send({ message: err });
-//    }
-//  };
-// app.post('/new_pass', async (req, res) => {
-//    try {
-//       //find a document with such email address
-//       const user = await User.findOne({ email: req.body.email })
-//       //check if user object is not empty
-//       if (user) {
-//          //generate hash
-//          const hash = new User(user).generatePasswordResetHash()
-//          //generate a password reset link
-//          const resetLink = `http://localhost:8081/reset?email=${user.email}?&hash=${hash}`
-//          //return reset link
-//          return res.status(200).json({
-//             resetLink
-//          })
-//          //remember to send a mail to the user
-//       } else {
-//          //respond with an invalid email
-//          return res.status(400).json({
-//             message: "Email Address is invalid"
-//          })
-//       }
-//    } catch (err) {
-//       console.log(err)
-//       return res.status(500).json({
-//          message: "Internal server error"
-//       })
-//    }
-// })
-// app.post('/reset', async (req, res) => {
-//    try {
-//       //check for email and hash in query parameter
-//       if (req.query && req.query.email && req.query.hash) {
-//          //find user with suh email address
-//          const user = await User.findOne({ email: req.query.email })
-//          //check if user object is not empty
-//          if (user) {
-//             //now check if hash is valid
-//             if (new User(user).verifyPasswordResetHash(req.query.hash)) {
-//                //save email to session
-//                req.session.email = req.query.email;
-//                //issue a password reset form
-//                return res.render(__dirname + '/views/pages/new_pass')
-//             } else {
-//                return res.status(400).json({
-//                   message: "You have provided an invalid reset link"
-//                })
-//             }
-//          } else {
-//             return res.status(400).json({
-//                message: "You have provided an invalid reset link"
-//             })
-//          }
-//       } else {
-//          //if there are no query parameters, serve the normal request form
-//          return res.render(__dirname + '/views/pages/reset')
-//       }
-//    } catch (err) {
-//       console.log(err)
-//       return res.status(500).json({
-//          message: "Internal server error"
-//       })
-//    }
-// })
-
-// var smtpTransport = nodemailer.createTransport({
-//    auth: {
-//      user: email2,
-//      pass: pass2
-//    }
-//  });
- 
- 
-//  var handlebarsOptions = {
-//    viewEngine: 'handlebars',
-//    viewPath: path.resolve('./api/templates/'),
-//    extName: '.ejs'
-//  };
- 
-//  smtpTransport.use('compile', hbs(handlebarsOptions));
- 
- 
-// exports.forgot_password = function(req, res) {
-//    async.waterfall([
-//      function(done) {
-//        User.findOne({
-//          email: req.body.email
-//        }).exec(function(err, user) {
-//          if (user) {
-//            done(err, user);
-//          } else {
-//            done('User not found.');
-//          }
-//        });
-//      },
-//      function(user, done) {
-//        // create the random token
-//        crypto.randomBytes(20, function(err, buffer) {
-//          var token = buffer.toString('hex');
-//          done(err, user, token);
-//        });
-//      },
-//      function(user, token, done) {
-//        User.findByIdAndUpdate({ _id: user._id }, { reset_password_token: token, reset_password_expires: Date.now() + 86400000 }, { upsert: true, new: true }).exec(function(err, new_user) {
-//          done(err, token, new_user);
-//        });
-//      },
-//      function(token, user, done) {
-//        var data = {
-//          to: user.email,
-//          from: email2,
-//          template: 'forgot-password-email',
-//          subject: 'Password help has arrived!',
-//          context: {
-//            url: 'http://localhost:8081/auth/reset_password?token=' + token,
-//            name: user.fullName.split(' ')[0]
-//          }
-//        };
- 
-//        smtpTransport.sendMail(data, function(err) {
-//          if (!err) {
-//            return res.json({ message: 'Kindly check your email for further instructions' });
-//          } else {
-//            return done(err);
-//          }
-//        });
-//      }
-//    ], function(err) {
-//      return res.status(422).json({ message: err });
-//    });
-//  };
- 
- /**
-  * Reset password
-  */
-//  exports.reset_password = function(req, res, next) {
-//    User.findOne({
-//      reset_password_token: req.body.token,
-//      reset_password_expires: {
-//        $gt: Date.now()
-//      }
-//    }).exec(function(err, user) {
-//      if (!err && user) {
-//        if (req.body.newPassword === req.body.verifyPassword) {
-//          user.hash_password = bcrypt.hashSync(req.body.newPassword, 10);
-//          user.reset_password_token = undefined;
-//          user.reset_password_expires = undefined;
-//          user.save(function(err) {
-//            if (err) {
-//              return res.status(422).send({
-//                message: err
-//              });
-//            } else {
-//              var data = {
-//                to: user.email,
-//                from: email2,
-//                template: 'reset-password-email',
-//                subject: 'Password Reset Confirmation',
-//                context: {
-//                  name: user.fullName.split(' ')[0]
-//                }
-//              };
- 
-//              smtpTransport.sendMail(data, function(err) {
-//                if (!err) {
-//                  return res.json({ message: 'Password reset' });
-//                } else {
-//                  return done(err);
-//                }
-//              });
-//            }
-//          });
-//        } else {
-//          return res.status(422).send({
-//            message: 'Passwords do not match'
-//          });
-//        }
-//      } else {
-//        return res.status(400).send({
-//          message: 'Password reset token is invalid or has expired.'
-//        });
-//      }
-//    });
-//  };

@@ -19,11 +19,6 @@ router.get("/index",function(req,res){
 res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
 
 });
-
-
-// router.get("/index",function(req,res){
-// res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
-// });
  router.get('/about', (req, res) => {
     res.render('pages/about',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -45,13 +40,12 @@ router.get('/cart', (req, res) => {
  router.get('/login', (req, res) => {
     res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
- 
+ router.get('/forgotPassword', (req, res) => {
+    res.render('pages/forgotPassword');
+});
  router.get('/registr', (req, res) => {
     res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
-//  router.get('/reset', (req, res) => {
-//     res.render('pages/reset',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
 //  router.get('/adminsidebar', (req, res) => {
 //     res.render('pages/adminsidebar',{user: (req.session.user === undefined ? "" : req.session.user) });
 //  });
@@ -70,9 +64,6 @@ router.get('/cart', (req, res) => {
  router.get('/footer', (req, res) => {
     res.render('pages/footer',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-// router.get('/new_pass', (req, res) => {
-//     res.render('pages/new_pass',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
 router.get('/makeup', (req, res) => {
     res.render('pages/makeup',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -101,13 +92,8 @@ router.get('/makeup', (req, res) => {
  router.get('/checkout', (req, res) => {
     res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-//  router.get('/forgot', (req, res) => {
-//     res.render('pages/forgot',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
 //  router.get('/getFruits',(req,res)=>{
 //    let payload = req.body.payload.trim();
 //    console.log(payload);
 //     });
-   
- 
  module.exports=router

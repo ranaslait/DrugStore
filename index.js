@@ -7,10 +7,6 @@ var cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 var ejs = require('ejs');
 const Fruite = require('./models/Search');
-
-
-
-
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,21 +24,16 @@ app.use(express.static('public'));
 app.use(session({ secret: 'Your_Secret_Key' }))
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
-
-
 const indexRoutes=require("./routes/index");
 const userRoutes=require("./routes/user");
 const adminRoutes=require("./routes/admin");
 app.use("/",indexRoutes);
 app.use("/user",userRoutes);
 app.use("/admin",adminRoutes);
-
-
 app.use((req, res) => {
    res.status(404).render('pages/404', { user: (req.session.user === undefined ? "" : req.session.user) });
    
  });
-
 //  app.post('/getFruits',(req,res)=>{
 // let payload = req.body.payload.trim();
 // console.log(payload);

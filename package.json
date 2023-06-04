@@ -11,11 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "-": "^0.0.1",
+    "@sendgrid/mail": "^7.7.0",
     "async": "^3.2.4",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "crypto": "^1.0.1",
+    "crypto-random-string": "^5.0.0",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
@@ -32,7 +34,9 @@
     "mongodb": "^5.5.0",
     "mongoose": "^7.2.2",
     "nodemailer": "^6.9.3",
-    "nodemailer-express-handlebars": "^6.1.0"
+    "nodemailer-express-handlebars": "^6.1.0",
+    "smtp": "^0.1.4",
+    "smtpjs": "^0.0.1"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
