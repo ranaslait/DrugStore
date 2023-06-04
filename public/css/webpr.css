@@ -63,7 +63,23 @@ body{
     font-size: 17px;
     border-radius: 25px;
   }
-  
+
+  /* *{
+    box-sizing: border-box;
+}
+
+#livesearch{
+   background-color: aliceblue;
+   border-color: black;
+   border-width: thin;
+   border-style: solid;
+   width: 170px;
+}
+
+.hide{
+   display: none; 
+}
+   */
   nav a{
     float: left;
     display: block;

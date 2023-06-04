@@ -1,6 +1,7 @@
 const express=require("express");
 const router=express.Router();
-
+// const fr=require("../models/Search");
+// const srch1=require("../controllers/Index");
 
 /**
  * @param {string | object | Buffer} payload
@@ -36,8 +37,13 @@ module.exports = {sendPasswordResetLink, createVerificationToken};
 
 router.get("/",function(req,res){
    res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
-   
+
    });
+
+//    router.get('/srch', (req, res) => {
+//       res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
+//   });
+// router.post('/srch',srch1.srch);
 
 router.get("/index",function(req,res){
 res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
