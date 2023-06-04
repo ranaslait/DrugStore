@@ -8,9 +8,9 @@ router.get("/",function(req,res){
    
    });
 
-router.get("/index",function(req,res){
-res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
-});
+// router.get("/index",function(req,res){
+// res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
+// });
  router.get('/about', (req, res) => {
     res.render('pages/about',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -39,18 +39,18 @@ router.get('/cart', (req, res) => {
 //  router.get('/reset', (req, res) => {
 //     res.render('pages/reset',{user: (req.session.user === undefined ? "" : req.session.user) });
 //  });
- router.get('/adminsidebar', (req, res) => {
-    res.render('pages/adminsidebar',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/admin', (req, res) => {
-    res.render('pages/admin',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/addproduct', (req, res) => {
-    res.render('pages/addproduct',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/adminheader', (req, res) => {
-    res.render('pages/adminheader',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+//  router.get('/adminsidebar', (req, res) => {
+//     res.render('pages/adminsidebar',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
+//  router.get('/admin', (req, res) => {
+//     res.render('pages/admin',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
+//  router.get('/addproduct', (req, res) => {
+//     res.render('pages/addproduct',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
+//  router.get('/adminheader', (req, res) => {
+//     res.render('pages/adminheader',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
  router.get('/404', (req, res) => {
     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
