@@ -514,7 +514,7 @@ body{
   
   .products{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
     margin: 0px 10px;
@@ -543,10 +543,10 @@ body{
     justify-content: space-between;
   }
   
-  .product-container:hover{
+  /* .product-container:hover{
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.1);
     transform: translateY(-10px);
-  }
+  } */
   
   .product-container img{
     width:100%;

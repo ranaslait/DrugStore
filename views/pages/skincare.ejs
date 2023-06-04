@@ -1,204 +1,113 @@
 <%- include ("./partials/header.ejs") %>
-
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="left-sidebar">
-                <div class="price-range">
-                    <h2>Price Range</h2>
-                    <div class="well">
-                        <div class="slider slider-horizontal" style="width: 182px;">
-                            <div class="slider-track">
-                                <div class="slider-selection" style="left: 70.8333%; width: 18.3333%;"></div>
-                                <div class="slider-handle round left-round" style="left: 70.8333%;"></div>
-                                <div class="slider-handle round" style="left: 89.1667%;"></div>
-                            </div>
-                            <div class="tooltip top" style="top: -30px; left: 113.1px;">
-                                <div class="tooltip-arrow"></div>
-                                <div class="tooltip-inner">425 : 535</div>
-                            </div><input type="text" class="span2" value="" data-slider-min="0"
-                                data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]"
-                                id="sl2" >
-                        </div><br>
-                        <b>$ 0</b> <b class="pull-right">$ 600</b>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="wrapper">
-        <div class="container2">
             <div class="title">Skin Care Products</div>
 
-            <div class="filter-items" >
-                <input type="checkbox" id="collapse" name="collapse">
-                <label for="collapse" class="label-collapse">Brand</label>
-                    <div class="brands" id="brands">
-                        <hr>
-                        <input type="checkbox" id="b1" name="brand1" value="GSK">
-                        <label for="b1">GSK</label>
-                        <br>
-                        <input type="checkbox" id="b2" name="brand2" value="Eva Pharma">
-                        <label for="b2">Eva Pharma</label>
-                        <br>
-                        <input type="checkbox" id="b3" name="brand3" value="GSK">
-                        <label for="b3">GSK</label>
-                        <br>
-                        <input type="checkbox" id="b4" name="brand4" value="Eva Pharma">
-                        <label for="b4">Eva Pharma</label>
-                    </div>
-            </div>
-
-            <div class="product1">
-                <div class="product-container1">
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/panadol.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Panadol 500 mg 24 Tablets" class="product-title">Panadol 500 mg 24 Tablets </a>
-                            <div>
-                                <span class="price">34.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/Brufen.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Brufen 400 mg 30 Tablet" class="product-title">Brufen 400 mg 30 Tablet </a>
-                            <div>
-                                <span class="price">38.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/Genuphil.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Genuphil original 50 tablets" class="product-title">Genuphil original 50 tablets</a>
-                            <div>
-                                <span class="price">150.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/voltaren.jpeg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Voltaren 1% Emulgel 100 gm" class="product-title">Voltaren 1% Emulgel 100 gm</a>
-                            <div>
-                                <span class="price">45.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/milga.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Milga Advance 30 tablets" class="product-title">Milga Advance 30 tablets</a>
-                            <div>
-                                <span class="price">75.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/strepsils.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Strepsils Honey & lemon 24 Lozenges" class="product-title">Strepsils Honey & lemon 24 Lozenges</a>
-                            <div>
-                                <span class="price">115.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/Telfast.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Telfast 180mg 20 tablets" class="product-title">Telfast 180mg 20 tablets</a>
-                            <div>
-                                <span class="price">75.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/Cataflam.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Cataflam 50 mg 20 tablets" class="product-title">Cataflam 50 mg 20 tablets</a>
-                            <div>
-                                <span class="price">43.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/terramycin.jpeg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Terramycin cream 5 gm" class="product-title">Terramycin cream 5 gm</a>
-                            <div>
-                                <span class="price">10.00 EGP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="../IMAGES/polyfresh1.jpg">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="Polyfresh 0.2% eye drops 10 ml" class="product-title">Polyfresh 0.2% eye drops 10 ml </a>
-                            <div>
-                                <span class="price">33.00 EGP</span>
-                            </div>
-                        </div>
+            <div class="products">
+                <div class="product-container">
+                        <img src="../IMAGES/panadol.jpg">
+                    <div class="product">
+                        <a href="productDetails.html" title="Panadol 500 mg 24 Tablets" class="item">Panadol 500 mg 24 Tablets </a>
+                        <h5 class="price">34.00 EGP</h5>
+                        <button class="btnm">Add to Cart</button>
                     </div>
                 </div>
+                <div class="product-container">
+                        <img src="../IMAGES/Brufen.jpg">
+                    <div class="product">
+                        <a href="productDetails.html" title="Brufen 400 mg 30 Tablet" class="item">Brufen 400 mg 30 Tablet </a>
+                        <h5 class="price">38.00 EGP</h5>
+                        <button class="btnm">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-container">
+                    <img src="../IMAGES/Genuphil.jpg">
+                <div class="product">
+                    <a href="productDetails.html" title="Genuphil original 50 tablets" class="item">Genuphil original 50 tablets </a>
+                    <h5 class="price">150.00 EGP</h5>
+                    <button class="btnm">Add to Cart</button>
+                </div>
             </div>
-        </div>
+            <div class="product-container">
+                <img src="../IMAGES/voltaren.jpeg">
+            <div class="product">
+                <a href="productDetails.html" title="Voltaren 1% Emulgel 100 gm" class="item">Voltaren 1% Emulgel 100 gm </a>
+                <h5 class="price">45.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/milga.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Milga Advance 30 tablets" class="item">Milga Advance 30 tablets </a>
+                <h5 class="price">75.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/strepsils.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Strepsils Honey & lemon 24 Lozenges" class="item">Strepsils Honey & lemon 24 Lozenges </a>
+                <h5 class="price">115.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/Telfast.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Telfast 180mg 20 tablets" class="item">Telfast 180mg 20 tablets </a>
+                <h5 class="price">75.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/Cataflam.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Cataflam 50 mg 20 tablets" class="item">Cataflam 50 mg 20 tablets </a>
+                <h5 class="price">43.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/terramycin.jpeg">
+            <div class="product">
+                <a href="productDetails.html" title="Terramycin cream 5 gm" class="item">Terramycin cream 5 gm </a>
+                <h5 class="price">10.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/polyfresh1.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
+                <h5 class="price">33.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/polyfresh1.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
+                <h5 class="price">33.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/polyfresh1.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
+                <h5 class="price">33.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            <div class="product-container">
+                <img src="../IMAGES/polyfresh1.jpg">
+            <div class="product">
+                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
+                <h5 class="price">33.00 EGP</h5>
+                <button class="btnm">Add to Cart</button>
+            </div>
+            </div>
+            
     </div>
     <%- include ("./partials/footer.ejs") %>
 </body>

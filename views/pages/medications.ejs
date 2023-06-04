@@ -2,9 +2,10 @@
 
     <div class="wrapper">
         <div class="title">Medicines</div>
-            <% if (products.length > 0) { %>
-                <% products.forEach(product => { %>
+           
             <div class="products">
+                <% if (products.length > 0) { %>
+                    <% products.forEach(product => { %>
                 <div class="product-container">
                     <img src="/IMAGES/<%=product.img %>" alt="<%= %>">
                     <div class="product">
@@ -13,11 +14,11 @@
                         <button class="btnm">Add to Cart</button>
                     </div>
                 </div>
-            </div>
-            <% }) %>
+                <% }) %>
             <% } else{ %>
                 <p>There is no products to display....</p>
                 <% } %>
+            </div> 
     </div>
     
     <%- include ("./partials/footer.ejs") %>
