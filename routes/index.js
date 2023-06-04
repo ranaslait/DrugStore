@@ -2,6 +2,7 @@ const express=require("express");
 const router=express.Router();
 // const fr=require("../models/Search");
 // const srch1=require("../controllers/Index");
+const Index=require("../controllers/Index");
 
 
 router.get("/",function(req,res){
@@ -69,9 +70,7 @@ router.get('/makeup', (req, res) => {
  router.get('/medical', (req, res) => {
     res.render('pages/medical',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
- router.get('/medications', (req, res) => {
-    res.render('pages/medications',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+ router.get('/medications', Index.GetAllProducts);
  router.get('/motherbaby', (req, res) => {
     res.render('pages/motherbaby',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
