@@ -14,8 +14,8 @@ const toAdmin = (req, res) => {
   };
 
   const Addpro= async (req, res) => {
-    console.log(req.body)
-    const data = new Prod({
+    console.log(req.body);
+    const pdata = new Prod({
        category_name: req.body.category_name,
        side_effect: req.body.side_effect,
        product_name: req.body.product_name,
@@ -23,12 +23,14 @@ const toAdmin = (req, res) => {
        product_newprice: req.body.product_newprice,
        img:req.body.img,
     })
-    data.save()
+    pdata.save()
        .then(result => {
-          res.redirect('/addproduct');
+         console.log('ana fe el admin w badd product');
+          res.render('/addproduct');
        })
        .catch(err => {
           res.redirect('/404');
+          console.log('ana fashlt fe add el product ll db');
        })
  };
 

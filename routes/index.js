@@ -3,37 +3,6 @@ const router=express.Router();
 // const fr=require("../models/Search");
 // const srch1=require("../controllers/Index");
 
-/**
- * @param {string | object | Buffer} payload
- */
-function createVerificationToken(payload) {
-   return jwt.sign( payload);
- }
-
-/**
-*
-* @param {string} email
-* @param {string} token
-*/
-async function sendPasswordResetLink(email, token) {
- const transporter = createTransport({
-   service: "Gmail",
-   auth: {
-     user: 'ddose0725@gmail.com' ,
-     pass: 'dose123456789',
-   },
- });
- const url = `http://localhost:8081/api/password/${token}`;
-
- await transporter.sendMail({
-   to: email,
-   subject: "Reset your password",
-   html: `<p>Click <a href='${url}'>here</a> to reset your password.</p>
-   <p> If you did not request this please ignore this message`,
- });
-}
-
-module.exports = {sendPasswordResetLink, createVerificationToken};
 
 router.get("/",function(req,res){
    res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
@@ -51,6 +20,9 @@ res.render('pages/index',{user: (req.session.user === undefined ? "" : req.sessi
 });
 
 
+// router.get("/index",function(req,res){
+// res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
+// });
  router.get('/about', (req, res) => {
     res.render('pages/about',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -76,30 +48,30 @@ router.get('/cart', (req, res) => {
  router.get('/registr', (req, res) => {
     res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
- router.get('/reset', (req, res) => {
-    res.render('pages/reset',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/adminsidebar', (req, res) => {
-    res.render('pages/adminsidebar',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/admin', (req, res) => {
-    res.render('pages/admin',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/addproduct', (req, res) => {
-    res.render('pages/addproduct',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/adminheader', (req, res) => {
-    res.render('pages/adminheader',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+//  router.get('/reset', (req, res) => {
+//     res.render('pages/reset',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
+//  router.get('/adminsidebar', (req, res) => {
+//     res.render('pages/adminsidebar',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
+//  router.get('/admin', (req, res) => {
+//     res.render('pages/admin',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
+//  router.get('/addproduct', (req, res) => {
+//     res.render('pages/addproduct',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
+//  router.get('/adminheader', (req, res) => {
+//     res.render('pages/adminheader',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
  router.get('/404', (req, res) => {
     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
  router.get('/footer', (req, res) => {
     res.render('pages/footer',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-router.get('/new_pass', (req, res) => {
-    res.render('pages/new_pass',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+// router.get('/new_pass', (req, res) => {
+//     res.render('pages/new_pass',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
 router.get('/makeup', (req, res) => {
     res.render('pages/makeup',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -130,7 +102,9 @@ router.get('/makeup', (req, res) => {
  router.get('/checkout', (req, res) => {
     res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-
+//  router.get('/forgot', (req, res) => {
+//     res.render('pages/forgot',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
 //  router.get('/getFruits',(req,res)=>{
 //    let payload = req.body.payload.trim();
 //    console.log(payload);

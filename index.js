@@ -33,11 +33,10 @@ app.set('view engine', 'ejs');
 const indexRoutes=require("./routes/index");
 const userRoutes=require("./routes/user");
 const adminRoutes=require("./routes/admin");
-const forgotPasswordRoutes = require("./routes/forgotpassword");
 app.use("/",indexRoutes);
 app.use("/user",userRoutes);
 app.use("/admin",adminRoutes);
-app.use("/forgotpassword", forgotPasswordRoutes);
+
 
 app.use((req, res) => {
    res.status(404).render('pages/404', { user: (req.session.user === undefined ? "" : req.session.user) });
