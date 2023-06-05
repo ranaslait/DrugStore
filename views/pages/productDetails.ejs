@@ -2,11 +2,11 @@
         <br>
         <div class="product1">
             <div class="product-image">
-                <img src="../IMAGES/panadol.jpg" alt="Panadol">
+                <img src="../IMAGES/<%=product.img %>" alt="Panadol">
             </div>
             <div class="product-details">
-                <h2>Panadol 500 mg 24 Tablets</h2>
-                <h3 class="price">34.00 EGP</h3>
+                <h2><%= product.product_name %></h2>
+                <h3 class="price"><%= product.product_newprice %></h3>
                 <hr>
                 <br>
                 <p class="title1">Active Ingredient:</p>
@@ -14,7 +14,7 @@
                 <br>
                 <br>
                 <p class="title1">Side Effect:</p>
-                <p>Nonopioid analgesic used for the treatment of pain like mild muscle aches or headache.</p>
+                <p><%= product.side_effect %></p>
                 <button class="btnm">Add To Cart</button>
             </div>
         </div>
