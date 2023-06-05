@@ -13,6 +13,10 @@ const productSchema= new Schema({
         type:String,
         required:true
     },
+    active_ingredient:{
+        type:String,
+        required:true
+    },
     product_name:{
         type:String,
         required:true

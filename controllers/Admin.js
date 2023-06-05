@@ -16,6 +16,7 @@ const toAdmin = (req, res) => {
     const pdata = new Prod({
        category_name: req.body.category_name,
        side_effect: req.body.side_effect,
+       active_ingredient: req.body.active_ingredient,
        product_name: req.body.product_name,
        product_price: req.body.product_price,
        product_newprice: req.body.product_newprice,
@@ -24,7 +25,7 @@ const toAdmin = (req, res) => {
     pdata.save()
        .then(result => {
          console.log('ana fe el admin w badd product');
-          res.render('/addproduct');
+          res.render('pages/addproduct');
        })
        .catch(err => {
           res.redirect('/404');
