@@ -15,7 +15,7 @@ router.get('/forgotPassword', (req, res) => {
 router.get('/load', (req, res) => {
     res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-router.get('/api/users/resetPassword', (req, res) => {
+router.get('/resetPassword', (req, res) => {
     res.render('pages/resetPassword');
 });
 router.get('/registr', (req, res) => {

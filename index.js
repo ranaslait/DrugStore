@@ -19,7 +19,8 @@ mongoose.connect("mongodb+srv://user:1234@atlascluster.pecru0p.mongodb.net/proje
    .catch((e) => {
       console.log(e)
    })
-   app.use(fileUpload());
+   
+app.use(fileUpload());
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(session({ secret: 'Your_Secret_Key' }))
@@ -31,11 +32,12 @@ const adminRoutes=require("./routes/admin");
 app.use("/",indexRoutes);
 app.use("/user",userRoutes);
 app.use("/admin",adminRoutes);
+app.use('/api/users', userRoutes);
+
 app.use((req, res) => {
    res.status(404).render('pages/404', { user: (req.session.user === undefined ? "" : req.session.user) });
-   
  });
- app.use('/api/users', userRoutes);
+
 
 // Server Start
 
