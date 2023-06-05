@@ -1,25 +1,20 @@
 const User = require("../models/users");
 const path = require('path');
-const bcrypt = require('bcrypt');
-const salt = 10;
-// const MailGen = require('mailgen')
+const bcrypt = require("bcrypt");
+const MailGen = require('mailgen')
 const jwt = require('jsonwebtoken');
 const sgMail = require('@sendgrid/mail');
+var passportLocalMongoose = require("passport-local-mongoose");
 const SENDGRID_API_KEY = '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';
 const randomStr = () => require('crypto').randomBytes(32).toString('hex');
+
 const reg = async (req, res) => {
-
     const body = req.body;
-
     if (!(body.name && body.email && body.password && body.phone && body.type)) {
         return res.redirect('/');
     }
-
-    // creating a new mongoose doc from user data
     const user = new User(body);
-    // generate salt to hash password
     const salt = await bcrypt.genSalt(10);
-    // now we set the user password to hashed password
     user.password = await bcrypt.hash(user.password, salt);
     user.save().then((doc) => res.redirect('/login'));
 
@@ -171,57 +166,18 @@ const forgotPassword = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-    // const ID = req.body._id;
-    // const { token } = req.query;
-    // const { newPassword } = req.body.newPassword;
-    // if (!token) throw new Error('Add Token');
-    // if (!newPassword) throw new Error('Add New Password');
-    // const generatePassword = bcrypt.hashSync(newPassword, salt);
-
-    // User.updateOne(req.body.email, generatePassword); 
-    // User.findOne({email:req.body.email,password:req.body.password}, function(err, user){
-    //     if(err)return handleErr(err);
-    //     user.password = req.body.newPassword;
-    //     user.save(function(err){
-    //        if(err)return handleErr(err);
-    //        //user has been updated
-    //      });
-    //    });
-    
-
-    // User.findByIdAndUpdate(ID, { password: generatePassword })
-    // .then(result => {
-    //     req.body.password = generatePassword;
-    //     res.redirect('/login')
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    // });
-    // try {
-    //     const { name } = req.body.name;
-    //     await User.findOneAndUpdate(
-    //             { email: req.body.email },
-    //             { $set: { password: generatePassword } }
-    //         )
-    //         .then(data => {
-    //             res.redirect('/login')
-    //         })
-    //         .catch(err => {
-    //             res.send(err);
-    //         });
-    //     return;
-    // } catch (err) {
-    //     res.send(err);
-    // }
-
-
-
-
-    const user = await User.findOne(req.body.email);
-    if (!user) throw 'Invalid';
+    var newInput=req.body.newPassword;
     const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(user.newPassword, salt);
-    user.save().then((doc) => res.redirect('/login'));
+    newInput = await bcrypt.hash(newInput, salt);
+    User.findByIdAndUpdate(req.body._id, { password: newInput })
+    .then(result => {
+        req.body.password = newInput;
+        res.redirect('/login')
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
 };
 
 
