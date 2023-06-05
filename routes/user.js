@@ -1,5 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
+
+
 const router=express.Router();
 router.use(bodyParser.json());
 
@@ -30,13 +32,14 @@ router.get('/registr', (req, res) => {
  router.post('/updatePassword', User.changePassword);
  router.post('/forgotPassword',User.forgotPassword);
  router.post('/resetPassword', User.resetPassword);
+ 
 //check if logged in
  router.use((req,res, next)=>{
 if(req.session.user!== undefined){
     next();
 }
 else{
-    res.render('pages/404',{err: 'You must login', user: (req.session.user===undefined ?"": req.session.user)})
+    res.redirect('pages/404');
 }
  });
  
