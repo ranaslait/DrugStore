@@ -25,7 +25,7 @@ const toAdmin = (req, res) => {
     pdata.save()
        .then(result => {
          console.log('ana fe el admin w badd product');
-          res.render('pages/addproduct');
+          res.render('admin/addproduct');
        })
        .catch(err => {
           res.redirect('/404');
