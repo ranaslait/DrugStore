@@ -166,10 +166,13 @@ const forgotPassword = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-    var newInput=req.body.newPassword;
+    const body = req.body;
+    const user = await User.findOne({ email: req.body.email });
+    var newInput = req.body.newPassword;
     const salt = await bcrypt.genSalt(10);
     newInput = await bcrypt.hash(newInput, salt);
-    User.findByIdAndUpdate(req.body._id, { password: newInput })
+    console.log(user._id);
+    User.findByIdAndUpdate(user._id, { password: newInput })
     .then(result => {
         req.body.password = newInput;
         res.redirect('/login')
