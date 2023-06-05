@@ -958,7 +958,25 @@ body{
     list-style-type:disc;
     position: relative;
   }
+
+  .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    border-radius: 10px;
+    text-align: center;
+}
   
+  .pagination a {
+    color: #3AAFA9;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 4px;
+    border: 1px solid rgb(170, 170, 170); /* Adds a border */
+}
+
   @media screen and (max-width: 1200px) {
     .product-item {
         width: calc(25% - 16px);
