@@ -18,7 +18,7 @@ router.get('/load', (req, res) => {
     res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
 router.get('/resetPassword', (req, res) => {
-    res.render('pages/resetPassword');
+    res.render('pages/resetPassword', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 router.get('/registr', (req, res) => {
     res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
