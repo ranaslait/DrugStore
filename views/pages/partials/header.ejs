@@ -3,12 +3,13 @@
 
 <head>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dose Pharmcy</title>
     <!-- add icon link -->
-    <link rel = "icon" href = "../IMAGES/logo.png" type = "image/x-icon">
+    <link rel="icon" href="../IMAGES/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../CSS/webpr.css">
     <link rel="stylesheet" href="../CSS/stylesheet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,21 +20,21 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script>
-        drift.on('ready',function(api){
+    <script>
+        drift.on('ready', function (api) {
             // hide the widget when it first loads
-          api.widget.hide()
-           // show the widget when you receive a message
-            drift.on('message',function(e){
-               api.widget.show()
+            api.widget.hide()
+            // show the widget when you receive a message
+            drift.on('message', function (e) {
+                api.widget.show()
             })
             // hide the widget when you close the chat
-              drift.on('chatClose',function(e){
-               api.widget.hide()
+            drift.on('chatClose', function (e) {
+                api.widget.hide()
             })
-          })
-          
-          </script>
+        })
+
+    </script>
 
 
     <style>
@@ -130,7 +131,9 @@
         .split i {
             margin-right: 5px;
         }
-        .lan-main a { text-align: center;
+
+        .lan-main a {
+            text-align: center;
             background-color: #33bfa4;
             width: 80px;
             height: 40px;
@@ -142,67 +145,70 @@
             cursor: pointer;
             line-height: 40px;
             margin-top: -15px;
-        
+
         }
-
-
-            
-
-
-
-
     </style>
-<script src="jquery-3.6.4.min.js"></script>
+    <script src="jquery-3.6.4.min.js"></script>
     <p>Looking to chat with us, click <a class="drift-open-chat" href="#">here</a> and say hello!</p>
 </head>
 <!-- Chat-Box-->
 <!-- Start of Async Drift Code -->
 <script>
     "use strict";
-    
-    !function() {
-      var t = window.driftt = window.drift = window.driftt || [];
-      if (!t.init) {
-        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-        t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-        t.factory = function(e) {
-          return function() {
-            var n = Array.prototype.slice.call(arguments);
-            return n.unshift(e), t.push(n), t;
-          };
-        }, t.methods.forEach(function(e) {
-          t[e] = t.factory(e);
-        }), t.load = function(t) {
-          var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-          var i = document.getElementsByTagName("script")[0];
-          i.parentNode.insertBefore(o, i);
-        };
-      }
+
+    !function () {
+        var t = window.driftt = window.drift = window.driftt || [];
+        if (!t.init) {
+            if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+            t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                t.factory = function (e) {
+                    return function () {
+                        var n = Array.prototype.slice.call(arguments);
+                        return n.unshift(e), t.push(n), t;
+                    };
+                }, t.methods.forEach(function (e) {
+                    t[e] = t.factory(e);
+                }), t.load = function (t) {
+                    var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                    var i = document.getElementsByTagName("script")[0];
+                    i.parentNode.insertBefore(o, i);
+                };
+        }
     }();
     drift.SNIPPET_VERSION = '0.3.1';
     drift.load('uyaxr3r7f9sr');
-    </script>
-    <!-- End of Async Drift Code -->
-    
-
+</script>
+<!-- End of Async Drift Code -->
 <body>
     <header id="navbar">
-        <nav style="overflow: auto;">
+        <nav>
             <div class="logo">
                 <a href="./index"><img src="../IMAGES/logo.png"></a>
             </div>
             <ul class="navigation-links">
                 <li class="lnks">
-                    <a href="#">Shop</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Shop</button>
+                        <div class="dropdown-content">
+                            <a href="./medications">Medications</a>
+                            <a href="./vit">Vitamins</a>
+                            <a href="./personalcare">Personal Care</a>
+                            <a href="./makeup">Beauty Products</a>
+                            <a href="./skincare">Skin Care</a>
+                            <a href="./cleaning">Cleaning Products</a>
+                            <a href="./motherbaby">Mother Baby Care</a>
+                            <a href="./hair">Hair Care</a>
+                            <a href="./perfume">Perfumes</a>
+                        </div>
                 </li>
                 <li><a href="#">Order a Prescription</a></li>
                 <li><a href="./blog">Blog</a></li>
                 <li><a href="./about">About Us</a></li>
                 <li>
                     <input type="text" placeholder="Search Products" id="d">
-                <!-- <div id="livesearch" class="hide">This</div> -->
-            </li>
+                    <!-- <div id="livesearch" class="hide">This</div> -->
+                </li>
                 <!-- <section id="searchResults">
 
                 </section>
@@ -216,36 +222,30 @@
                     }
                 </script> -->
             </ul>
-
             <ul class="right-links">
-                       
-    <li class="lan-main">
-        <div id="google_translate_element"></div>
-
-        <script type="text/javascript">
-        function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-        }
-        </script>
-        
-        </li> 
-
-          <!-- Check if the user variable exists -->
-                <% if ( user === '') { %>
+                <li class="lan-main">
+                    <div id="google_translate_element"></div>
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                        }
+                    </script>
+                </li>
+                <!-- Check if the user variable exists -->
+                <% if ( user==='' ) { %>
                     <li class="split"><a href="/user/login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
-                <% } else { %>
-                    <% if ( user.type === 'admin') { %>
-                        <li class="split"><a href="./admin"><i class="fa fa-fw fa-user"></i>Admin</a></li>
-                    <% } %>
-                    <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Cart</a></li>
-                    <li class="split"><a href="/user/logout"><i class="fa fa-fw fa-user"></i>Logout</a></li>
-                   
-                <% } %>
+                    <% } else { %>
+                        <% if ( user.type==='admin' ) { %>
+                            <li class="split"><a href="./admin"><i class="fa fa-fw fa-user"></i>Admin</a></li>
+                            <% } %>
+                               <i class="fa fa-fw fa-user">Welcome <%= user.name %></i>
+                                <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Your Cart</a>
+                                </li>
+                                <li class="split"><a href="/user/logout"><i class="fa fa-fw fa-user"></i>Logout?</a>
+                                </li>
+                                <% } %>
             </ul>
-
-
             </ul>
             <!-- <script src="/js/ajax-search.js"></script> -->
-            
         </nav>
     </header>
