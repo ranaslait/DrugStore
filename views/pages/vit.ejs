@@ -1,35 +1,36 @@
 <%- include ("./partials/header.ejs") %>
 <body>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="left-sidebar">
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="wrapper">
-        <div class="container2">
-            <div class="title">Vitamins</div>
-            <div class="product1">
-                <div class="product-container1">
-                    <div class="product-item">
-                        <div class="product-img">
-                            <img src="<%= %>" alt="<%= %>">
-                            <div>
-                                <button type="button" class="add-btnr">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <a href="./productDetails" title="<%= %>" class="product-title"> <%= %> </a>
-                            <div>
-                                <span class="price"><%= %></span>
-                            </div>
-                        </div>
+        <div class="title">Vitamins</div>
+           
+            <div class="products">
+                <% if (products.length > 0) { %>
+                    <% products.forEach(product => { %>
+                <div class="product-container">
+                    <img src="/IMAGES/<%=product.img %>" alt="<%= %>">
+                    <div class="product">
+                        <a href="" title="<%= %>" class="product-title"> <%= product.product_name %> </a>
+                        <h5 class="price"><%= product.product_newprice %></h5>
+                        <button class="btnm">Add to Cart</button>
                     </div>
-                 </div>
-            </div>
-        </div>
+                </div>
+                <% }) %>
+            <% } else{ %>
+                <p>There is no products to display....</p>
+                <% } %>
+            </div> 
+            
+            <ul class="pagination">
+                <% if (pages > 0) { %>
+                    <% for(let i = 1; i <= pages; i++) { %>
+                        <li class="<%= current == i ? 'active' : '' %>">
+                        <a href="/vit?page=<%= i %>"><%= i %></a>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
     </div>
+    
     <%- include ("./partials/footer.ejs") %>
 </body>
 
