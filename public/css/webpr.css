@@ -963,7 +963,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px 0;
+    padding: 35px 150px;
     border-radius: 10px;
     text-align: center;
 }
@@ -975,6 +975,21 @@ body{
     border-radius: 5px;
     margin: 0 4px;
     border: 1px solid rgb(170, 170, 170); /* Adds a border */
+}
+
+.pagination li {
+  margin: 0 5px; /* This line will add space between each page number */
+}
+
+.pagination li a {
+  text-decoration: none;
+  color: #3AAFA9;
+  padding: 8px 16px;
+}
+
+.pagination .active a {
+  background-color: #3AAFA9;
+  color: white;
 }
 
   @media screen and (max-width: 1200px) {
