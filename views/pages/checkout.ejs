@@ -4,7 +4,7 @@
         <div class="container">
           <div class="row">
             <div class="col-xl-8 col-lg-8 mb-4">
-              <div class="card mb-4 border shadow-0">
+              <!-- <div class="card mb-4 border shadow-0">
                 <div class="p-4 d-flex justify-content-between">
                   <div class="">
                     <h5>Have an account?</h5>
@@ -15,7 +15,7 @@
                     <a href="./login.ejs" class="btn btn-primary shadow-0 text-nowrap w-100">Sign in</a>
                   </div>
                 </div>
-              </div>
+              </div> -->
       
               <!-- Checkout -->
               <div class="card shadow-0 border">
@@ -39,7 +39,7 @@
                     <div class="col-6 mb-3">
                       <p class="mb-0">Phone</p>
                       <div class="form-outline">
-                        <input type="tel" id="typePhone" value="+48 " class="form-control" />
+                        <input type="tel" id="typePhone" value="+20 " class="form-control" />
                       </div>
                     </div>
       
@@ -110,9 +110,9 @@
                     <div class="col-sm-4 mb-3">
                       <p class="mb-0">City</p>
                       <select class="form-select">
-                        <option value="1">New York</option>
-                        <option value="2">Moscow</option>
-                        <option value="3">Samarqand</option>
+                        <option value="1">Cairo</option>
+                        <option value="2">Giza</option>
+                        <option value="3">Alex</option>
                       </select>
                     </div>
       
@@ -163,20 +163,20 @@
                 <h6 class="mb-3">Summary</h6>
                 <div class="d-flex justify-content-between">
                   <p class="mb-2">Total price:</p>
-                  <p class="mb-2">$195.90</p>
+                  <p class="mb-2">EGP <%= %></p>
                 </div>
                 <div class="d-flex justify-content-between">
                   <p class="mb-2">Discount:</p>
-                  <p class="mb-2 text-danger">- $60.00</p>
+                  <p class="mb-2 text-danger">- EGP <%= %></p>
                 </div>
                 <div class="d-flex justify-content-between">
                   <p class="mb-2">Shipping cost:</p>
-                  <p class="mb-2">+ $14.00</p>
+                  <p class="mb-2">+ EGP <%= %></p>
                 </div>
                 <hr />
                 <div class="d-flex justify-content-between">
                   <p class="mb-2">Total price:</p>
-                  <p class="mb-2 fw-bold">$149.90</p>
+                  <p class="mb-2 fw-bold">EGP <%= %></p>
                 </div>
       
                 <div class="input-group mt-3 mb-4">
@@ -192,14 +192,13 @@
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
                       1
                     </span>
-                    <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/7.webp" style="height: 96px; width: 96x;" class="img-sm rounded border" />
+                    <img src="/IMAGES/<%=  %>" style="height: 96px; width: 96x;" class="img-sm rounded border" />
                   </div>
                   <div class="">
                     <a href="#" class="nav-link">
-                      Gaming Headset with Mic <br />
-                      Darkblue color
+                     <%= %>
                     </a>
-                    <div class="price text-muted">Total: $295.99</div>
+                    <div class="price text-muted">Total: EGP <%= %></div>
                   </div>
                 </div>
       
@@ -208,14 +207,13 @@
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
                       1
                     </span>
-                    <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/5.webp" style="height: 96px; width: 96x;" class="img-sm rounded border" />
+                    <img src="/IMAGES/<%=  %>" style="height: 96px; width: 96x;" class="img-sm rounded border" />
                   </div>
                   <div class="">
                     <a href="#" class="nav-link">
-                      Apple Watch Series 4 Space <br />
-                      Large size
+                      <%= %>
                     </a>
-                    <div class="price text-muted">Total: $217.99</div>
+                    <div class="price text-muted">Total: EGP <%= %></div>
                   </div>
                 </div>
       
@@ -224,11 +222,11 @@
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
                       3
                     </span>
-                    <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/1.webp" style="height: 96px; width: 96x;" class="img-sm rounded border" />
+                    <img src="/IMAGES/<%=  %>" style="height: 96px; width: 96x;" class="img-sm rounded border" />
                   </div>
                   <div class="">
-                    <a href="#" class="nav-link">GoPro HERO6 4K Action Camera - Black</a>
-                    <div class="price text-muted">Total: $910.00</div>
+                    <a href="#" class="nav-link"><%= %></a>
+                    <div class="price text-muted">Total: EGP <%= %></div>
                   </div>
                 </div>
               </div>
