@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 var ejs = require('ejs');
-const Fruite = require('./models/Search');
+// const Fruite = require('./models/Search');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
