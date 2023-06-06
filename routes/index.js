@@ -32,12 +32,7 @@ res.render('pages/index',{user: (req.session.user === undefined ? "" : req.sessi
 router.get('/cart', (req, res) => {
     res.render('pages/cart',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
- router.get('/cleaning', (req, res) => {
-    res.render('pages/cleaning',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/hair', (req, res) => {
-    res.render('pages/hair',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+ 
  router.get('/login', (req, res) => {
     res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -60,6 +55,36 @@ router.get('/cart', (req, res) => {
 //     res.render('pages/adminheader',{user: (req.session.user === undefined ? "" : req.session.user) });
 //  });
 
+//categories routes
+router.get('/medications', Index.GetAllProducts);
+router.get('/medications/productDetails/:id', Index.GetProduct);
+
+router.get('/vit', Index.GetAllProducts);
+router.get('/vit/productDetails/:id', Index.GetProduct);
+
+router.get('/personalcare', Index.GetAllProducts);
+router.get('/personalcare/productDetails/:id', Index.GetProduct);
+
+router.get('/makeup', Index.GetAllProducts);
+router.get('/makeup/productDetails/:id', Index.GetProduct);
+
+router.get('/skincare', Index.GetAllProducts);
+router.get('/skincare/productDetails/:id', Index.GetProduct);
+
+router.get('/cleaning', Index.GetAllProducts);
+router.get('/cleaning/productDetails/:id', Index.GetProduct);
+
+router.get('/motherbaby', Index.GetAllProducts);
+router.get('/motherbaby/productDetails/:id', Index.GetProduct);
+
+router.get('/medical', Index.GetAllProducts);
+router.get('/medical/productDetails/:id', Index.GetProduct);
+
+router.get('/hair', Index.GetAllProducts);
+router.get('/hair/productDetails/:id', Index.GetProduct);
+
+router.get('/perfume', Index.GetAllProducts);
+router.get('/perfume/productDetails/:id', Index.GetProduct);
 
 
  router.get('/404', (req, res) => {
@@ -68,32 +93,7 @@ router.get('/cart', (req, res) => {
  router.get('/footer', (req, res) => {
     res.render('pages/footer',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-router.get('/makeup', (req, res) => {
-    res.render('pages/makeup',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/medical', (req, res) => {
-    res.render('pages/medical',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/medications', Index.GetAllProducts);
- router.get('/medications/productDetails/:id', Index.GetProduct);
- router.get('/motherbaby', (req, res) => {
-    res.render('pages/motherbaby',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/perfume', (req, res) => {
-    res.render('pages/perfume',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/personalcare', (req, res) => {
-    res.render('pages/personalcare',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
-//  router.get('/productDetails', (req, res) => {
-//     res.render('pages/productDetails',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
- router.get('/skincare', (req, res) => {
-    res.render('pages/skincare',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/vit', (req, res) => {
-    res.render('pages/vit',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+
  router.get('/checkout', (req, res) => {
     res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
