@@ -19,13 +19,16 @@
                 <p>There is no products to display....</p>
                 <% } %>
             </div> 
-            <div class="pagination">
+            
+            <ul class="pagination">
                 <% if (pages > 0) { %>
-                    <% for(let i =1; i <= pages; i++){ %>
+                    <% for(let i = 1; i <= pages; i++) { %>
+                        <li class="<%= current == i ? 'active' : '' %>">
                         <a href="/medications?page=<%= i %>"><%= i %></a>
-                        <% }%>
+                        </li>
+                    <% } %>
                 <% } %>
-            </div>
+            </ul>
     </div>
     
     <%- include ("./partials/footer.ejs") %>
