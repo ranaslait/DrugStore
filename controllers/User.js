@@ -16,7 +16,7 @@ const reg = async (req, res) => {
     const user = new User(body);
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
-    user.save().then((doc) => res.redirect('/login'));
+    user.save().then((doc) => res.redirect('/user/login'));
 
 };
 
@@ -175,7 +175,7 @@ const resetPassword = async (req, res) => {
     User.findByIdAndUpdate(user._id, { password: newInput })
     .then(result => {
         req.body.password = newInput;
-        res.redirect('/login')
+        res.redirect('/user/login')
     })
     .catch(err => {
         console.log(err);
