@@ -85,8 +85,7 @@ router.get('/perfume', Index.GetAllProducts);
 router.get('/perfume/productDetails/:id', Index.GetProduct);
 
 
-<<<<<<< HEAD
-});
+
  router.get('/about', (req, res) => {
     res.render('pages/about',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -129,7 +128,7 @@ router.get('/cart', (req, res) => {
  router.get('/404', (req, res) => {
     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-=======
+
 //  router.get('/adminsidebar', (req, res) => {
 //     res.render('pages/adminsidebar',{user: (req.session.user === undefined ? "" : req.session.user) });
 //  });
@@ -148,7 +147,6 @@ router.get('/cart', (req, res) => {
 //     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
 //  });
 
->>>>>>> 4fd5feb71b4040c9cb22cd3277dc34d420916ff9
  router.get('/footer', (req, res) => {
     res.render('pages/footer',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
