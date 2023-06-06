@@ -1,26 +1,24 @@
 <%- include ("./partials/header.ejs") %>
-<body>
+    <body>
         <br>
-        <div class="product1">
+        <div class="productm">
             <div class="product-image">
-                <img src="../IMAGES/<%=product.img %>" alt="Panadol">
+                <img src="/IMAGES/<%= prod.img %>" alt="<%= %>">
             </div>
             <div class="product-details">
-                <h2><%= product.product_name %></h2>
-                <h3 class="price"><%= product.product_newprice %></h3>
+                <h2><%= prod.product_name %></h2>
+                <h3 class="price"><%= prod.product_newprice %></h3>
                 <hr>
                 <br>
                 <p class="title1">Active Ingredient:</p>
-                <span>Paracetamol (Acetaminophen)</span>
+                <span><%= prod.active_ingredient %></span>
                 <br>
                 <br>
                 <p class="title1">Side Effect:</p>
-                <p><%= product.side_effect %></p>
+                <p><%= prod.side_effect %></p>
                 <button class="btnm">Add To Cart</button>
             </div>
         </div>
         <%- include ("./partials/footer.ejs") %>
-        </body><body>
-            
-        </body>>
+    </body>>
 </html>
