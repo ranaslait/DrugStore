@@ -169,6 +169,7 @@ body{
   
   .box__footer a:hover{
     opacity: 0.8;
+    color: #17242a;
   }
   
   .box__footer a .fab{
@@ -182,6 +183,7 @@ body{
     text-align: center;
     /*padding: 0px 40px;*/
     margin: 0;
+    margin-top: -20px;
   }
   
   .box__copyright p{
@@ -190,8 +192,7 @@ body{
   }
   
   .box__copyright hr{
-    border: none;
-    
+    /* border: none; */
     background-color: #ffffff;
   }
 
