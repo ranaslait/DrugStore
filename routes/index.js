@@ -3,12 +3,13 @@ const router=express.Router();
 // const fr=require("../models/Search");
 // const srch1=require("../controllers/Index");
 const Index=require("../controllers/Index");
-
+// const { searchProducts } = require('../controllers/products')
 
 router.get("/",function(req,res){
    res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
 
    });
+   // router.get('/search', searchProducts);
 
 //    router.get('/srch', (req, res) => {
 //       res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
@@ -58,6 +59,9 @@ router.get('/cart', (req, res) => {
 //  router.get('/adminheader', (req, res) => {
 //     res.render('pages/adminheader',{user: (req.session.user === undefined ? "" : req.session.user) });
 //  });
+
+
+
  router.get('/404', (req, res) => {
     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
