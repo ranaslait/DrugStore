@@ -314,7 +314,7 @@ body{
     width: 150px;
     opacity: 0;
     transition: .5s ease;
-    background-color: #0e9bba;
+    background-color: #00b18f;
     color: white;
   }
   
@@ -428,8 +428,8 @@ body{
   .add-btnr {
     width: 100%;
     background-color: transparent;
-    border: 2px solid #f2a80b;
-    color: #f2a80b;
+    border: 2px solid #00b18f;
+    color: #00b18f;
     font-family: inherit;
     font-size: 0.9rem;
     padding: 0.4rem;
