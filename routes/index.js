@@ -28,8 +28,8 @@ router.get('/checkout', (req, res) => {
 
 //mawgodeen fel user routes
 //login in & sign up routes
-// router.get('/login', (req, res) => {
-//    res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
+//  router.get('/login', (req, res) => {
+//     res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
 // });
 // router.get('/forgotPassword', (req, res) => {
 //    res.render('pages/forgotPassword');
