@@ -1,115 +1,36 @@
 <%- include ("./partials/header.ejs") %>
 <body>
     <div class="wrapper">
-            <div class="title">Skin Care Products</div>
-
+        <div class="title">Skin Care</div>
+           
             <div class="products">
+                <% if (products.length > 0) { %>
+                    <% products.forEach(product => { %>
                 <div class="product-container">
-                        <img src="../IMAGES/panadol.jpg">
+                    <img src="/IMAGES/<%=product.img %>" alt="<%= %>">
                     <div class="product">
-                        <a href="productDetails.html" title="Panadol 500 mg 24 Tablets" class="item">Panadol 500 mg 24 Tablets </a>
-                        <h5 class="price">34.00 EGP</h5>
+                        <a href="/skincare/productDetails/<%=product.id%>" title="<%= %>" class="product-title"> <%= product.product_name %> </a>
+                        <h5 class="price"><%= product.product_newprice %></h5>
                         <button class="btnm">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product-container">
-                        <img src="../IMAGES/Brufen.jpg">
-                    <div class="product">
-                        <a href="productDetails.html" title="Brufen 400 mg 30 Tablet" class="item">Brufen 400 mg 30 Tablet </a>
-                        <h5 class="price">38.00 EGP</h5>
-                        <button class="btnm">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-container">
-                    <img src="../IMAGES/Genuphil.jpg">
-                <div class="product">
-                    <a href="productDetails.html" title="Genuphil original 50 tablets" class="item">Genuphil original 50 tablets </a>
-                    <h5 class="price">150.00 EGP</h5>
-                    <button class="btnm">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/voltaren.jpeg">
-            <div class="product">
-                <a href="productDetails.html" title="Voltaren 1% Emulgel 100 gm" class="item">Voltaren 1% Emulgel 100 gm </a>
-                <h5 class="price">45.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/milga.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Milga Advance 30 tablets" class="item">Milga Advance 30 tablets </a>
-                <h5 class="price">75.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/strepsils.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Strepsils Honey & lemon 24 Lozenges" class="item">Strepsils Honey & lemon 24 Lozenges </a>
-                <h5 class="price">115.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/Telfast.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Telfast 180mg 20 tablets" class="item">Telfast 180mg 20 tablets </a>
-                <h5 class="price">75.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/Cataflam.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Cataflam 50 mg 20 tablets" class="item">Cataflam 50 mg 20 tablets </a>
-                <h5 class="price">43.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/terramycin.jpeg">
-            <div class="product">
-                <a href="productDetails.html" title="Terramycin cream 5 gm" class="item">Terramycin cream 5 gm </a>
-                <h5 class="price">10.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/polyfresh1.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
-                <h5 class="price">33.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/polyfresh1.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
-                <h5 class="price">33.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/polyfresh1.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
-                <h5 class="price">33.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
-            <div class="product-container">
-                <img src="../IMAGES/polyfresh1.jpg">
-            <div class="product">
-                <a href="productDetails.html" title="Polyfresh 0.2% eye drops 10 ml" class="item">Polyfresh 0.2% eye drops 10 ml </a>
-                <h5 class="price">33.00 EGP</h5>
-                <button class="btnm">Add to Cart</button>
-            </div>
-            </div>
+                <% }) %>
+            <% } else{ %>
+                <p>There is no products to display....</p>
+                <% } %>
+            </div> 
             
+            <ul class="pagination">
+                <% if (pages > 0) { %>
+                    <% for(let i = 1; i <= pages; i++) { %>
+                        <li class="<%= current == i ? 'active' : '' %>">
+                        <a href="/skincare?page=<%= i %>"><%= i %></a>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
     </div>
+    
     <%- include ("./partials/footer.ejs") %>
 </body>
 

@@ -194,23 +194,21 @@ body{
     
     background-color: #ffffff;
   }
+
   .title {
-  
     font-size: 40px;
+    font-weight: bold;
     text-align: center;
     color:#3AAFA9;
     margin-top: 1rem;
-  
   }
+
   .sub-title {
     text-align: center;
     color: rgb(203, 203, 79);
     font-size: 35px;
     top: auto;
-  
   }
-  
-  
   
   *::after,
   *::before {
@@ -361,10 +359,6 @@ body{
     margin: 10% 0;
   }
   
-  /* .container2 {
-    display: flex;
-  } */
-  
   .title::after {
     content: "";
     position: absolute;
@@ -377,14 +371,7 @@ body{
     width: 200px;
     background-color: #000;
   }
-  
-  /* .product1 {
-    max-width: 1170px;
-    padding: 1rem;
-    margin: 7rem auto;
-    margin: 70%;
-  } */
-  
+  /* ----------------Old style-------------------- */
   .product-container1{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -509,7 +496,8 @@ body{
   .latest-offers h1{
     text-align: center;
     color:#3AAFA9;
-    font-size: 36px;
+    font-size: 40px;
+    font-weight: bold;
   }
   
   .products{
@@ -525,7 +513,7 @@ body{
   
   .latest-offers p{
     text-align: center;
-    font-size: 20px;
+    font-size: 35px;
     color: rgb(203, 203, 79);
   }
   
@@ -600,7 +588,7 @@ body{
     background-color: #3AAFA9;
   }
   
-  .product1{
+  .productm{
     display: flex;
     margin: 100px;
     padding: 20px;
@@ -670,183 +658,6 @@ body{
     background-color: #3AAFA9;
   }
   
-  .filter-items{
-    /* width: 20%; */
-    width: 250px;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.18);
-    border-radius: 10px;
-    box-sizing: border-box;
-  }
-  
-  .filter-items .label-collapse{
-    color: gray;
-    font-size: 27px;
-    font-weight: bold;
-    /* display: inline-block; */
-    padding: 5px 15px;
-    cursor: pointer;
-  }
-  
-  input[type="checkbox"]{
-    display: none;
-  }
-  
-  .filter-items .label-collapse::after {
-    content: '\002B';
-    color: #3AAFA9;
-    font-size: 25px;
-    font-weight: bold;
-    line-height: 1;
-    padding-left: 100px;
-    cursor: pointer;
-  }
-  
-  .brands{
-    position: relative;
-    margin: 0px 10px;
-    line-height: 2;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s;
-  }
-  
-  .filter-items input[type="checkbox"]:checked + label + .brands{
-    max-height: 400px;
-    padding: 10px;
-  }
-  
-  #collapse:checked + label::after{
-    content: "\2212";
-  }
-  
-  .brands label{
-    padding: 15px;
-    font-size: 14px;
-    position: relative;
-    margin: 15px;
-    cursor: pointer;
-  }
-  
-  .brands label::before{
-    content: "";
-    border: 2px solid #3AAFA9;
-    width: 15px;
-    height: 15px;
-    margin: 20px 20px;
-    position: absolute;
-    left: -30px;
-    top: -3px;
-    cursor: pointer;
-  }
-  
-  input[type="checkbox"]:checked + label::before{
-    background-color: #3AAFA9;
-  }
-
-  .prod-container{
-    display: flex;
-  }
-  
-  .left-sidebar{
-    display: flex;
-    flex-direction: column;
-    width:20%;
-    margin: 30px 20px;
-    align-items: center;
-  }
-  
-  .main h1{
-    text-align: center;
-    color:#3AAFA9;
-    font-size: 36px;
-  }
-  
-  .main-container{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-self: flex-start;
-    margin: 0px 10px;
-    padding: 0px 10px;
-    box-sizing: border-box;
-    object-fit: cover;
-  }
-  
-  .main p{
-    text-align: center;
-    font-size: 20px;
-    color: rgb(203, 203, 79);
-  }
-  
-  .m-container{
-    width: 15%;
-    min-width: 250px;
-    min-height: 300px;
-    padding: 10px;
-    margin: 10px;
-    /* border: 1px solid #00000061; */
-    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.18);
-    border-radius: 10px;
-    /* background-color: #f5f5f559; */
-  }
-  
-  .m-container:hover{
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.1);
-    transform: translateY(-10px);
-  }
-  
-  .m-container img{
-    width:100%;
-    border-radius: 10px;
-    cursor:pointer;
-    box-sizing: border-box;
-    object-fit:fill;
-    min-height: 255px;
-  }
-  
-  .m-container a{
-    text-decoration: none;
-  }
-  
-  .m-container .item .s1{
-    color: #2B7A78;
-    font-weight: bold;
-    font-size: 18px;
-    cursor:pointer;
-  }
-  
-  .m-container .item span{
-    font-weight: bold;
-    color: gray;
-    font-size: 14px;
-    display: block;
-  }
-  
-  .m-container .item h5{
-    color: rgba(255, 0, 0, 0.8);
-  }
-  
-  .m-container .item .btns{
-    border: none;
-    font-size: 16px;
-    border-radius: 10px;
-    color:#2B7A78;
-    background-color: #def2f19c;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.20);
-    box-shadow: outset;
-    padding: 5px;
-    margin: 5px;
-    cursor: pointer;
-  }
-  
-  .m-container .item .btns:hover{
-    color: white;
-    background-color: #3AAFA9;
-  }
-  
   .blog{
     margin: 60px 20px;
     padding: 60px 20px;
@@ -875,10 +686,8 @@ body{
     min-height: 300px;
     padding: 10px;
     margin: 10px;
-    /* border: 1px solid #00000061; */
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.18);
     border-radius: 10px;
-    /* background-color: #f5f5f559; */
   }
   
   .article img{
@@ -919,7 +728,7 @@ body{
     font-size: 14px;
   }
   
-  .Article{
+  .Article-s{
     margin: 10% 20%;
     padding: 70px 20px;
     box-sizing: border-box;
@@ -931,7 +740,7 @@ body{
     border-radius: 10px;
   }
   
-  .Article h3{
+  .Article-s h3{
     color:#3AAFA9;
   }
   
@@ -963,7 +772,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px 0;
+    padding: 35px 150px;
     border-radius: 10px;
     text-align: center;
 }
@@ -976,6 +785,29 @@ body{
     margin: 0 4px;
     border: 1px solid rgb(170, 170, 170); /* Adds a border */
 }
+
+.pagination li {
+  margin: 0 5px; /* This line will add space between each page number */
+}
+
+.pagination li a {
+  text-decoration: none;
+  color: #3AAFA9;
+  padding: 8px 16px;
+}
+
+.pagination .active a {
+  background-color: #3AAFA9;
+  color: white;
+}
+
+.products p {
+  text-align: center;
+    font-size: 25px;  
+    font-weight: bold;
+    color: #1e1e1ec5; 
+    padding: 80px;  
+  }
 
   @media screen and (max-width: 1200px) {
     .product-item {

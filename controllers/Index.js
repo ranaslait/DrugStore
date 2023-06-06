@@ -30,4 +30,18 @@ const GetAllProducts = (req, res)=>{
     });
 };
 
-module.exports ={GetAllProducts};
+const GetProduct = (req, res) => {
+    const id = {"_id" : req.params.id};
+    Prod.findOne(id)
+    .then(result => {
+        res.render('pages/productDetails', {prod: result, user: (req.session.user === undefined ? "" : req.session.user)});
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+module.exports ={
+    GetAllProducts,
+    GetProduct
+};
