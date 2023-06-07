@@ -24,12 +24,10 @@ router.get('/registr', (req, res) => {
     res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
  router.post('/login',User.LogIn);
-
- router.post('/registr',User.reg);
- router.post('/checkUN',User.checkUN);
-//  router.post('/forgotPassword',User.sendEmail);
-
- router.post('/updatePassword', User.changePassword);
+  router.post('/registr',User.reg);
+   router.post('/checkUN',User.checkUN);
+  router.post('/checkmail',User.checkmail);
+   router.post('/updatePassword', User.changePassword);
  router.post('/forgotPassword',User.forgotPassword);
  router.post('/resetPassword', User.resetPassword);
  
