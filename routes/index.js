@@ -41,7 +41,7 @@ router.get('/vit/productDetails/:id', Index.GetProduct);
 router.get('/personalcare', Index.GetAllProductspersonalcare);
 router.get('/personalcare/productDetails/:id', Index.GetProduct);
 
-router.get('/makeup', Index.GetAllProducts);
+router.get('/makeup', Index.GetAllProductsmakeup);
 router.get('/makeup/productDetails/:id', Index.GetProduct);
 
 router.get('/skincare', Index.GetAllProducts);
