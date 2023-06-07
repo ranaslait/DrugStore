@@ -56,6 +56,84 @@ const GetAllProductsmedications = (req, res)=>{
         console.log(err);
     });
 };
+const GetAllProductshair = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'hair'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments({ category_name: 'hair' }); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/hair', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
+const GetAllProductsperfume = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'perfume'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments({ category_name: 'perfume' }); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/perfume', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
+const GetAllProductsmother = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'motherbaby'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments({ category_name: 'motherbaby' }); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/motherbaby', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
 
 const GetAllProductsvit = (req, res)=>{
     const page = req.query.page || 1;
@@ -176,11 +254,37 @@ const GetAllProductscleaning = (req, res)=>{
         .exec()
         .then(result => {
             products = result;
-            return Prod.countDocuments(); // Perform the count query
+            return Prod.countDocuments({ category_name: 'cleaning' }); // Perform the count query
         })
         .then(count => {
             const totalNumberOfPages = Math.ceil(count / productsPerPage);
             res.render('pages/cleaning', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
+const GetAllProductsmedical = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'medical'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments({ category_name: 'medical' }); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/medical', {
                 products: products,
                 current: page,
                 pages: totalNumberOfPages,
@@ -228,6 +332,10 @@ module.exports ={
     GetAllProductsmakeup,
     GetAllProductsskincare,
     GetAllProductscleaning,
+    GetAllProductsmother,
+    GetAllProductsperfume,
+    GetAllProductshair,
+    GetAllProductsmedical,
     GetProduct,
     getProductDetail
 };

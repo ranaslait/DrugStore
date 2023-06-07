@@ -32,31 +32,6 @@ const addItemToCart = (req, res) => {
       res.status(500).send('Error adding to cart');
     }
   };
-
-  const updateCartItem = (req, res) => {
-    try {
-      const cartItem = {
-        product: req.body.product,
-        quantity: parseInt(req.body.quantity)
-      };
-  
-      const cartIndex = req.session.cart.findIndex(
-        item => item.product === cartItem.product
-      );
-  
-      if (cartIndex > -1) {
-        req.session.cart[cartIndex].quantity = cartItem.quantity;
-      }
-  
-      const currentUrl = req.headers.referer;
-      const redirectUrl = `${currentUrl}?message=Item added to cart`;
-      res.redirect(redirectUrl);
-    } catch (error) {
-      console.error('Error updating cart item:', error);
-      res.status(500).send('Error updating cart item');
-    }
-  };
-  
   const removeCartItem = (req, res) => {
     try {
       const cartItem = {
@@ -89,6 +64,5 @@ const addItemToCart = (req, res) => {
 module.exports = {
   
   addItemToCart,
-  updateCartItem,
   removeCartItem
 };

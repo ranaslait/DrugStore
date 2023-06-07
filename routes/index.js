@@ -5,7 +5,6 @@ const Prod=require("../models/products");
 const cartController = require('../controllers/cart.controller');
 const cart = require('../models/cart');
 router.post('/add', cartController.addItemToCart);
-router.post('/update', cartController.updateCartItem);
 router.post('/remove', cartController.removeCartItem);
 
 module.exports=router;
@@ -58,16 +57,16 @@ router.get('/skincare/productDetails/:id', Index.GetProduct);
 router.get('/cleaning', Index.GetAllProductscleaning);
 router.get('/cleaning/productDetails/:id', Index.GetProduct);
 
-router.get('/motherbaby', Index.GetAllProducts);
+router.get('/motherbaby', Index.GetAllProductsmother);
 router.get('/motherbaby/productDetails/:id', Index.GetProduct);
 
-router.get('/medical', Index.GetAllProducts);
+router.get('/medical', Index.GetAllProductsmedical);
 router.get('/medical/productDetails/:id', Index.GetProduct);
 
-router.get('/hair', Index.GetAllProducts);
+router.get('/hair', Index.GetAllProductshair);
 router.get('/hair/productDetails/:id', Index.GetProduct);
 
-router.get('/perfume', Index.GetAllProducts);
+router.get('/perfume', Index.GetAllProductsperfume);
 router.get('/perfume/productDetails/:id', Index.GetProduct);
 
 //Error
@@ -103,9 +102,4 @@ router.get('/perfume/productDetails/:id', Index.GetProduct);
    res.render('pages/checkout', { user: (req.session.user === undefined ? "" : req.session.user),
    cart: (req.session.cart === undefined ? "" : req.session.cart)  })
  })
-//  app.get('/addtocart', (req, res) => {
- 
-//    res.render('/partials/addtocart', { user: (req.session.user === undefined ? "" : req.session.user),
-//    cart: (req.session.cart === undefined ? "" : req.session.cart)  })
-//  })
  module.exports=router

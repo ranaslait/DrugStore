@@ -1,10 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
-
-
 const router=express.Router();
 router.use(bodyParser.json());
-
 var cookieParser = require('cookie-parser');
 const User = require("../controllers/User");
 
@@ -27,7 +24,6 @@ router.get('/registr', (req, res) => {
   router.post('/registr',User.reg);
    router.post('/checkUN',User.checkUN);
   router.post('/checkmail',User.checkmail);
-   router.post('/updatePassword', User.changePassword);
  router.post('/forgotPassword',User.forgotPassword);
  router.post('/resetPassword', User.resetPassword);
  
