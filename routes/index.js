@@ -32,7 +32,7 @@ router.get('/checkout', (req, res) => {
 });
 
 //categories routes
-router.get('/medications', Index.GetAllProducts);
+router.get('/medications', Index.GetAllProductsmedications);
 router.get('/medications/productDetails/:id', Index.GetProduct);
 
 router.get('/vit', Index.GetAllProducts);

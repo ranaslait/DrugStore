@@ -3,7 +3,7 @@ const User=require('../models/users');
 const path= require('path');
 const fs=require('fs');
 
-const GetAllProducts = (req, res)=>{
+const GetAllProductsmedications = (req, res)=>{
     const page = req.query.page || 1;
     const productsPerPage = 2;
     let products = [];
@@ -42,6 +42,6 @@ const GetProduct = (req, res) => {
 };
 
 module.exports ={
-    GetAllProducts,
+    GetAllProductsmedications,
     GetProduct
 };
