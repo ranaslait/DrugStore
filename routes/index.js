@@ -2,7 +2,13 @@ const express=require("express");
 const router=express.Router();
 const Index=require("../controllers/Index");
 const Prod=require("../models/products");
+const cartController = require('../controllers/cart.controller');
+const cart = require('../models/cart');
+router.post('/add', cartController.addItemToCart);
+router.post('/update', cartController.updateCartItem);
+router.post('/remove', cartController.removeCartItem);
 
+module.exports=router;
 //Home page
 router.get("/",function(req,res){
    res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
@@ -23,11 +29,12 @@ res.render('pages/index',{user: (req.session.user === undefined ? "" : req.sessi
     res.render('pages/blog',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
 router.get('/cart', (req, res) => {
-    res.render('pages/cart',{user: (req.session.user === undefined ? "" : req.session.user) });
+    res.render('pages/cart', { user: (req.session.user === undefined ? "" : req.session.user),
+    cart: (req.session.cart === undefined ? "" : req.session.cart)  });
  });
-router.get('/checkout', (req, res) => {
-    res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+// router.get('/checkout', (req, res) => {
+//     res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
  router.get('/load', (req, res) => {
    res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
 });
@@ -92,5 +99,13 @@ router.get('/perfume/productDetails/:id', Index.GetProduct);
       res.send({ payload: [] });
     }
   });
+  router.get('/checkout', (req, res) => {
+   res.render('pages/checkout', { user: (req.session.user === undefined ? "" : req.session.user),
+   cart: (req.session.cart === undefined ? "" : req.session.cart)  })
+ })
+//  app.get('/addtocart', (req, res) => {
  
+//    res.render('/partials/addtocart', { user: (req.session.user === undefined ? "" : req.session.user),
+//    cart: (req.session.cart === undefined ? "" : req.session.cart)  })
+//  })
  module.exports=router
