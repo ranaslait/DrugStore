@@ -1,6 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const Index=require("../controllers/Index");
+const Prod=require("../models/products");
 
 //Home page
 router.get("/",function(req,res){
@@ -66,6 +67,30 @@ router.get('/perfume/productDetails/:id', Index.GetProduct);
  router.get('/404', (req, res) => {
     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-
+ router.get('/bsearch',(req,res)=>{
+   res.render('bsearch');
+  })
+  
+  router.post('/bsearch', async (req, res) => {
+    let payload = req.body.payload.trim();
+    try {
+      let prodsearch = await Prod.find({
+      
+         product_name: { $regex: new RegExp('^' + payload + '.*', 'i')}
+      }).exec();
+  
+      if (prodsearch) {
+        // Limit search results to 3
+        prodsearch = prodsearch.slice(0, 3);
+        res.send({ payload: prodsearch });
+      } else {
+        // Handle the case when prodsearch is undefined
+        res.send({ payload: [] });
+      }
+    } catch (error) {
+      console.log('Error in search:', error);
+      res.send({ payload: [] });
+    }
+  });
  
  module.exports=router

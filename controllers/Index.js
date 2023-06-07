@@ -202,6 +202,23 @@ const GetProduct = (req, res) => {
       console.log(err);
     });
 };
+const getProductDetail = (req, res, next) => {
+    const productId = req.params.id;
+  
+    Prod.findById(productId)
+      .then(product => {
+        if (!product) {
+          const error = new Error('Product not found');
+          error.statusCode = 404;
+          throw error;
+        }
+  
+        res.render('productdetail', { product });
+      })
+      .catch(err => {
+        next(err);
+      });
+  };
 
 module.exports ={
     GetAllProducts,
@@ -211,5 +228,6 @@ module.exports ={
     GetAllProductsmakeup,
     GetAllProductsskincare,
     GetAllProductscleaning,
-    GetProduct
+    GetProduct,
+    getProductDetail
 };

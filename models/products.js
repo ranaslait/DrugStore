@@ -7,11 +7,11 @@ const productSchema = new Schema({
     },
     side_effect: {
         type: String,
-        required: true
+        required: false
     },
     active_ingredient: {
         type: String,
-        required: true
+        required: false
     },
     product_name: {
         type: String,
@@ -23,21 +23,23 @@ const productSchema = new Schema({
     },
     product_newprice: {
         type: String,
-        required: true
+        required: false
     },
     img: {
         type: String,
         required: true
-    }, latestOffer: {
+    },
+    latestOffer: {
         type: String,
-        required: true
+        required: false
     },
     inStock:{
         type: String,
         required: true
-    },bestSeller:{
+    },
+    bestSeller:{
         type: String,
-        required: true
+        required: false
     }
 
 });

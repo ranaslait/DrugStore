@@ -36,6 +36,22 @@ const checkUN = (req, res) => {
         });
 };
 
+const checkmail = (req, res) => {
+    var query1 = { email: req.body.email };
+    User.find(query1)
+        .then(result1 => {
+            if (result1.length > 0) {
+                res.send('taken');
+            }
+            else {
+                res.send('available');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 const LogIn = async (req, res) => {
     try {
         const body = req.body;
@@ -190,5 +206,7 @@ module.exports = {
     LogIn,
     changePassword,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    checkmail
+    
 };
