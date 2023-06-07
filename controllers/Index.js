@@ -41,7 +41,7 @@ const GetAllProductsmedications = (req, res)=>{
         .exec()
         .then(result => {
             products = result;
-            return Prod.countDocuments(); // Perform the count query
+            return Prod.countDocuments({ category_name: 'medications' }); // Perform the count query
         })
         .then(count => {
             const totalNumberOfPages = Math.ceil(count / productsPerPage);
@@ -68,7 +68,7 @@ const GetAllProductsvit = (req, res)=>{
         .exec()
         .then(result => {
             products = result;
-            return Prod.countDocuments(); // Perform the count query
+            return Prod.countDocuments({ category_name: 'vit' }); // Perform the count query
         })
         .then(count => {
             const totalNumberOfPages = Math.ceil(count / productsPerPage);
@@ -95,7 +95,7 @@ const GetAllProductspersonalcare = (req, res)=>{
         .exec()
         .then(result => {
             products = result;
-            return Prod.countDocuments(); // Perform the count query
+            return Prod.countDocuments({ category_name: 'personalcare' }); // Perform the count query
         })
         .then(count => {
             const totalNumberOfPages = Math.ceil(count / productsPerPage);
@@ -122,7 +122,7 @@ const GetAllProductsmakeup = (req, res)=>{
         .exec()
         .then(result => {
             products = result;
-            return Prod.countDocuments(); // Perform the count query
+            return Prod.countDocuments({ category_name: 'makeup' }); // Perform the count query
         })
         .then(count => {
             const totalNumberOfPages = Math.ceil(count / productsPerPage);
@@ -149,7 +149,7 @@ const GetAllProductsskincare = (req, res)=>{
         .exec()
         .then(result => {
             products = result;
-            return Prod.countDocuments(); // Perform the count query
+            return Prod.countDocuments({ category_name: 'skincare' }); // Perform the count query
         })
         .then(count => {
             const totalNumberOfPages = Math.ceil(count / productsPerPage);
