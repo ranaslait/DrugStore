@@ -11,18 +11,7 @@
                     <div class="product">
                         <a href="/hair/productDetails/<%=product.id%>" title="<%= %>" class="product-title"> <%= product.product_name %> </a>
                         <h5 class="price"><%= product.product_newprice %></h5>
-                        <!-- <button class="btnm">Add to Cart</button> -->
-                        <form action="/add" method="post">
-                            
-                            <input type="hidden" name="product" value="<%= product._id %>">
-                            <input type="hidden" name="name" value="<%= product.product_name %>">
-                            <input type="hidden" name="price" value="<%= product.product_price %>">
-                            <input type="hidden" name="image" value="/imgs/uploads/<%= product.img%>">
-                            <input type="number" name="quantity" value="1" hidden>
-                            
-
-                           <button class="addtocart" type="submit">ADD TO CART</button>
-                          </form>
+                        <button class="btnm">Add to Cart</button>
                     </div>
                 </div>
                 <% }) %>
