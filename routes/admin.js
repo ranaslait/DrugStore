@@ -34,6 +34,7 @@ router.get("/team", (req, res) => {
     //  res.render('pages/team', {users: result, user: (req.session.user === undefined ? "" : req.session.user)});
 
 });
+router.get("/products", Admin.ViewAllProducts);
 
 router.post("/addproduct", Admin.Addpro);
 router.get("/toAdmin/:id",Admin.toAdmin);

@@ -1,0 +1,144 @@
+<body>
+    
+    <style>
+        .title{
+            margin: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .products{
+            display: flex;
+            justify-content: center;
+            align-content: flex-start;
+            flex-wrap: wrap;
+            margin: 0px 10px;
+            padding: 0px 10px;
+            box-sizing: border-box;
+            object-fit: cover;
+        }
+        .product-container{ 
+            width: 15%;
+            width: 250px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.18);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .product-container img{
+            width:100%;
+            border-radius: 10px;
+            cursor:pointer;
+            object-fit: fill;
+            min-height: 255px;
+        }
+        
+        .product-container a{
+            text-decoration: none;
+        }
+        
+        .product .item{
+            color: #2B7A78;
+            font-weight: bold;
+            font-size: 18px;
+            cursor:pointer;
+        }
+        
+        .product span{
+            font-weight: bold;
+            color: gray;
+            font-size: 14px;
+            display: block;
+        }
+        
+        .product h5{
+            color: rgba(255, 0, 0, 0.8);
+        }
+        
+        .product .btnm{
+            border: none;
+            font-size: 16px;
+            border-radius: 10px;
+            color:#2B7A78;
+            background-color: #def2f19c;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.20);
+            box-shadow: outset;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+        .product .btnm:hover{
+            color: white;
+            background-color: #3AAFA9;
+        }
+        .pagination{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 35px 150px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .pagination a {
+            color: #3AAFA9;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 4px;
+            border: 1px solid rgb(170, 170, 170); /* Adds a border */
+        }
+
+        .pagination li {
+            margin: 0 5px; /* This line will add space between each page number */
+        }
+
+        .pagination li a {
+            text-decoration: none;
+            color: #3AAFA9;
+            padding: 8px 16px;
+        }
+
+        .pagination .active a {
+            background-color: #3AAFA9;
+            color: white;
+        }
+    </style>
+    <%- include ("./partials/adminsidebar.ejs") %>
+    <%- include ("./partials/adminheader.ejs") %>
+    <div class="wrapper">
+        <div class="title">Products</div>
+            <div class="products">
+                <% if (products.length > 0) { %>
+                    <% products.forEach(product => { %>
+                <div class="product-container">
+                    <img src="/IMAGES/<%=product.img %>" alt="<%= %>">
+                    <div class="product">
+                        <a href="/products/productDetails/<%=product.id%>" title="<%= %>" class="product-title"> <%= product.product_name %> </a>
+                        <h5 class="price"><%= product.product_newprice %></h5>
+                        <button class="btnm">Edit</button>
+                        <button class="btnm">Delete</button>
+                    </div>
+                </div>
+                <% }) %>
+            <% } else{ %>
+                <p>There is no products to display....</p>
+                <% } %>
+            </div> 
+            
+            <ul class="pagination">
+                <% if (pages > 0) { %>
+                    <% for(let i = 1; i <= pages; i++) { %>
+                        <li class="<%= current == i ? 'active' : '' %>">
+                        <a href="/admin/products?page=<%= i %>"><%= i %></a>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+    </div>
+</body>
