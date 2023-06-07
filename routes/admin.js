@@ -29,6 +29,11 @@ router.get("/index",function(req,res){
 router.get("/addproduct", (req, res) => {
     res.render('pages/addproduct',{user: (req.session.user === undefined ? "" : req.session.user) });
 });
+router.get("/team", (req, res) => {
+    res.render('pages/team',{user: (req.session.user === undefined ? "" : req.session.user) });
+    //  res.render('pages/team', {users: result, user: (req.session.user === undefined ? "" : req.session.user)});
+
+});
 
 router.post("/addproduct", Admin.Addpro);
 router.get("/toAdmin/:id",Admin.toAdmin);
@@ -42,6 +47,5 @@ router.get('/logout', (req, res) => {
 router.get('/404', (req, res) => {
     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-
 
 module.exports=router;

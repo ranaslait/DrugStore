@@ -5,14 +5,64 @@
     <link rel="stylesheet" href="../css/admin.css">
     <!-- add icon link -->
     <link rel = "icon" href = "../IMAGES/logo.png" type = "image/x-icon">
-    
+  <style>
+    .lnks:hover .mega-box-content {
+        z-index: 10;
+    }
+    .dropbtn {
+       
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        color: navy;
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown-content a:hover {
+      color: navy;}
+      
+      .dropdown:hover .dropbtn {background-color: white;color: navy;}
+    </style>  
 </head>
 <section id="content">
     <!-- NAVBAR -->
     <nav>
         <i class='bx bx-menu' ></i>
-        <a href="#" class="nav-link">Categories</a>
-        <form action="#">
+        <li class="lnks">
+            <div class="dropdown">
+                <button class="dropbtn">Categories</button>
+                <div class="dropdown-content">
+                    <a href="/admin/medications">Medications</a>
+                    <a href="/admin/vit">Vitamins</a>
+                    <a href="/admin/personalcare">Personal Care</a>
+                    <a href="/admin/makeup">Beauty Products</a>
+                    <a href="/admin/skincare">Skin Care</a>
+                    <a href="/admin/cleaning">Cleaning Products</a>
+                    <a href="/admin/motherbaby">Mother Baby Care</a>
+                    <a href="/admin/hair">Hair Care</a>
+                    <a href="/admin/perfume">Perfumes</a>
+                </div>
+        </li>        <form action="#">
             <div class="form-input">
                 <input type="search" placeholder="Search...">
                 <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
