@@ -36,7 +36,11 @@ router.get("/team", (req, res) => {
 });
 router.get("/products", Admin.ViewAllProducts);
 
+router.get("/editproduct/:id", Admin.ViewProduct);
+router.post("/editproduct/:id", Admin.EditProduct);
 router.post("/addproduct", Admin.Addpro);
+
+
 router.get("/toAdmin/:id",Admin.toAdmin);
 
 router.get('/logout', (req, res) => {

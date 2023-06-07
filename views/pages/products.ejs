@@ -121,8 +121,10 @@
                     <div class="product">
                         <a href="/products/productDetails/<%=product.id%>" title="<%= %>" class="product-title"> <%= product.product_name %> </a>
                         <h5 class="price"><%= product.product_newprice %></h5>
-                        <button class="btnm">Edit</button>
-                        <button class="btnm">Delete</button>
+                        <a href="/admin/editproduct/<%=product.id%>" class="btnm">Edit</a>
+                        <a href="/admin/editproduct/<%=product.id%>" class="btnm">Delete</a>
+                        <!-- <button class="btnm">Edit</button>
+                        <button class="btnm">Delete</button> -->
                     </div>
                 </div>
                 <% }) %>

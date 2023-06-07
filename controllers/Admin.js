@@ -71,8 +71,31 @@ const ViewAllProducts = (req, res)=>{
       console.log(err);
   });
 };
+
+const ViewProduct = (req, res) => {
+  Prod.findOne({_id: req.params.id})
+  .then(result => {
+    res.render('pages/editproduct', {product: result, user: (req.session.user === undefined ? "" : req.session.user)});
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
+const EditProduct = (req, res) => {
+  Prod.findByIdAndUpdate({_id: req.params.id}, {side_effect: req.body.side_effect , active_ingredient: req.body.active_ingredient, product_name: req.body.product_name, product_price: req.body.product_price, product_newprice: req.body.product_newprice})
+  .then(result => {
+    res.redirect('/admin/products');
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
 module.exports = {
   toAdmin,
   Addpro,
-  ViewAllProducts
+  ViewAllProducts,
+  ViewProduct,
+  EditProduct
 };
