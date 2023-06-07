@@ -59,6 +59,10 @@ router.get("/products", Admin.ViewAllProducts);
 
 router.get("/editproduct/:id", Admin.ViewProduct);
 router.post("/editproduct/:id", Admin.EditProduct);
+
+router.get("/deleteproduct/:id", Admin.ViewProduct);
+router.post("/deleteproduct/:id", Admin.DeleteProduct);
+
 router.post("/addproduct", Admin.Addpro);
 
 

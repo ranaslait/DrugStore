@@ -92,10 +92,21 @@ const EditProduct = (req, res) => {
   });
 };
 
+const DeleteProduct = (req, res) => {
+  Prod.findOneAndDelete({_id: req.params.id})
+  .then(result => {
+    res.redirect('/admin/products');
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
 module.exports = {
   toAdmin,
   Addpro,
   ViewAllProducts,
   ViewProduct,
-  EditProduct
+  EditProduct,
+  DeleteProduct
 };

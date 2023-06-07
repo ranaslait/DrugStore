@@ -1,9 +1,9 @@
 
 # Dose pharmcy
 
-This is a sample application that demonstrates an E-commerce website "Drug store" using HTTP,CSS and JS. The application loads 
+This is a sample application that demonstrates an E-commerce website "Drug store" using HTTP,CSS,JS,Node js and express. The application loads 
 products a MongoDB database and displays them. Users can select to display products in a single category. Users can 
-click on any product to get more information including pricing, reviews and rating. Users can select items and 
+click on any product to get more information including pricing. Users can select items and 
 add them to their shopping cart.
 Note:-Some things still in progress
 
@@ -17,22 +17,22 @@ Dose can be [viewed online here](https://heba79.github.io/Dose/HTML/).
 Here are screenshots that show the E-commerce demo application in use.
 
 **Home Page**
-![Home Page](IMAGES/HomePage.jpeg?raw=true "Optional Title")
+![Home Page](/public/IMAGES/HomePage.jpeg?raw=true "Optional Title")
 
 ---
 
 **One of the categories Page**
-![Category](IMAGES/Category.png?raw=true "Optional Title")
+![Category](/public/IMAGES/Category.png?raw=true "Optional Title")
 
 ---
 
 **Item Detail Page**
-![Item Detail](IMAGES/productsDetails.png?raw=true "Optional Title")
+![Item Detail](/public/IMAGES/productsDetails.png?raw=true "Optional Title")
 
 ---
 
 **Categories**
-![Categories](IMAGES/Categories.png?raw=true "Optional Title")
+![Categories](/public/IMAGES/Categories.png?raw=true "Optional Title")
 
 
 ## Getting Started
