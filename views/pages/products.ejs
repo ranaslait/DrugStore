@@ -1,9 +1,9 @@
+
 <body>
-    
     <style>
         .title{
             margin: 10px;
-            font-size: 25px;
+            font-size: 30px;
             font-weight: bold;
             text-align: center;
         }
@@ -37,26 +37,17 @@
             min-height: 255px;
         }
         
-        .product-container a{
-            text-decoration: none;
+        .product-container p{
+            margin: 5px;
+            padding: 5px;
+            font-size: 17px;
         }
         
-        .product .item{
-            color: #2B7A78;
-            font-weight: bold;
-            font-size: 18px;
-            cursor:pointer;
-        }
-        
-        .product span{
-            font-weight: bold;
-            color: gray;
-            font-size: 14px;
-            display: block;
-        }
-        
-        .product h5{
+        .product-container h5{
             color: rgba(255, 0, 0, 0.8);
+            margin: 5px;
+            padding: 5px;
+            font-size: 15px;
         }
         
         .product .btnm{
@@ -119,12 +110,10 @@
                 <div class="product-container">
                     <img src="/IMAGES/<%=product.img %>" alt="<%= %>">
                     <div class="product">
-                        <a href="/products/productDetails/<%=product.id%>" title="<%= %>" class="product-title"> <%= product.product_name %> </a>
-                        <h5 class="price"><%= product.product_newprice %></h5>
+                        <p class="product-title"> <%= product.product_name %> </p>
+                        <h5 class="price"><%= product.product_price %></h5>
                         <a href="/admin/editproduct/<%=product.id%>" class="btnm">Edit</a>
-                        <a href="/admin/editproduct/<%=product.id%>" class="btnm">Delete</a>
-                        <!-- <button class="btnm">Edit</button>
-                        <button class="btnm">Delete</button> -->
+                        <a href="/admin/deleteproduct/<%=product.id%>" class="btnm">Delete</a>
                     </div>
                 </div>
                 <% }) %>
