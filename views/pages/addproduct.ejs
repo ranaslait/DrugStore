@@ -1,95 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title></title>
     <!-- add icon link -->
-    <link rel="icon" href="../IMAGES/logo.png" type="image/x-icon">
+    <link rel = "icon" href = "../IMAGES/logo.png" type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%- include ("./partials/adminheader.ejs") %>
 
 </head>
-
 <body>
-    <%- include ("./partials/adminsidebar.ejs") %>
-
-        <h1>Add a New Product</h1>
-        <form method="post">
-            <div class="form-group">
-                <label>choose category</label>
-                <select id="category_name" name="category_name">
-                    <option value="1">Select category:</option>
-                    <option value="medications">medications</option>
-                    <option value="vit">vitamins</option>
-                    <option value="personalcare">personal care</option>
-                    <option value="makeup">beauty products</option>
-                    <option value="skincare">skin care</option>
-                    <option value="cleaning">cleaning products</option>
-                    <option value="motherbaby">mother/baby</option>
-                    <option value="medical">medical suplments</option>
-                    <option value="hair">hair care</option>
-                    <option value="perfume">perfumes</option>
-
-                </select>
+  
+  <%- include ("./partials/adminsidebar.ejs") %>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-offset-3">
+                <h1>Add a New Product</h1>
+                <form method="post">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group" >
+                                <label>choose category</label>
+                                <select id="category_name" name="category_name">
+                                  <option value="1">Select category:</option>
+                                  <option value="2">medications</option>
+                                  <option value="3">vitamins</option>
+                                  <option value="4">personal care</option>
+                                  <option value="5">beauty products</option>
+                                    <option value="6">skin care</option>
+                                    <option value="7">cleaning products</option>
+                                    <option value="8">mother/baby</option>
+                                    <option value="9">medical suplments</option>
+                                  <option value="10">hair care</option>
+                                   <option value="11">perfumes</option>
+                                
+                                </select>
+                              </div>
+                            <div class="form-group">
+                              <label>add side effect:</label>
+                              <input type="text" id="side_effect" class="form-control" name="side_effect">
+                              </div>
+                              <div class="form-group">
+                                <label>Active Ingredient: :</label>
+                                <input type="text" id="active_ingredient" class="form-control" name="active_ingredient">
+                                </div>
+                            <div class="form-group">
+                                <label for="product_name">Product Name: </label>
+                                <input type="text" id="product_name" class="form-control" name="product_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="product_price">Product Price: </label>
+                                <input type="text" id="product_price" class="form-control" name="product_price">
+                            </div>
+                             <div class="form-group">
+                                <label for="product_newprice">Product new Price: </label>
+                                <input type="text" id="product_newprice" class="form-control" name="product_newprice">
+                            </div>
+                            <div class="form-group">
+                            <label>add image:</label>
+                            <input type="file" class="form-control" name="img">
+                            </div>
+                            <button type="submit" class="btn btn-success">Success</button>
+                        </div>
+                        <div class="form-group">
+                            <label>Latest Offer?</label>
+                            <select id="latestOffer" name="latestOffer">
+                                <option value="1">Select:</option>
+                                <option value="2">Yes</option>
+                                <option value="3">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>In Stock?</label>
+                            <select id="inStock" name="inStock">
+                                <option value="1">Select:</option>
+                                <option value="2">Yes</option>
+                                <option value="3">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Best Seller?</label>
+                            <select id="bestSeller" name="bestSeller">
+                                <option value="1">Select:</option>
+                                <option value="2">Yes</option>
+                                <option value="3">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label>add side effect:</label>
-                <input type="text" id="side_effect" class="form-control" name="side_effect">
-            </div>
-            <div class="form-group">
-                <label>Active Ingredient: :</label>
-                <input type="text" id="active_ingredient" class="form-control" name="active_ingredient">
-            </div>
-            <div class="form-group">
-                <label for="product_name">Product Name: </label>
-                <input type="text" id="product_name" class="form-control" name="product_name">
-            </div>
-            <div class="form-group">
-                <label for="product_price">Product Price: </label>
-                <input type="text" id="product_price" class="form-control" name="product_price">
-            </div>
-            <div class="form-group">
-                <label for="product_newprice">Product new Price: </label>
-                <input type="text" id="product_newprice" class="form-control" name="product_newprice">
-            </div>
-            </div>
-            <div class="form-group">
-                <label>add image:</label>
-                <input type="file" class="form-control" name="img" id="img">
-            </div>
-            <div class="form-group">
-                <label>Latest Offer?</label>
-                <select id="latestOffer" name="latestOffer">
-                    <option value="1">Select:</option>
-                    <option value="2">Yes</option>
-                    <option value="3">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>In Stock?</label>
-                <select id="inStock" name="inStock">
-                    <option value="1">Select:</option>
-                    <option value="2">Yes</option>
-                    <option value="3">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Best Seller?</label>
-                <select id="bestSeller" name="bestSeller">
-                    <option value="1">Select:</option>
-                    <option value="2">Yes</option>
-                    <option value="3">No</option>
-                </select>
-            </div>
-
-
-
-
-
-            <button type="submit" class="btn btn-success">Success</button>
-            </div>
-        </form>
-
+        </div>
+    </div>
 </body>
-
 </html>
