@@ -138,7 +138,7 @@ const forgotPassword = async (req, res) => {
                     button: {
                         color: '#33b5e5',
                         text: 'Reset Password',
-                        link: `http://localhost:8081/api/users/resetPassword?token=${token} Link will expire in 10 min`
+                        link: `https://getdose.store/api/users/resetPassword?token=${token} Link will expire in 10 min`
                     },
                 },
             },
