@@ -32,22 +32,22 @@ router.get('/checkout', (req, res) => {
 });
 
 //categories routes
-router.get('/medications', Index.GetAllProducts);
+router.get('/medications', Index.GetAllProductsmedications);
 router.get('/medications/productDetails/:id', Index.GetProduct);
 
-router.get('/vit', Index.GetAllProducts);
+router.get('/vit', Index.GetAllProductsvit);
 router.get('/vit/productDetails/:id', Index.GetProduct);
 
-router.get('/personalcare', Index.GetAllProducts);
+router.get('/personalcare', Index.GetAllProductspersonalcare);
 router.get('/personalcare/productDetails/:id', Index.GetProduct);
 
-router.get('/makeup', Index.GetAllProducts);
+router.get('/makeup', Index.GetAllProductsmakeup);
 router.get('/makeup/productDetails/:id', Index.GetProduct);
 
-router.get('/skincare', Index.GetAllProducts);
+router.get('/skincare', Index.GetAllProductsskincare);
 router.get('/skincare/productDetails/:id', Index.GetProduct);
 
-router.get('/cleaning', Index.GetAllProducts);
+router.get('/cleaning', Index.GetAllProductscleaning);
 router.get('/cleaning/productDetails/:id', Index.GetProduct);
 
 router.get('/motherbaby', Index.GetAllProducts);
