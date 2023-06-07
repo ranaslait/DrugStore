@@ -1,4 +1,293 @@
-<%- include ("./partials/header.ejs") %>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dose Pharmcy</title>
+    <!-- add icon link -->
+    <link rel="icon" href="../IMAGES/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/webpr.css">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Start of Async Drift Code -->
+<script>
+    "use strict";
+    
+    !function() {
+      var t = window.driftt = window.drift = window.driftt || [];
+      if (!t.init) {
+        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+        t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+        t.factory = function(e) {
+          return function() {
+            var n = Array.prototype.slice.call(arguments);
+            return n.unshift(e), t.push(n), t;
+          };
+        }, t.methods.forEach(function(e) {
+          t[e] = t.factory(e);
+        }), t.load = function(t) {
+          var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+          var i = document.getElementsByTagName("script")[0];
+          i.parentNode.insertBefore(o, i);
+        };
+      }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('uyaxr3r7f9sr');
+    </script>
+    <!-- End of Async Drift Code -->
+    <style>
+        #navbar {
+            background-color: #00b18f;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            margin-bottom: 50px;
+            margin-right: 10px;
+        }
+
+        .logo a {
+            text-decoration: none;
+        }
+
+        .logo img {
+            position: fixed;
+            height: 80px;
+            width: 100px;
+            margin: -10px 0px 0px 40px;
+        }
+
+        .navigation-links,
+        .right-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation-links li,
+        .right-links li {
+            margin-right: 10px;
+        }
+
+        .navigation-links li a,
+        .right-links li a {
+            text-decoration: none;
+
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .navigation-links li a:hover,
+        .right-links li a:hover {
+            color: #17242a;
+        }
+
+        .mega-box-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: none;
+            z-index: 5;
+        }
+
+        .lnks:hover .mega-box-content {
+            display: block;
+            z-index: 10;
+        }
+
+        .mega-box-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-box-content ul li {
+            margin-bottom: 5px;
+        }
+
+        .mega-box-content ul li a {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .split a {
+            display: flex;
+            align-items: center;
+        }
+
+        .split i {
+            margin-right: 5px;
+        }
+
+        .lan-main a {
+            text-align: center;
+            background-color: #33bfa4;
+            width: 80px;
+            height: 40px;
+            border-radius: 25px;
+            border: none;
+            color: #fff;
+            font-size: 12px;
+            margin-right: 10px;
+            cursor: pointer;
+            line-height: 40px;
+            margin-top: -15px;
+
+        }
+        .productm{
+    display: flex;
+    margin: 100px;
+    padding: 20px;
+  }
+  
+  .product-image{
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #0000003c;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+  }
+  
+  .product-image img{
+    width:100%;
+    border-radius: 10px;
+  }
+  
+  .product-details{
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .product-details h2{
+    color: #2B7A78;
+  }
+  
+  .product-details h3{
+    color: rgba(255, 0, 0, 0.8);
+  }
+  
+  .product-details p{
+    font-size: 20px;
+    font-weight: bold;
+    color: gray;
+  }
+  
+  .product-details .title1{
+    font-size: 20px;
+    font-weight: bold;
+    color: #3AAFA9;
+  }
+  
+  .product-details span{
+    font-size: 16px;
+    color: gray;
+  }
+  
+  .product-details .btnm{
+    display: block;
+    border: none;
+    font-size: 16px;
+    border-radius: 10px;
+    color:#2B7A78;
+    background-color: #def2f19c;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.20);
+    box-shadow: outset;
+    padding: 5px;
+    margin: 20px;
+    cursor: pointer;
+  }
+  
+  .product-details .btnm:hover{
+    color: white;
+    background-color: #3AAFA9;
+  }
+  
+    </style>
+
+  
+</head>
+
+    <header id="navbar">
+        <nav>
+            <div class="logo">
+                <a href="./index"><img src="../IMAGES/logo.png"></a>
+            </div>
+            <ul class="navigation-links">
+                <li class="lnks">
+                    <div class="dropdown">
+                        <button class="dropbtn">Shop</button>
+                        <div class="dropdown-content">
+                            <a href="./medications">Medications</a>
+                            <a href="./vit">Vitamins</a>
+                            <a href="./personalcare">Personal Care</a>
+                            <a href="./makeup">Beauty Products</a>
+                            <a href="./skincare">Skin Care</a>
+                            <a href="./cleaning">Cleaning Products</a>
+                            <a href="./motherbaby">Mother Baby Care</a>
+                            <a href="./hair">Hair Care</a>
+                            <a href="./perfume">Perfumes</a>
+                        </div>
+                </li>
+                
+                <li><a href="./blog">Blog</a></li>
+                <li><a href="./about">About Us</a></li>
+               
+                  <li><a href="#">  <input type="text" placeholder="Search Products" id="searchInput"></a></li>
+                  
+            </ul>
+            <ul class="right-links">
+                <li class="lan-main">
+                    <div id="google_translate_element"></div>
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                        }
+                    </script>
+                </li>
+                <!-- Check if the user variable exists -->
+                <% if ( user==='' ) { %>
+                    <li class="split"><a href="/user/login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+                    <% } else { %>
+                        <% if ( user.type==='admin' ) { %>
+                            <li class="split"><a href="./admin"><i class="fa fa-fw fa-user"></i>Admin</a></li>
+                            <% } %>
+                              
+                                <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Your Cart</a>
+                                </li>
+                                <li class="split"><a href="/user/logout"><i class="fa fa-fw fa-user"></i>Logout</a>
+                                </li>
+                                <li class="split"><a href="#">Welcome <%= user.name %></a></li>
+                                <% } %>
+            </ul>
+            </ul>
+            <!-- <script src="/js/ajax-search.js"></script> -->
+        </nav>
+    </header>
     <body>
         <br>
         <div class="productm">
@@ -20,6 +309,42 @@
                 <button class="btnm">Add To Cart</button>
             </div>
         </div>
-        <%- include ("./partials/footer.ejs") %>
+        <div>
+            <footer id="ft">
+                <div class="container__footer">
+                    <div class="box__footer">
+                        <div class="logo2">
+                            <img src="../IMAGES/logo.png" alt="">
+                        </div>
+                    </div>
+                    <div class="box__footer">
+                        <h2>Contacts</h2>
+                        <a href="https://www.google.com">Ddose0725@gmail.com</a>
+                        <a href="#">Hotline | 1234</a>
+                        <a href="#">Phone:- +201057324491</a>
+                        <a href="#">Branches</a>
+                    </div>
+                    <div class="box__footer">
+                        <h2>Orders</h2>
+                        <a href="#">Shipping & Delivery</a>
+                        <a href="#">Return & Exchange</a>
+                        <a href="#">Payment</a>
+                        <a href="#">Previous Orders</a>
+                    </div>
+                    <div class="box__footer">
+                        <h2>Find Us</h2>
+                        <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
+                        <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
+                        <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
+                        <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
+                    </div>
+                </div>
+                <div class="box__copyright">
+                   <hr>
+                    <p> © 2023 <b>Dose Pharmcy</b></p>
+                </div>
+                </div>
+            </footer>
+            
     </body>>
 </html>

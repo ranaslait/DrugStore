@@ -1,25 +1,17 @@
 const express=require("express");
 const router=express.Router();
-// const fr=require("../models/Search");
-// const srch1=require("../controllers/Index");
 const Index=require("../controllers/Index");
-// const { searchProducts } = require('../controllers/products')
 
+//Home page
 router.get("/",function(req,res){
    res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
-
    });
-   // router.get('/search', searchProducts);
-
-//    router.get('/srch', (req, res) => {
-//       res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
-//   });
-// router.post('/srch',srch1.srch);
 
 router.get("/index",function(req,res){
 res.render('pages/index',{user: (req.session.user === undefined ? "" : req.session.user) });
-
 });
+
+//Navigation
  router.get('/about', (req, res) => {
     res.render('pages/about',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
@@ -32,28 +24,12 @@ res.render('pages/index',{user: (req.session.user === undefined ? "" : req.sessi
 router.get('/cart', (req, res) => {
     res.render('pages/cart',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
- 
- router.get('/login', (req, res) => {
-    res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
+router.get('/checkout', (req, res) => {
+    res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
- router.get('/forgotPassword', (req, res) => {
-    res.render('pages/forgotPassword');
+ router.get('/load', (req, res) => {
+   res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
 });
- router.get('/registr', (req, res) => {
-    res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
- });
-//  router.get('/adminsidebar', (req, res) => {
-//     res.render('pages/adminsidebar',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
-//  router.get('/admin', (req, res) => {
-//     res.render('pages/admin',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
-//  router.get('/addproduct', (req, res) => {
-//     res.render('pages/addproduct',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
-//  router.get('/adminheader', (req, res) => {
-//     res.render('pages/adminheader',{user: (req.session.user === undefined ? "" : req.session.user) });
-//  });
 
 //categories routes
 router.get('/medications', Index.GetAllProducts);
@@ -86,22 +62,10 @@ router.get('/hair/productDetails/:id', Index.GetProduct);
 router.get('/perfume', Index.GetAllProducts);
 router.get('/perfume/productDetails/:id', Index.GetProduct);
 
-
+//Error
  router.get('/404', (req, res) => {
     res.render('pages/404',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
- router.get('/footer', (req, res) => {
-    res.render('pages/footer',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
 
- router.get('/checkout', (req, res) => {
-    res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
- router.get('/load', (req, res) => {
-   res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
-});
-//  router.get('/getFruits',(req,res)=>{
-//    let payload = req.body.payload.trim();
-//    console.log(payload);
-//     });
+ 
  module.exports=router
