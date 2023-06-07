@@ -29,11 +29,7 @@ router.get("/index",function(req,res){
 router.get("/addproduct", (req, res) => {
     res.render('pages/addproduct',{user: (req.session.user === undefined ? "" : req.session.user) });
 });
-router.get("/team", (req, res) => {
-    res.render('pages/team',{user: (req.session.user === undefined ? "" : req.session.user) });
-    //  res.render('pages/team', {users: result, user: (req.session.user === undefined ? "" : req.session.user)});
 
-});
 router.get("/products", Admin.ViewAllProducts);
 
 router.post("/addproduct", Admin.Addpro);
