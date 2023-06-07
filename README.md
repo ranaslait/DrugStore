@@ -17,22 +17,22 @@ Dose can be [viewed online here](https://heba79.github.io/Dose/HTML/).
 Here are screenshots that show the E-commerce demo application in use.
 
 **Home Page**
-![Home Page](IMAGES/HomePage.jpeg?raw=true "Optional Title")
+![Home Page](/public/IMAGES/HomePage.jpeg?raw=true "Optional Title")
 
 ---
 
 **One of the categories Page**
-![Category](IMAGES/Category.png?raw=true "Optional Title")
+![Category](/public/IMAGES/Category.png?raw=true "Optional Title")
 
 ---
 
 **Item Detail Page**
-![Item Detail](IMAGES/productsDetails.png?raw=true "Optional Title")
+![Item Detail](/public/IMAGES/productsDetails.png?raw=true "Optional Title")
 
 ---
 
 **Categories**
-![Categories](IMAGES/Categories.png?raw=true "Optional Title")
+![Categories](/public/IMAGES/Categories.png?raw=true "Optional Title")
 
 
 ## Getting Started
