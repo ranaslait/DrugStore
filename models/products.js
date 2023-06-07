@@ -29,11 +29,14 @@ const productSchema = new Schema({
         type: String,
         required: true
     }, latestOffer: {
-        type: Boolean,
+        type: String,
         required: true
     },
     inStock:{
-        type: Boolean,
+        type: String,
+        required: true
+    },bestSeller:{
+        type: String,
         required: true
     }
 
