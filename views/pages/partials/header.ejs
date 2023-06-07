@@ -186,8 +186,21 @@
                 
                 <li><a href="./blog">Blog</a></li>
                 <li><a href="./about">About Us</a></li>
-               
-                  <li><a href="#">  <input type="text" placeholder="Search Products" id="searchInput"></a></li>
+                <li>
+                    <a href="#"><i class="fa fa-search"></a></i>
+                    <div class="mega-box">
+                       <div class="content">
+                           <div class="row">
+                                   <input type="text" id="search-box" onkeyup="sendproduct(this)" placeholder="what are you looking for?">     
+                               <div id="prodsearch">
+                               </div>
+                               <script src="../JS/bsearchbar.js"></script>
+                           </div>
+
+                       </div>
+                   </div>
+               </li>
+                  <!-- <li><a href="#">  <input type="text" placeholder="Search Products" id="searchInput"></a></li> -->
                   <!-- <div id="searchResults"></div>
                   <script>
                     $(document).ready(function() {
