@@ -5,7 +5,7 @@ const fs=require('fs');
 
 const GetAllProducts = (req, res)=>{
     const page = req.query.page || 1;
-    const productsPerPage = 2;
+    const productsPerPage = 10;
     let products = [];
     
     Prod.find()
@@ -30,6 +30,114 @@ const GetAllProducts = (req, res)=>{
     });
 };
 
+const GetAllProductsmedications = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'medications'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments(); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/medications', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
+
+const GetAllProductsvit = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'vit'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments(); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/vit', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
+
+const GetAllProductspersonalcare = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'personalcare'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments(); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/personalcare', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
+
+const GetAllProductsmakeup = (req, res)=>{
+    const page = req.query.page || 1;
+    const productsPerPage = 10;
+    let products = [];
+    
+    Prod.find({category_name: 'makeup'})
+        .skip((page * productsPerPage) - productsPerPage)
+        .limit(productsPerPage)
+        .exec()
+        .then(result => {
+            products = result;
+            return Prod.countDocuments(); // Perform the count query
+        })
+        .then(count => {
+            const totalNumberOfPages = Math.ceil(count / productsPerPage);
+            res.render('pages/makeup', {
+                products: products,
+                current: page,
+                pages: totalNumberOfPages,
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
+        })
+    .catch(err => {
+        console.log(err);
+    });
+};
+
 const GetProduct = (req, res) => {
     Prod.findOne({_id: req.params.id})
     .then(result => {
@@ -42,5 +150,9 @@ const GetProduct = (req, res) => {
 
 module.exports ={
     GetAllProducts,
+    GetAllProductsmedications,
+    GetAllProductsvit,
+    GetAllProductspersonalcare,
+    GetAllProductsmakeup,
     GetProduct
 };
