@@ -1,24 +1,13 @@
-<!doctype html>
+
 <html lang="en">
 
 <head>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
     <script type="text/javascript"
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dose Pharmcy</title>
     <!-- add icon link -->
     <link rel="icon" href="../IMAGES/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/webpr.css">
-    <link rel="stylesheet" href="../css/stylesheet.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- Start of Async Drift Code -->
 <script>
     "use strict";
@@ -48,15 +37,22 @@
     </script>
     <!-- End of Async Drift Code -->
     <style>
-        #navbar {
-            background-color: #00b18f;
-            padding: 10px;
+        #navbar{
+            position: fixed;
+            width: 100%;
+            background: #00b18f;
+            overflow:visible;
+            justify-content: space-between;
+            padding: 15px;
+            top: 0;
+            z-index: 10;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
 
         .logo {
@@ -70,7 +66,7 @@
 
         .logo img {
             position: fixed;
-            height: 80px;
+            height: 70px;
             width: 100px;
             margin: -10px 0px 0px 40px;
         }
@@ -92,7 +88,6 @@
         .navigation-links li a,
         .right-links li a {
             text-decoration: none;
-
             padding: 10px;
             transition: color 0.3s ease;
         }
@@ -100,37 +95,6 @@
         .navigation-links li a:hover,
         .right-links li a:hover {
             color: #17242a;
-        }
-
-        .mega-box-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: #f9f9f9;
-            padding: 10px;
-            display: none;
-            z-index: 5;
-        }
-
-        .lnks:hover .mega-box-content {
-            display: block;
-            z-index: 10;
-        }
-
-        .mega-box-content ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .mega-box-content ul li {
-            margin-bottom: 5px;
-        }
-
-        .mega-box-content ul li a {
-            text-decoration: none;
-            color: #333333;
         }
 
         .split a {
@@ -157,138 +121,244 @@
             margin-top: -15px;
 
         }
+        .dropbtn {
+            background-color: #00b18f;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {background-color: #00b18f;
+            color: white;}
+        
+        .dropdown:hover .dropdown-content {display: block;  color: white;}
+        
+        .dropdown:hover .dropbtn {background-color: #00b18f;}
+        
         .productm{
-    display: flex;
-    margin: 100px;
-    padding: 20px;
-  }
-  
-  .product-image{
-    width: 500px;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #0000003c;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
-  }
-  
-  .product-image img{
-    width:100%;
-    border-radius: 10px;
-  }
-  
-  .product-details{
-    justify-content: center;
-    margin: 20px;
-    padding: 20px;
-  }
-  
-  .product-details h2{
-    color: #2B7A78;
-  }
-  
-  .product-details h3{
-    color: rgba(255, 0, 0, 0.8);
-  }
-  
-  .product-details p{
-    font-size: 20px;
-    font-weight: bold;
-    color: gray;
-  }
-  
-  .product-details .title1{
-    font-size: 20px;
-    font-weight: bold;
-    color: #3AAFA9;
-  }
-  
-  .product-details span{
-    font-size: 16px;
-    color: gray;
-  }
-  
-  .product-details .btnm{
-    display: block;
-    border: none;
-    font-size: 16px;
-    border-radius: 10px;
-    color:#2B7A78;
-    background-color: #def2f19c;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.20);
-    box-shadow: outset;
-    padding: 5px;
-    margin: 20px;
-    cursor: pointer;
-  }
-  
-  .product-details .btnm:hover{
-    color: white;
-    background-color: #3AAFA9;
-  }
-  
+            display: flex;
+            margin: 100px;
+            padding: 20px;
+        }
+        
+        .product-image{
+            width: 500px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #0000003c;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+        }
+        
+        .product-image img{
+            width:100%;
+            border-radius: 10px;
+        }
+        
+        .product-details{
+            justify-content: center;
+            margin: 20px;
+            padding: 20px;
+        }
+        
+        .product-details h2{
+            color: #2B7A78;
+        }
+        
+        .product-details h3{
+            color: rgba(255, 0, 0, 0.8);
+        }
+        
+        .product-details p{
+            font-size: 20px;
+            font-weight: bold;
+            color: gray;
+        }
+        
+        .product-details .title1{
+            font-size: 20px;
+            font-weight: bold;
+            color: #3AAFA9;
+        }
+        
+        .product-details span{
+            font-size: 16px;
+            color: gray;
+        }
+        
+        .product-details .btnm{
+            display: block;
+            border: none;
+            font-size: 16px;
+            border-radius: 10px;
+            color:#2B7A78;
+            background-color: #def2f19c;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.20);
+            box-shadow: outset;
+            padding: 5px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        
+        .product-details .btnm:hover{
+            color: white;
+            background-color: #3AAFA9;
+        }
+        #ft{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            height: 2.5rem;
+        
+        }
+        
+        .container__footer{
+            background-color: #00b18f;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 100px;
+            width: 100%;
+        }
+        
+        .box__footer{
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+        }
+        
+        .box__footer .logo img{
+            width: 180px;
+        }
+        
+        .box__footer .terms{
+            max-width: 350px;
+            font-weight: 500;
+            color: #ffffff;
+            font-size: 18px;
+        }
+        
+        .box__footer h2{
+        
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        .box__footer a{
+            text-decoration: none;
+            margin-top: 10px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .box__footer a:hover{
+            opacity: 0.8;
+            color: #17242a;
+        }
+        
+        .box__footer a .fab{
+            font-size: 20px;
+        }
+        
+        .box__copyright{
+            background-color: #00b18f;
+            text-align: center;
+            margin: 0;
+            margin-top: -20px;
+        }
+        
+        .box__copyright p{
+            margin-top: 0px;
+            color: #ffffff;
+        }
+        
+        .box__copyright hr{
+            background-color: #ffffff;
+        }
     </style>
-
-  
 </head>
-
-    <header id="navbar">
-        <nav>
-            <div class="logo">
-                <a href="./index"><img src="../IMAGES/logo.png"></a>
-            </div>
-            <ul class="navigation-links">
-                <li class="lnks">
-                    <div class="dropdown">
-                        <button class="dropbtn">Shop</button>
-                        <div class="dropdown-content">
-                            <a href="./medications">Medications</a>
-                            <a href="./vit">Vitamins</a>
-                            <a href="./personalcare">Personal Care</a>
-                            <a href="./makeup">Beauty Products</a>
-                            <a href="./skincare">Skin Care</a>
-                            <a href="./cleaning">Cleaning Products</a>
-                            <a href="./motherbaby">Mother Baby Care</a>
-                            <a href="./hair">Hair Care</a>
-                            <a href="./perfume">Perfumes</a>
-                        </div>
-                </li>
-                
-                <li><a href="./blog">Blog</a></li>
-                <li><a href="./about">About Us</a></li>
-               
-                  <li><a href="#">  <input type="text" placeholder="Search Products" id="searchInput"></a></li>
-                  
-            </ul>
-            <ul class="right-links">
-                <li class="lan-main">
-                    <div id="google_translate_element"></div>
-                    <script type="text/javascript">
-                        function googleTranslateElementInit() {
-                            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-                        }
-                    </script>
-                </li>
-                <!-- Check if the user variable exists -->
-                <% if ( user==='' ) { %>
-                    <li class="split"><a href="/user/login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
-                    <% } else { %>
-                        <% if ( user.type==='admin' ) { %>
-                            <li class="split"><a href="./admin"><i class="fa fa-fw fa-user"></i>Admin</a></li>
-                            <% } %>
-                              
-                                <li class="split"><a href="./cart"><i class="fa fa-fw fa-cart-plus"></i>Your Cart</a>
-                                </li>
-                                <li class="split"><a href="/user/logout"><i class="fa fa-fw fa-user"></i>Logout</a>
-                                </li>
-                                <li class="split"><a href="#">Welcome <%= user.name %></a></li>
-                                <% } %>
-            </ul>
-            </ul>
-            <!-- <script src="/js/ajax-search.js"></script> -->
-        </nav>
-    </header>
     <body>
+        <header id="navbar">
+            <nav>
+                <div class="logo">
+                    <a href="/index"><img src="/IMAGES/logo.png"></a>
+                </div>
+                <ul class="navigation-links">
+                    <li class="lnks">
+                        <div class="dropdown">
+                            <button class="dropbtn">Shop</button>
+                            <div class="dropdown-content">
+                                <a href="/medications">Medications</a>
+                                <a href="/vit">Vitamins</a>
+                                <a href="/personalcare">Personal Care</a>
+                                <a href="/makeup">Beauty Products</a>
+                                <a href="/skincare">Skin Care</a>
+                                <a href="/cleaning">Cleaning Products</a>
+                                <a href="/motherbaby">Mother Baby Care</a>
+                                <a href="/hair">Hair Care</a>
+                                <a href="/perfume">Perfumes</a>
+                            </div>
+                    </li>
+                    
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/about">About Us</a></li>
+                   
+                      <li><a href="#">  <input type="text" placeholder="Search Products" id="searchInput"></a></li>
+                      
+                </ul>
+                <ul class="right-links">
+                    <li class="lan-main">
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                            }
+                        </script>
+                    </li>
+                    <!-- Check if the user variable exists -->
+                    <% if ( user==='' ) { %>
+                        <li class="split"><a href="/user/login"><i class="fa fa-fw fa-user"></i>Login/Signup</a></li>
+                        <% } else { %>
+                            <% if ( user.type==='admin' ) { %>
+                                <li class="split"><a href="/admin"><i class="fa fa-fw fa-user"></i>Admin</a></li>
+                                <% } %>
+                                  
+                                    <li class="split"><a href="/cart"><i class="fa fa-fw fa-cart-plus"></i>Your Cart</a>
+                                    </li>
+                                    <li class="split"><a href="/user/logout"><i class="fa fa-fw fa-user"></i>Logout</a>
+                                    </li>
+                                    <li class="split"><a href="#">Welcome <%= user.name %></a></li>
+                                    <% } %>
+                </ul>
+                </ul>
+                <!-- <script src="/js/ajax-search.js"></script> -->
+            </nav>
+        </header>
         <br>
         <div class="productm">
             <div class="product-image">
@@ -313,7 +383,7 @@
                 <div class="container__footer">
                     <div class="box__footer">
                         <div class="logo2">
-                            <img src="../IMAGES/logo.png" alt="">
+                            <img src="/IMAGES/logo.png" alt="">
                         </div>
                     </div>
                     <div class="box__footer">

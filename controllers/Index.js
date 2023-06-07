@@ -31,8 +31,7 @@ const GetAllProducts = (req, res)=>{
 };
 
 const GetProduct = (req, res) => {
-    const id = {"_id" : req.params.id};
-    Prod.findOne(id)
+    Prod.findOne({_id: req.params.id})
     .then(result => {
         res.render('pages/productDetails', {prod: result, user: (req.session.user === undefined ? "" : req.session.user)});
     })
