@@ -58,11 +58,19 @@ const addItemToCart = (req, res) => {
     }
   };
   
-
-
+  const ViewCartItems = (req, res) => {
+    Cart.find()
+    .then(result =>{
+      res.render('pages/cart', {products: result,user: (req.session.user === undefined ? "" : req.session.user)});
+    })
+    .catch(err => {
+        console.log(err);
+    });
+  };
 
 module.exports = {
   
   addItemToCart,
-  removeCartItem
+  removeCartItem,
+  ViewCartItems
 };
