@@ -11,7 +11,7 @@ const randomStr = () => require('crypto').randomBytes(32).toString('hex');
 const reg = async (req, res) => {
     const body = req.body;
     if (!(body.name && body.email && body.password && body.phone && body.type)) {
-        return res.redirect('/');
+        // return res.redirect('/');
     }
     const user = new User(body);
     const salt = await bcrypt.genSalt(10);
@@ -66,60 +66,19 @@ const LogIn = async (req, res) => {
             } else {
                 req.session.error = 'Wrong Password';
                 //  req.session.user = req.session.user || "";
-                res.redirect('/404');
+                res.redirect('/load2');
             }
         } else {
             req.session.error = 'User not found';
             //  req.session.user = req.session.user || "";
-            res.redirect('/404');
+            res.redirect('/load2');
         }
     } catch (err) {
         console.log(err);
         res.redirect('pages/404');
     }
 };
-const changePassword = async (req, res) => {
-    try {
-        const { currentPassword, newPassword } = req.body;
-        const { authorization } = req.headers;
-        if (!authorization) throw new Error('Enter Auth Token');
-        if (!currentPassword) throw new Error('Enter Current Password');
-        if (!newPassword) throw new Error('Enter New Password');
-        if (currentPassword === newPassword) {
-            throw new Error("new password can't be your old password");
-        }
-        const authToken =
-            authorization && authorization.startsWith('Bearer ')
-                ? authorization.slice(7, authorization.length)
-                : null;
-        const mySecretKey = 'mysecretkey';
-        const verifyToken = jwt.verify(authToken, mySecretKey);
-        if (!verifyToken) {
-            throw new Error('Can not find Token');
-        }
-        const verifyUser = await User.findOne({
-            name: verifyToken.name,
-        });
-        const checkPassword = await bcrypt.compare(
-            currentPassword,
-            verifyUser.password
-        );
 
-        if (!checkPassword) {
-            res.send('Current Password is wrong');
-        } else {
-            const saltRounds = 10;
-            const generatePassword = bcrypt.hashSync(newPassword, saltRounds);
-            const updateUser = await User.updateOne(
-                { name: verifyToken.name },
-                { $set: { password: generatePassword } }
-            );
-            updateUser && res.send('password changed');
-        }
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
-};
 const forgotPassword = async (req, res) => {
     try {
 
@@ -132,7 +91,6 @@ const forgotPassword = async (req, res) => {
 
         const date = new Date();
         const expTime = date.getTime() + 60000;
-
         const updateToken = await User.findOneAndUpdate(
             { email: email },
             { $set: { token, expTime } }
@@ -141,7 +99,7 @@ const forgotPassword = async (req, res) => {
             theme: 'salted',
             product: {
                 name: 'Dose',
-                link: "http://localhost:8081",
+                link: "https://getdose.store",
                 // logo: your app logo url
             },
         })
@@ -204,7 +162,6 @@ module.exports = {
     reg,
     checkUN,
     LogIn,
-    changePassword,
     forgotPassword,
     resetPassword,
     checkmail

@@ -14,50 +14,10 @@ const addItemToCart = (req, res) => {
   
       console.log(cartItem);
       cartItem.save().then((doc) => res.redirect('/cart'));
-    //   req.session.cart = req.session.cart || [];
-    //   const cartIndex = req.session.cart.findIndex(
-    //     item => item.product === cartItem.product
-    //   );
-  
-    //   if (cartIndex > -1) {
-    //     req.session.cart[cartIndex].quantity += cartItem.quantity;
-    //   } else {
-    //     req.session.cart.push(cartItem);
-    //   }
-    //   const currentUrl = req.headers.referer;
-
-
     } catch (error) {
-      console.error('Error adding to cart:', error);
-      res.status(500).send('Error adding to cart');
+      res.render('pages/404');
     }
   };
-  const removeCartItem = (req, res) => {
-    try {
-      const cartItem = {
-        product: req.body.product,
-        quantity: 0,
-        price: 0,
-        name: req.body.name
-      };
-  
-      const cartIndex = req.session.cart.findIndex(
-        item => item.product === cartItem.product
-      );
-  
-      if (cartIndex > -1) {
-        req.session.cart.splice(cartIndex, 1);
-      }
-  
-      const currentUrl = req.headers.referer;
-      const redirectUrl = `${currentUrl}?message=Item added to cart`;
-      res.redirect(redirectUrl);
-    } catch (error) {
-      console.error('Error removing cart item:', error);
-      res.status(500).send('Error removing cart item');
-    }
-  };
-  
   const ViewCartItems = (req, res) => {
     Cart.find()
     .then(result =>{
@@ -71,6 +31,5 @@ const addItemToCart = (req, res) => {
 module.exports = {
   
   addItemToCart,
-  removeCartItem,
   ViewCartItems
 };

@@ -2,7 +2,7 @@ const { string } = require("i/lib/util");
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
-var passportLocalMongoose = require("passport-local-mongoose");
+// var passportLocalMongoose = require("passport-local-mongoose");
 
 const { Schema } = mongoose;
 //users schema
@@ -31,7 +31,7 @@ const userSchema = new Schema({
   expTime: { type: Number },
 
 });
-userSchema.plugin(passportLocalMongoose);
+// userSchema.plugin(passportLocalMongoose);
 
 const usercollection = new mongoose.model("user", userSchema);
 module.exports = usercollection;

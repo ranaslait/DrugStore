@@ -5,7 +5,6 @@ const Prod=require("../models/products");
 const cartController = require('../controllers/cart.controller');
 const cart = require('../models/cart');
 router.post('/add', cartController.addItemToCart);
-router.post('/remove', cartController.removeCartItem);
 
 module.exports=router;
 //Home page
@@ -36,6 +35,10 @@ router.get('/cart', (req, res) => {
 //  });
  router.get('/load', (req, res) => {
    res.render('pages/load',{user: (req.session.user === undefined ? "" : req.session.user) });
+});
+
+router.get('/load2', (req, res) => {
+   res.render('pages/load2',{user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
 //categories routes

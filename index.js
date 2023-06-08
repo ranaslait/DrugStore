@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 var ejs = require('ejs');
-// const Fruite = require('./models/Search');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -38,10 +37,3 @@ app.use((req, res) => {
    res.status(404).render('pages/404', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
 
-
-// Server Start
-
-//  app.post('/getFruits',(req,res)=>{
-// let payload = req.body.payload.trim();
-// console.log(payload);
-//  });

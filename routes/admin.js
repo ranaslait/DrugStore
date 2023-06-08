@@ -60,13 +60,12 @@ router.get("/products", Admin.ViewAllProducts);
 router.get("/editproduct/:id", Admin.ViewProduct);
 router.post("/editproduct/:id", Admin.EditProduct);
 
-router.get("/deleteproduct/:id", Admin.ViewProduct);
+router.get("/deleteproduct/:id", Admin.ViewProductD);
 router.post("/deleteproduct/:id", Admin.DeleteProduct);
 
 router.post("/addproduct", Admin.Addpro);
 
 
-router.get("/toAdmin/:id",Admin.toAdmin);
 
 router.get('/logout', (req, res) => {
     req.session.destroy();

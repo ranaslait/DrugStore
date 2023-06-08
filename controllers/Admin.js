@@ -2,15 +2,8 @@ const User = require('../models/users');
 const Prod = require("../models/products");
 const path = require('path');
 const fs = require('fs');
-const toAdmin = (req, res) => {
-  User.findByIdAndUpdate(req.params.id, { type: 'admin' })
-    .then(result => {
-      res.redirect('/admin');
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
+
+//save schema in data base
 const Addpro = async (req, res) => {
   // let imgFile;
   // let uploadPath;
@@ -40,11 +33,12 @@ const Addpro = async (req, res) => {
       res.redirect('/admin/addproduct');
     })
     .catch(err => {
+      console.log('ana fashlt fe add el product');
       res.redirect('/404');
     })
   // })
 };
-
+//paging
 const ViewAllProducts = (req, res)=>{
   const page = req.query.page || 1;
   const productsPerPage = 12;
@@ -82,10 +76,20 @@ const ViewProduct = (req, res) => {
   });
 };
 
+
 const EditProduct = (req, res) => {
   Prod.findByIdAndUpdate({_id: req.params.id}, {side_effect: req.body.side_effect , active_ingredient: req.body.active_ingredient, product_name: req.body.product_name, product_price: req.body.product_price, product_newprice: req.body.product_newprice})
   .then(result => {
     res.redirect('/admin/products');
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+const ViewProductD = (req, res) => {
+  Prod.findOne({_id: req.params.id})
+  .then(result => {
+    res.render('pages/deleteproduct', {product: result, user: (req.session.user === undefined ? "" : req.session.user)});
   })
   .catch(err => {
     console.log(err);
@@ -102,11 +106,12 @@ const DeleteProduct = (req, res) => {
   });
 };
 
+
 module.exports = {
-  toAdmin,
   Addpro,
   ViewAllProducts,
   ViewProduct,
   EditProduct,
-  DeleteProduct
+  DeleteProduct,
+  ViewProductD
 };
