@@ -37,7 +37,7 @@ const Addpro = async (req, res) => {
   })
   pdata.save()
     .then(result => {
-      res.render('/admin/addproduct');
+      res.redirect('/admin/addproduct');
     })
     .catch(err => {
       res.redirect('/404');
@@ -47,7 +47,7 @@ const Addpro = async (req, res) => {
 
 const ViewAllProducts = (req, res)=>{
   const page = req.query.page || 1;
-  const productsPerPage = 10;
+  const productsPerPage = 12;
   let products = [];
   
   Prod.find()

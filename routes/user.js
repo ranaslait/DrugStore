@@ -4,6 +4,7 @@ const router=express.Router();
 router.use(bodyParser.json());
 var cookieParser = require('cookie-parser');
 const User = require("../controllers/User");
+const Cart = require("../controllers/cart.controller");
 
 router.get('/login', (req, res) => {
     res.render('pages/login', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -20,6 +21,7 @@ router.get('/resetPassword', (req, res) => {
 router.get('/registr', (req, res) => {
     res.render('pages/registr', { user: (req.session.user === undefined ? "" : req.session.user) });
  });
+ router.get('/cart', Cart.ViewCartItems);
  router.post('/login',User.LogIn);
   router.post('/registr',User.reg);
    router.post('/checkUN',User.checkUN);

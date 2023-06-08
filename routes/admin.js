@@ -39,9 +39,9 @@ router.get('/about', (req, res) => {
  router.get('/blog', (req, res) => {
     res.render('pages/blog',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
-router.get('/cart', (req, res) => {
-    res.render('pages/cart',{user: (req.session.user === undefined ? "" : req.session.user) });
- });
+// router.get('/cart', (req, res) => {
+//     res.render('pages/cart',{user: (req.session.user === undefined ? "" : req.session.user) });
+//  });
 router.get('/checkout', (req, res) => {
     res.render('pages/checkout',{user: (req.session.user === undefined ? "" : req.session.user) });
  });
