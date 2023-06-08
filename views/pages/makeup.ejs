@@ -10,7 +10,7 @@
                     <img src="/IMAGES/<%=product.img %>" alt="<%= %>">
                     <div class="product">
                         <a href="/makeup/productDetails/<%=product.id%>" title="<%= %>" class="product-title"> <%= product.product_name %> </a>
-                        <h5 class="price"><%= product.product_newprice %></h5>
+                        <h5 class="price"><%= product.product_price %></h5>
                         <form action="/add" method="post">
                             <input type="hidden" name="product" value="<%= product._id %>">
                             <input type="hidden" name="name" value="<%= product.product_name %>">
