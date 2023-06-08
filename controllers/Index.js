@@ -57,7 +57,7 @@ const GetAllProductshair = (req, res)=>{
 };
 const GetAllProductsperfume = (req, res)=>{
     const page = req.query.page || 1;
-    const productsPerPage = 10;
+    const productsPerPage = 7;
     let products = [];
     
     Prod.find({category_name: 'perfume'})
